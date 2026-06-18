@@ -1,655 +1,1822 @@
 <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Becados UTEPSA 2026</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<html class="light" lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Plataforma de Becados UTEPSA</title>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS v3 CDN -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "background": "#f8f9ff",
-                        "outline-variant": "#c2c7d2",
-                        "on-error-container": "#93000a",
-                        "info-text": "#1565C0",
-                        "on-secondary": "#ffffff",
-                        "surface-dim": "#d9dae0",
-                        "inverse-primary": "#a3c9ff",
-                        "on-background": "#191c20",
-                        "error-bg": "#FFEBEE",
-                        "outline": "#727781",
-                        "error-container": "#ffdad6",
-                        "surface-container": "#ededf4",
-                        "tertiary": "#5e2a00",
-                        "on-primary-fixed-variant": "#004882",
-                        "tertiary-container": "#813c00",
-                        "success-bg": "#E8F5E9",
-                        "surface-container-low": "#f3f3f9",
-                        "on-secondary-container": "#006e6e",
-                        "primary-fixed": "#d3e4ff",
-                        "on-primary": "#ffffff",
-                        "inverse-surface": "#2e3035",
-                        "surface-variant": "#e1e2e8",
-                        "success-text": "#2E7D32",
-                        "on-tertiary-fixed-variant": "#743500",
-                        "inverse-on-surface": "#f0f0f6",
-                        "error-text": "#C62828",
-                        "on-surface": "#191c20",
-                        "on-tertiary-container": "#ffb07e",
-                        "on-primary-container": "#9ac5ff",
-                        "primary-fixed-dim": "#a3c9ff",
-                        "on-error": "#ffffff",
-                        "surface-container-highest": "#e1e2e8",
-                        "tertiary-fixed": "#ffdbc8",
-                        "on-secondary-fixed": "#002020",
-                        "warning-bg": "#FFF8E1",
-                        "on-tertiary": "#ffffff",
-                        "surface-bg": "#F8FAFC",
-                        "secondary-container": "#90efef",
-                        "info-bg": "#E3F2FD",
-                        "on-tertiary-fixed": "#311300",
-                        "on-primary-fixed": "#001c38",
-                        "primary": "#d32f2f",
-                        "secondary": "#006a6a",
-                        "secondary-fixed": "#93f2f2",
-                        "tertiary-fixed-dim": "#ffb689",
-                        "surface-container-high": "#e7e8ee",
-                        "secondary-fixed-dim": "#76d6d5",
-                        "surface-card": "#FFFFFF",
-                        "warning-text": "#F57F17",
-                        "on-surface-variant": "#424750",
-                        "on-secondary-fixed-variant": "#004f4f",
-                        "error": "#ba1a1a",
-                        "surface-tint": "#2060a1",
-                        "surface": "#f8f9ff",
-                        "surface-bright": "#f8f9ff",
-                        "surface-container-lowest": "#ffffff",
-                        "primary-container": "#b71c1c",
-                        "utepsa-red": '#d32f2f',
-                        "utepsa-red-dark": '#b71c1c'
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px",
-                        "utepsa": "4px"
-                    },
-                    "fontFamily": {
-                        "sans": ['Montserrat', 'sans-serif'],
-                        "display-lg": ['Montserrat', 'sans-serif'],
-                        "headline-md": ['Montserrat', 'sans-serif'],
-                        "headline-sm": ['Montserrat', 'sans-serif'],
-                        "body": ['Inter', 'sans-serif'],
-                        "body-md": ['Inter', 'sans-serif'],
-                        "body-lg": ['Inter', 'sans-serif'],
-                        "stat-number": ["Montserrat"]
-                    }
-                }
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --bg: #ffffff;
+            --text: #1f2937;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gray-100);
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        /* =============== LOGIN PAGE =============== */
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+
+        .login-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .login-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: var(--gray-700);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .login-form {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .btn-login:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .login-divider {
+            color: var(--gray-400);
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .login-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-role {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .btn-role:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+            transform: translateY(-2px);
+        }
+
+        .btn-role.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .demo-message {
+            background: var(--gray-100);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+
+        /* =============== HEADER =============== */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.9rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-logout {
+            background: var(--danger);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: #dc2626;
+        }
+
+        .role-badge {
+            background: rgba(255,255,255,0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* =============== NAVIGATION =============== */
+        .nav-tabs {
+            background: var(--bg);
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: var(--gray-700);
+            font-size: 1rem;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover {
+            background: var(--gray-50);
+            color: var(--primary);
+        }
+
+        .nav-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* =============== CONTAINER & MAIN =============== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
+
+        /* =============== CARDS =============== */
+        .card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
         }
-        .progress-ring-circle {
-            transition: stroke-dashoffset 0.35s;
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
-        .sidebar-active {
-            background-color: #d32f2f !important;
-            color: white !important;
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
-        .sidebar-active-admin {
-            background-color: #b71c1c !important;
-            color: white !important;
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
-        .card-shadow {
-            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.05);
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         }
-        .bento-glow {
-            position: absolute;
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        /* =============== STATS =============== */
+        .stat-box {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .stat-box.success { border-left-color: var(--success); }
+        .stat-box.warning { border-left-color: var(--warning); }
+        .stat-box.danger { border-left-color: var(--danger); }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0.5rem 0;
+        }
+
+        .stat-box.success .stat-number { color: var(--success); }
+        .stat-box.warning .stat-number { color: var(--warning); }
+        .stat-box.danger .stat-number { color: var(--danger); }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* =============== PROGRESS BAR =============== */
+        .progress-bar {
             width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(211, 47, 47, 0.03) 0%, transparent 70%);
-            pointer-events: none;
+            height: 24px;
+            background: var(--gray-200);
+            border-radius: 0.5rem;
+            overflow: hidden;
         }
-        .view-section { display: none; }
-        .view-section.active { display: flex; }
-        .content-tab { display: none; }
-        .content-tab.active { display: block; }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* =============== BUTTONS =============== */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-secondary {
+            background: var(--gray-200);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-300);
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* =============== TABLE =============== */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead {
+            background: var(--gray-50);
+            border-bottom: 2px solid var(--border);
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:hover {
+            background: var(--gray-50);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* =============== CALENDAR =============== */
+        .calendar {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-header button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .calendar-day:hover {
+            background: var(--gray-50);
+        }
+
+        .calendar-day.event {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .calendar-day.today {
+            border: 2px solid var(--primary);
+        }
+
+        .activity-card {
+            background: var(--gray-50);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-info {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+
+        .activity-date {
+            display: inline-block;
+            background: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* =============== MODAL =============== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-700);
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* =============== ALERTS =============== */
+        .alert {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            color: #166534;
+            border-left: 4px solid var(--success);
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid var(--danger);
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            color: #92400e;
+            border-left: 4px solid var(--warning);
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* =============== RESPONSIVE =============== */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header-left {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .login-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body min-h-screen">
-<!-- SECTION: LOGIN VIEW -->
-<div class="view-section active w-full h-screen flex flex-col md:flex-row overflow-hidden bg-white" id="login-view">
-<!-- Left Side: Hero Image -->
-<section class="hidden md:flex md:w-1/2 lg:w-3/5 relative overflow-hidden bg-utepsa-red">
-<div class="absolute inset-0 z-0">
-<div class="w-full h-full bg-cover bg-center opacity-80" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvtOHV6bZYacxM-Nve4WKGcisbsZGsEAtR3FXGWup5SkwcaKNMiUTvs08ra9YJuKNxQFeJbmtZ0SCmKA9SZIfr7KcJY7Oc-OJ3jJXrfUMg7x8927mLlkamoKmsrEQCknSySPmI8JHRdhpOsXtSuxYlgLwVuOG5FGUVLGBZ4Pcw41FT-uGX_MaBwW2m25JKOUoJABIHcSHA8KI5lDTPB4VCyVpY2QW-FiaYdEWd-NGG7N8OhUj4ky8WFdHi3LeKDnEFzmdRwmEdISjG')"></div>
-<div class="absolute inset-0 bg-gradient-to-tr from-utepsa-red via-utepsa-red/40 to-transparent"></div>
-</div>
-<div class="relative z-10 p-16 flex flex-col justify-between h-full text-white">
-<div>
-<h1 class="font-display-lg text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                        Transformamos tu <br/> <span class="text-white/90">potencial en éxito.</span>
-</h1>
-<p class="text-lg max-w-md opacity-90 font-body">
-                        Accede al Portal de Becados y gestiona tu trayectoria académica con las herramientas diseñadas para tu crecimiento constante.
-                    </p>
-</div>
-<div class="flex items-center gap-4">
-<div class="w-12 h-1 bg-white rounded-full"></div>
-<span class="font-display-lg font-bold tracking-widest uppercase text-xs">Campus UTEPSA</span>
-</div>
-</div>
-</section>
-<!-- Right Side: Login Form -->
-<section class="w-full md:w-1/2 lg:w-2/5 flex flex-col justify-center items-center p-8 bg-surface-container-lowest relative">
-<div class="bento-glow"></div>
-<div class="w-full max-w-md space-y-8 z-10">
-<div class="text-center md:text-left">
-<div class="flex items-center justify-center md:justify-start gap-3 mb-8">
-<div class="bg-utepsa-red p-2 rounded-lg">
-<span class="material-symbols-outlined text-white text-3xl">school</span>
-</div>
-<span class="text-2xl font-display-lg font-bold text-utepsa-red tracking-tight">Becas UTEPSA</span>
-</div>
-<h2 class="text-2xl font-display-lg font-bold text-on-surface">Bienvenido de nuevo</h2>
-<p class="text-on-surface-variant mt-2 font-body">Ingresa tus credenciales institucionales para continuar.</p>
-</div>
-<form class="mt-8 space-y-6" id="loginForm">
-<div class="space-y-4">
-<div class="space-y-2">
-<label class="text-xs font-display-lg font-bold text-on-surface-variant uppercase ml-1" for="user-id">REGISTRO O CORREO INSTITUCIONAL</label>
-<div class="relative group">
-<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-outline group-focus-within:text-utepsa-red transition-colors">person</span>
-</div>
-<input class="block w-full pl-11 pr-4 py-3 bg-[#F1F5F9] border border-outline-variant rounded-xl font-body text-on-surface focus:ring-2 focus:ring-utepsa-red/20 focus:border-utepsa-red transition-all outline-none" id="user-id" placeholder="Ej: 221054321" required="" type="text"/>
-</div>
-</div>
-<div class="space-y-2">
-<div class="flex justify-between items-center px-1">
-<label class="text-xs font-display-lg font-bold text-on-surface-variant uppercase" for="password">CONTRASEÑA</label>
-<a class="text-xs font-display-lg font-bold text-utepsa-red hover:underline" href="#">¿Olvidaste tu contraseña?</a>
-</div>
-<div class="relative group">
-<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-outline group-focus-within:text-utepsa-red transition-colors">lock</span>
-</div>
-<input class="block w-full pl-11 pr-12 py-3 bg-[#F1F5F9] border border-outline-variant rounded-xl font-body text-on-surface focus:ring-2 focus:ring-utepsa-red/20 focus:border-utepsa-red transition-all outline-none" id="password" placeholder="••••••••" required="" type="password"/>
-</div>
-</div>
-</div>
-<div class="space-y-4 pt-2">
-<button class="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-lg font-display-lg font-bold text-white bg-utepsa-red hover:bg-utepsa-red-dark active:scale-[0.98] transition-all" type="submit">
-                            Iniciar Sesión
-                        </button>
-<button class="w-full text-xs font-body text-outline hover:text-utepsa-red transition-colors text-center underline" onclick="showView('jefatura-view')" type="button">
-                            Acceso Administrativo (Simulación)
-                        </button>
-</div>
-</form>
-<div class="pt-8 border-t border-outline-variant flex flex-col sm:flex-row justify-between items-center gap-4">
-<p class="text-sm font-body text-on-surface-variant text-center sm:text-left">¿Problemas para ingresar?</p>
-<a class="flex items-center gap-2 text-xs font-display-lg font-bold text-utepsa-red bg-utepsa-red/10 px-4 py-2 rounded-full hover:bg-utepsa-red/20 transition-colors" href="#">
-<span class="material-symbols-outlined text-[18px]">support_agent</span>
-                        Soporte Técnico
-                    </a>
-</div>
-</div>
-</section>
-</div>
-<!-- SECTION: STUDENT DASHBOARD -->
-<div class="view-section min-h-screen w-full" id="becado-view">
-<div class="flex min-h-screen w-full">
-<!-- Sidebar -->
-<aside class="w-64 bg-white border-r border-gray-200 flex flex-col fixed h-full z-30">
-<div class="p-6">
-<div class="flex items-center gap-2 mb-8">
-<div class="w-10 h-10 bg-utepsa-red rounded flex items-center justify-center text-white font-bold">
-<span class="material-symbols-outlined">school</span>
-</div>
-<div>
-<h1 class="text-utepsa-red font-display-lg font-bold text-sm leading-tight">Portal Becados</h1>
-<p class="text-[10px] font-display-lg text-gray-500 uppercase tracking-tighter">Estudiante</p>
-</div>
-</div>
-<nav class="space-y-1" id="student-nav">
-<button class="w-full flex items-center gap-3 px-4 py-3 rounded-utepsa text-sm font-display-lg font-semibold transition-colors sidebar-active" onclick="switchStudentTab('s-inicio', this)">
-<span class="material-symbols-outlined !text-xl">dashboard</span> Inicio
-                        </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-display-lg font-semibold transition-colors" onclick="switchStudentTab('s-horas', this)">
-<span class="material-symbols-outlined !text-xl">timer</span> Mis Horas
-                        </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-display-lg font-semibold transition-colors" onclick="switchStudentTab('s-actividades', this)">
-<span class="material-symbols-outlined !text-xl">event_note</span> Actividades
-                        </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-display-lg font-semibold transition-colors" onclick="switchStudentTab('s-historial', this)">
-<span class="material-symbols-outlined !text-xl">history</span> Historial
-                        </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-display-lg font-semibold transition-colors" onclick="switchStudentTab('s-perfil', this)">
-<span class="material-symbols-outlined !text-xl">person</span> Perfil
-                        </button>
-</nav>
-</div>
-<div class="mt-auto p-4 border-t border-gray-100 space-y-2">
-<button class="w-full bg-utepsa-red text-white py-2.5 rounded-utepsa text-sm font-display-lg font-bold flex items-center justify-center gap-2 hover:bg-utepsa-red-dark transition-all">
-<span class="material-symbols-outlined">add_circle</span> Registrar Horas
-                    </button>
-<button class="w-full text-gray-500 py-2.5 rounded-utepsa text-sm font-display-lg font-bold flex items-center justify-center gap-2 hover:bg-gray-100 transition-all logout-btn">
-<span class="material-symbols-outlined">logout</span> Cerrar Sesión
-                    </button>
-</div>
-</aside>
-<!-- Main Content -->
-<main class="flex-1 ml-64 min-h-screen">
-<header class="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center sticky top-0 z-20">
-<h2 class="text-utepsa-red text-2xl font-display-lg font-bold">Dashboard de Estudiante</h2>
-<div class="flex items-center gap-6">
-<div class="flex items-center gap-3">
-<button class="p-2 text-gray-400 hover:text-utepsa-red relative">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2 right-2 block h-2 w-2 rounded-full bg-utepsa-red ring-2 ring-white"></span>
-</button>
-</div>
-<div class="flex items-center gap-3 pl-6 border-l border-gray-200">
-<div class="text-right">
-<p class="text-sm font-display-lg font-bold text-slate-900 leading-tight">María López</p>
-<p class="text-[10px] font-display-lg text-gray-500 uppercase">Becado Pregrado</p>
-</div>
-<img alt="María López" class="w-10 h-10 rounded-full border-2 border-utepsa-red object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQN6nypHDWAl7YNkKqiW498ryXBOWzzejVfLiRhAVPu9Jkttb4sCBscmxveIn-YrolFe0erszFv8srAP_LwhBL1DRsb-gUsqnv2o0ko1nyUwtJjWZqexQ5U2Q6PrhxlrjKgJ-rEdcg6Vc9hkWwJGUCYdV17cIfdRwnURbx0UKnbbCWaaCONN99lFe8v1358NoHdxW0S6lsIBMwe_dSTaBnFyW-6H8NzvGyzB2dvts3TMBHl5m4e3H8kXgWdseCHZCmk61CphE2ykA5"/>
-</div>
-</div>
-</header>
-<div class="p-8 space-y-8">
-<!-- Tab: Inicio -->
-<div class="content-tab active" id="s-inicio">
-<section class="bg-utepsa-red rounded-2xl p-8 text-white flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden mb-8">
-<div class="relative z-10 flex-1">
-<h3 class="text-4xl font-display-lg font-bold mb-4">¡Bienvenida, María! 👋</h3>
-<p class="opacity-80 max-w-xl mb-8 font-body">Tu compromiso académico es fundamental. Actualmente cuentas con la <strong>Beca Bachiller Destacado</strong> para el periodo <strong>Semestre 2-2025</strong>.</p>
-<div class="flex gap-4">
-<div class="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-utepsa text-sm font-display-lg font-semibold">80 Horas Requeridas</div>
-<div class="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-utepsa text-sm font-display-lg font-semibold">Área: Apoyo Académico</div>
-</div>
-</div>
-<div class="relative z-10 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 flex flex-col items-center">
-<div class="relative w-32 h-32 mb-4">
-<svg class="w-full h-full" viewbox="0 0 100 100">
-<circle class="text-white/20" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
-<circle class="text-white progress-ring-circle" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="110.5" stroke-linecap="round" stroke-width="8"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="text-3xl font-stat-number font-bold">56%</span>
-<span class="text-[8px] font-display-lg uppercase tracking-tighter">Progreso</span>
-</div>
-</div>
-<p class="text-xs font-display-lg font-bold uppercase tracking-widest text-center">45 de 80 Horas</p>
-</div>
-</section>
-<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-<div class="bg-white p-6 rounded-xl card-shadow border border-gray-100">
-<div class="flex justify-between mb-4">
-<div class="w-10 h-10 bg-red-50 text-utepsa-red rounded flex items-center justify-center"><span class="material-symbols-outlined">timer</span></div>
-<span class="text-[10px] font-display-lg font-bold text-green-600 bg-green-50 px-2 py-1 rounded">+5h esta semana</span>
-</div>
-<p class="text-[10px] text-gray-500 uppercase font-display-lg font-bold">Horas Registradas</p>
-<h4 class="text-4xl font-stat-number font-bold text-utepsa-red">45</h4>
-</div>
-<div class="bg-white p-6 rounded-xl card-shadow border border-gray-100">
-<div class="flex justify-between mb-4">
-<div class="w-10 h-10 bg-gray-50 text-gray-400 rounded flex items-center justify-center"><span class="material-symbols-outlined">pending_actions</span></div>
-<span class="text-[10px] font-display-lg font-bold text-gray-500">Meta: 80h</span>
-</div>
-<p class="text-[10px] text-gray-500 uppercase font-display-lg font-bold">Horas Pendientes</p>
-<h4 class="text-4xl font-stat-number font-bold text-slate-800">35</h4>
-</div>
-<div class="bg-utepsa-red p-6 rounded-xl card-shadow text-white">
-<div class="flex items-center gap-2 mb-4">
-<span class="material-symbols-outlined !text-sm">event</span>
-<span class="text-[10px] font-display-lg font-bold uppercase tracking-widest">Próxima Actividad</span>
-</div>
-<h4 class="text-xl font-display-lg font-bold mb-4">Feria de Innovación</h4>
-<button class="w-full bg-white text-utepsa-red font-display-lg font-bold py-2 rounded-utepsa text-sm hover:bg-gray-100 transition-all">Ver Inscripción</button>
-</div>
-</section>
-</div>
-<!-- Tab: Mis Horas -->
-<div class="content-tab" id="s-horas">
-<div class="bg-white rounded-xl card-shadow p-8 border border-gray-100">
-<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Mis Horas Detalladas</h3>
-<p class="text-gray-600 mb-8 font-body">Aquí puedes ver el desglose de todas las horas que has registrado y su estado de aprobación.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="p-6 border border-gray-100 rounded-xl bg-gray-50">
-<h4 class="font-display-lg font-bold mb-4">Resumen Semestral</h4>
-<div class="space-y-4">
-<div class="flex justify-between text-sm font-body">
-<span class="text-gray-500">Horas Aprobadas</span>
-<span class="font-bold text-green-600">45.0 hrs</span>
-</div>
-<div class="flex justify-between text-sm font-body">
-<span class="text-gray-500">Horas Pendientes</span>
-<span class="font-bold text-orange-500">8.0 hrs</span>
-</div>
-<div class="flex justify-between text-sm font-body">
-<span class="text-gray-500">Horas Rechazadas</span>
-<span class="font-bold text-red-500">0.0 hrs</span>
-</div>
-</div>
-</div>
-<div class="p-6 border border-gray-100 rounded-xl bg-gray-50 flex items-center justify-center">
-<div class="text-center">
-<span class="material-symbols-outlined text-4xl text-gray-300 mb-2">monitoring</span>
-<p class="text-sm font-body text-gray-400">Gráfico de actividad mensual próximamente</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Tab: Actividades -->
-<div class="content-tab" id="s-actividades">
-<div class="bg-white rounded-xl card-shadow p-8 border border-gray-100">
-<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Próximas Actividades</h3>
-<div class="space-y-4">
-<div class="flex items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-red-50 transition-colors">
-<div>
-<h4 class="font-display-lg font-bold">Feria de Innovación 2025</h4>
-<p class="text-xs font-body text-gray-500">Campus Principal • 25 de Junio, 2025</p>
-</div>
-<button class="bg-utepsa-red text-white text-xs font-display-lg font-bold px-4 py-2 rounded-utepsa">Inscribirme</button>
-</div>
-<div class="flex items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-red-50 transition-colors">
-<div>
-<h4 class="font-display-lg font-bold">Seminario de Liderazgo</h4>
-<p class="text-xs font-body text-gray-500">Virtual (Teams) • 28 de Junio, 2025</p>
-</div>
-<button class="bg-utepsa-red text-white text-xs font-display-lg font-bold px-4 py-2 rounded-utepsa">Inscribirme</button>
-</div>
-</div>
-</div>
-</div>
-<!-- Tab: Historial -->
-<div class="content-tab" id="s-historial">
-<div class="bg-white rounded-xl card-shadow p-8 border border-gray-100">
-<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Historial de Becas</h3>
-<p class="text-gray-500 font-body">No hay registros de semestres anteriores.</p>
-</div>
-</div>
-<!-- Tab: Perfil -->
-<div class="content-tab" id="s-perfil">
-<div class="bg-white rounded-xl card-shadow p-8 border border-gray-100">
-<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Mi Perfil</h3>
-<div class="flex items-center gap-6 mb-8">
-<img class="w-24 h-24 rounded-full border-4 border-utepsa-red" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQN6nypHDWAl7YNkKqiW498ryXBOWzzejVfLiRhAVPu9Jkttb4sCBscmxveIn-YrolFe0erszFv8srAP_LwhBL1DRsb-gUsqnv2o0ko1nyUwtJjWZqexQ5U2Q6PrhxlrjKgJ-rEdcg6Vc9hkWwJGUCYdV17cIfdRwnURbx0UKnbbCWaaCONN99lFe8v1358NoHdxW0S6lsIBMwe_dSTaBnFyW-6H8NzvGyzB2dvts3TMBHl5m4e3H8kXgWdseCHZCmk61CphE2ykA5"/>
-<div>
-<h4 class="text-xl font-display-lg font-bold">María López</h4>
-<p class="text-gray-500 font-body">Registro: 221054321</p>
-<p class="text-gray-500 font-body">Carrera: Ingeniería de Sistemas</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-</div>
-<!-- SECTION: JEFATURA PANEL -->
-<div class="view-section min-h-screen w-full" id="jefatura-view">
-<div class="flex min-h-screen w-full">
-<aside class="w-64 bg-surface-container-lowest border-r border-outline-variant shadow-md flex flex-col fixed h-full z-30">
-<div class="p-6">
-<div class="flex items-center gap-3 mb-8">
-<div class="w-10 h-10 bg-utepsa-red rounded-lg flex items-center justify-center text-on-primary">
-<span class="material-symbols-outlined">school</span>
-</div>
-<div>
-<h1 class="font-display-lg text-utepsa-red leading-tight text-sm font-bold">Portal Becados</h1>
-<p class="text-[10px] font-display-lg uppercase text-outline">Jefatura</p>
-</div>
-</div>
-<nav class="space-y-1" id="admin-nav">
-<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-display-lg font-bold sidebar-active-admin" onclick="switchAdminTab('a-dashboard', this)">
-<span class="material-symbols-outlined">dashboard</span> Panel de Control
-                        </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-display-lg font-bold transition-all" onclick="switchAdminTab('a-validaciones', this)">
-<span class="material-symbols-outlined">timer</span> Aprobaciones
-                        </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-display-lg font-bold transition-all" onclick="switchAdminTab('a-asistencia', this)">
-<span class="material-symbols-outlined">how_to_reg</span> Asistencia
-                        </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-display-lg font-bold transition-all" onclick="switchAdminTab('a-base-datos', this)">
-<span class="material-symbols-outlined">database</span> Base de Datos
-                        </button>
-</nav>
-</div>
-<div class="mt-auto p-4 border-t border-outline-variant space-y-2">
-<button class="w-full bg-utepsa-red text-on-primary font-display-lg font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-sm hover:brightness-110 active:scale-95 transition-all">
-<span class="material-symbols-outlined">add_circle</span> Validar Horas
-                    </button>
-<button class="w-full text-error text-sm font-display-lg font-bold py-3 flex items-center justify-center gap-2 hover:bg-error-bg rounded-lg transition-all logout-btn">
-<span class="material-symbols-outlined">logout</span> Cerrar Sesión
-                    </button>
-</div>
-</aside>
-<main class="flex-1 ml-64 min-h-screen flex flex-col">
-<header class="flex justify-between items-center px-10 py-4 bg-surface border-b border-outline-variant sticky top-0 z-20">
-<h2 class="text-2xl font-display-lg font-bold text-utepsa-red">Panel Administrativo</h2>
-<div class="flex items-center gap-4">
-<div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
-<div class="text-right">
-<p class="text-sm font-display-lg font-bold text-on-surface">Lic. Admin UTEPSA</p>
-<p class="text-[10px] font-display-lg text-outline">Jefatura de Becas</p>
-</div>
-<img class="w-10 h-10 rounded-full border-2 border-utepsa-red object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4-33USOJU91AY45tyXyvn1PKuIyAcNCXvpkhoassUW5sLHBYP2nMTwwqIT4-HLuwbIjXwVn3KWe1Qp4WyEL_ZAw6syYS-G3o1cLjaW6qrmvr9CzmvKSwUixdmxhy5ObFpBoM3YsjGIU_ErV2qCRivtc4vO4f1ceD4TPfGvMd7nJnGWTuXa1lE5Lpp_4qa86u6ZlfBK3oHS52nyhYBDxTjZ2VM1HzaqrAScuNG7yla9-0bmCqTv_A3Q3BInYDVETI47ZOLzf1j85q6"/>
-</div>
-</div>
-</header>
-<div class="p-10 space-y-8 max-w-7xl mx-auto w-full">
-<!-- Tab: Admin Dashboard -->
-<div class="content-tab active" id="a-dashboard">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-<div class="bg-surface-card p-6 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col gap-2">
-<p class="text-on-surface-variant text-[10px] font-display-lg font-bold uppercase">Becados Activos</p>
-<h3 class="text-4xl font-stat-number font-bold text-utepsa-red">1,248</h3>
-<p class="text-success-text text-xs font-body flex items-center gap-1"><span class="material-symbols-outlined !text-sm">trending_up</span> +12%</p>
-</div>
-<div class="bg-surface-card p-6 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col gap-2">
-<p class="text-on-surface-variant text-[10px] font-display-lg font-bold uppercase">Horas por Validar</p>
-<h3 class="text-4xl font-stat-number font-bold text-tertiary">452</h3>
-<p class="text-warning-text text-xs font-body">Atención requerida</p>
-</div>
-<div class="bg-utepsa-red text-on-primary p-6 rounded-xl shadow-lg flex flex-col gap-3">
-<div class="flex items-center gap-2"><span class="material-symbols-outlined">qr_code_scanner</span><h4 class="font-display-lg font-bold">Validación Rápida</h4></div>
-<input class="w-full bg-white/10 border border-white/20 rounded-lg py-2 px-4 text-white placeholder-white/40 outline-none font-body" placeholder="Código de Actividad" type="text"/>
-<button class="w-full bg-white text-utepsa-red font-display-lg font-bold py-2 rounded-lg hover:bg-opacity-90 active:scale-95 transition-all">Validar</button>
-</div>
-</div>
-<div class="bg-surface-card rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden">
-<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
-<h4 class="font-display-lg font-bold text-utepsa-red">Pendientes de Validación</h4>
-<button class="text-utepsa-red text-xs font-display-lg font-bold hover:underline" onclick="switchAdminTab('a-validaciones', document.querySelector('[onclick*=\'a-validaciones\']'))">Ver todas</button>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left">
-<thead class="bg-surface-container-low text-on-surface-variant">
-<tr>
-<th class="px-6 py-3 text-[10px] font-display-lg font-bold uppercase">Becado</th>
-<th class="px-6 py-3 text-[10px] font-display-lg font-bold uppercase">Actividad</th>
-<th class="px-6 py-3 text-[10px] font-display-lg font-bold uppercase">Horas</th>
-<th class="px-6 py-3 text-[10px] font-display-lg font-bold uppercase text-center">Acciones</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant/30">
-<tr class="hover:bg-surface-container-lowest transition-colors font-body">
-<td class="px-6 py-4 flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-utepsa-red text-white flex items-center justify-center text-[10px] font-bold">CA</div>
-<span class="text-sm font-medium">Carlos Aranda</span>
-</td>
-<td class="px-6 py-4 text-sm text-on-surface-variant">Apoyo en Biblioteca</td>
-<td class="px-6 py-4 font-bold text-sm">4.5</td>
-<td class="px-6 py-4 flex justify-center gap-2">
-<button class="w-8 h-8 rounded-full bg-success-bg text-success-text flex items-center justify-center"><span class="material-symbols-outlined !text-sm">check</span></button>
-<button class="w-8 h-8 rounded-full bg-error-bg text-error-text flex items-center justify-center"><span class="material-symbols-outlined !text-sm">close</span></button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<!-- Tab: Admin Validaciones -->
-<div class="content-tab" id="a-validaciones">
-<div class="bg-surface-card p-8 rounded-xl shadow-sm border border-outline-variant/30">
-<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Módulo de Validaciones</h3>
-<div class="flex gap-4 mb-8">
-<button class="px-4 py-2 bg-utepsa-red text-white text-xs font-display-lg font-bold rounded-lg">Pendientes (15)</button>
-<button class="px-4 py-2 bg-surface-container-high text-on-surface text-xs font-display-lg font-bold rounded-lg">Historial</button>
-</div>
-<p class="text-gray-400 font-body text-center py-12">Lista extendida de aprobaciones...</p>
-</div>
-</div>
-<!-- Tab: Admin Asistencia -->
-<div class="content-tab" id="a-asistencia">
-<div class="bg-surface-card p-8 rounded-xl shadow-sm border border-outline-variant/30">
-<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Control de Asistencia</h3>
-<div class="p-6 bg-surface-container-low rounded-xl mb-6">
-<h4 class="font-display-lg font-bold mb-2">Escáner de Evento</h4>
-<p class="text-sm font-body text-on-surface-variant mb-4">Usa la cámara o ingresa el código del evento para empezar a registrar becados.</p>
-<button class="px-6 py-3 bg-utepsa-red text-white font-display-lg font-bold rounded-lg flex items-center gap-2"><span class="material-symbols-outlined">qr_code_scanner</span> Iniciar Escáner</button>
-</div>
-</div>
-</div>
-<!-- Tab: Admin Base Datos -->
-<div class="content-tab" id="a-base-datos">
-<div class="bg-surface-card p-8 rounded-xl shadow-sm border border-outline-variant/30">
-<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Gestión de Becados</h3>
-<div class="flex justify-between mb-6">
-<div class="relative w-72">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg text-sm font-body" placeholder="Buscar por registro o nombre..." type="text"/>
-</div>
-<button class="bg-utepsa-red text-white px-4 py-2 rounded-lg text-sm font-display-lg font-bold">+ Nuevo Registro</button>
-</div>
-<p class="text-gray-400 font-body text-center py-12">Tabla de datos maestros...</p>
-</div>
-</div>
-</div>
-<footer class="mt-auto w-full py-8 border-t border-outline-variant bg-surface-container-low">
-<div class="px-10 flex justify-between items-center text-xs font-body text-on-surface-variant">
-<p>© 2024 UTEPSA - Universidad Tecnológica de Santa Cruz</p>
-<div class="flex gap-6">
-<a class="hover:text-utepsa-red transition-colors" href="#">Soporte Técnico</a>
-<a class="hover:text-utepsa-red transition-colors" href="#">Reglamento</a>
-</div>
-</div>
-</footer>
-</main>
-</div>
-</div>
-<script>
-        // --- View Management ---
-        function showView(viewId) {
-            // Hide all top-level views
-            document.querySelectorAll('.view-section').forEach(view => {
-                view.classList.remove('active');
-            });
-            
-            // Show selected view
-            const targetView = document.getElementById(viewId);
-            if (targetView) {
-                targetView.classList.add('active');
+<body>
+    <!-- =============== LOGIN PAGE =============== -->
+    <div id="loginPage" class="login-container">
+        <div class="login-content">
+            <div class="login-logo">📚</div>
+            <div class="login-title">Plataforma Becados</div>
+            <div class="login-subtitle">UTEPSA 2026 - Sistema de Horas</div>
+
+            <div class="login-form">
+                <div class="login-buttons">
+                    <button class="btn-role active" onclick="setUserType('estudiante')">👨‍🎓 Estudiante</button>
+                    <button class="btn-role" onclick="setUserType('jefatura')">👔 Jefatura</button>
+                </div>
+
+                <div id="estudianteLogin" style="margin-top: 2rem;">
+                    <div class="form-group">
+                        <label for="usuarioEstudiante">Usuario/Cédula</label>
+                        <input type="text" id="usuarioEstudiante" placeholder="Ej: 80123456">
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordEstudiante">Contraseña</label>
+                        <input type="password" id="passwordEstudiante" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <button class="btn-login" onclick="loginEstudiante()">Ingresar como Estudiante</button>
+                    <div class="demo-message">
+                        ℹ️ Usuario demo: 80123456 | Contraseña: demo
+                    </div>
+                </div>
+
+                <div id="jefaturaLogin" style="margin-top: 2rem; display: none;">
+                    <div class="form-group">
+                        <label for="usuarioJefatura">Usuario Jefatura</label>
+                        <input type="text" id="usuarioJefatura" placeholder="Ej: jefe001">
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordJefatura">Contraseña</label>
+                        <input type="password" id="passwordJefatura" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <button class="btn-login" onclick="loginJefatura()">Ingresar como Jefatura</button>
+                    <div class="demo-message">
+                        ℹ️ Usuario demo: jefe001 | Contraseña: demo
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============== ESTUDIANTE DASHBOARD =============== -->
+    <div id="estudiantePage" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">📚 Becados UTEPSA</div>
+                <div class="user-info">
+                    <div class="user-name" id="estudianteNombre">María López</div>
+                    <div id="estudianteBeca">Beca Bachiller Destacado · Semestre 2-2025</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="role-badge">👨‍🎓 Estudiante</div>
+                <button class="btn-logout" onclick="logout()">Salir</button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showEstudianteTab('dashboard')">📊 Dashboard</button>
+            <button class="nav-tab" onclick="showEstudianteTab('calendario')">📅 Calendario</button>
+            <button class="nav-tab" onclick="showEstudianteTab('registrar')">➕ Registrar</button>
+            <button class="nav-tab" onclick="showEstudianteTab('misioras')">⏱️ Mis Horas</button>
+            <button class="nav-tab" onclick="showEstudianteTab('historial')">📋 Historial</button>
+            <button class="nav-tab" onclick="showEstudianteTab('reportes')">📈 Reportes</button>
+        </div>
+
+        <!-- Content -->
+        <div class="container">
+            <!-- Dashboard -->
+            <div id="est-dashboard" class="content active">
+                <h2 style="margin-bottom: 2rem;">Bienvenido al Dashboard</h2>
+                
+                <div class="grid grid-4">
+                    <div class="stat-box">
+                        <div class="stat-label">Horas Acumuladas</div>
+                        <div class="stat-number" id="horasAcum">0</div>
+                        <div style="font-size: 0.8rem; color: var(--gray-700);">de 80 requeridas</div>
+                    </div>
+
+                    <div class="stat-box warning">
+                        <div class="stat-label">Horas Faltantes</div>
+                        <div class="stat-number" id="horasFalt">80</div>
+                        <div style="font-size: 0.8rem; color: var(--gray-700);">para completar</div>
+                    </div>
+
+                    <div class="stat-box success">
+                        <div class="stat-label">Actividades</div>
+                        <div class="stat-number" id="totalActiv">0</div>
+                        <div style="font-size: 0.8rem; color: var(--gray-700);">registradas</div>
+                    </div>
+
+                    <div class="stat-box danger">
+                        <div class="stat-label">Pendientes</div>
+                        <div class="stat-number" id="pendientes">0</div>
+                        <div style="font-size: 0.8rem; color: var(--gray-700);">en aprobación</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Progreso del Semestre</div>
+                    <div style="margin-bottom: 1rem; display: flex; justify-content: space-between;">
+                        <span>Progreso</span>
+                        <span id="porcentaje">0% completado</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progreso" style="width: 0%">
+                            <span id="progresotxt"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Próximas Actividades Disponibles</div>
+                    <div id="proximasAct"></div>
+                </div>
+            </div>
+
+            <!-- Calendario -->
+            <div id="est-calendario" class="content">
+                <h2 style="margin-bottom: 2rem;">📅 Calendario de Actividades Disponibles</h2>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-title">Actividades por Venir</div>
+                        <div id="actividadesCalendario"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Detalles de Actividad Seleccionada</div>
+                        <div id="detalleActividad" style="color: var(--gray-700);">Selecciona una actividad para ver detalles</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registrar Actividad -->
+            <div id="est-registrar" class="content">
+                <h2 style="margin-bottom: 2rem;">➕ Registrar Nueva Actividad</h2>
+                
+                <div class="card" style="max-width: 600px;">
+                    <form onsubmit="registrarActividadEst(event)">
+                        <div class="form-group">
+                            <label>Actividad</label>
+                            <input type="text" id="actNombre" required placeholder="Nombre de la actividad">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Categoría</label>
+                            <select id="actCategoria" required>
+                                <option value="">Seleccionar</option>
+                                <option value="Voluntariado">Voluntariado</option>
+                                <option value="Tutorías">Tutorías</option>
+                                <option value="Cultura">Cultura</option>
+                                <option value="Deporte">Deporte</option>
+                                <option value="Investigación">Investigación</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Horas (0.5 - 40)</label>
+                            <input type="number" id="actHoras" required min="0.5" max="40" step="0.5">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Fecha</label>
+                            <input type="date" id="actFecha" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea id="actDesc" rows="4" placeholder="Detalla qué hiciste..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Registrar Actividad</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Mis Horas -->
+            <div id="est-misioras" class="content">
+                <h2 style="margin-bottom: 2rem;">⏱️ Mis Horas</h2>
+                
+                <div class="card">
+                    <div class="card-title">Historial de Actividades</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Actividad</th>
+                                    <th>Categoría</th>
+                                    <th>Horas</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaActividadesEst">
+                                <tr>
+                                    <td colspan="5" class="text-center">No hay actividades registradas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historial -->
+            <div id="est-historial" class="content">
+                <h2 style="margin-bottom: 2rem;">📋 Historial Completo</h2>
+                
+                <div class="card">
+                    <div style="margin-bottom: 1rem;">
+                        <select id="filtroMes" onchange="filtrarHistorial()" style="padding: 0.5rem; border: 1px solid var(--border); border-radius: 0.5rem;">
+                            <option value="">Todos los meses</option>
+                            <option value="1">Enero</option>
+                            <option value="6">Junio</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Actividad</th>
+                                    <th>Horas</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaHistorial">
+                                <tr>
+                                    <td colspan="4" class="text-center">Sin actividades</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reportes -->
+            <div id="est-reportes" class="content">
+                <h2 style="margin-bottom: 2rem;">📈 Mis Reportes</h2>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-title">Gráfico de Progreso</div>
+                        <div style="height: 300px;">
+                            <canvas id="miGrafico"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Resumen Estadístico</div>
+                        <div style="padding: 1rem;">
+                            <p><strong>Total Horas:</strong> <span id="totalHoras">0</span></p>
+                            <p><strong>Categoría Favorita:</strong> <span id="catFav">-</span></p>
+                            <p><strong>Promedio Mensual:</strong> <span id="promedioMes">0</span> hrs</p>
+                            <p><strong>Cumplimiento:</strong> <span id="cumplimiento">0</span>%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============== JEFATURA DASHBOARD =============== -->
+    <div id="jefaturaPage" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">📚 Becados UTEPSA</div>
+                <div class="user-info">
+                    <div class="user-name" id="jefaturaNombre">Dr. Edwin Mamani</div>
+                    <div>Jefatura de Becarios · Estadística Empresarial</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="role-badge">👔 Jefatura</div>
+                <button class="btn-logout" onclick="logout()">Salir</button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showJefaturaTab('dashboard')">📊 Dashboard</button>
+            <button class="nav-tab" onclick="showJefaturaTab('estudiantes')">👥 Estudiantes</button>
+            <button class="nav-tab" onclick="showJefaturaTab('validacion')">✓ Validación</button>
+            <button class="nav-tab" onclick="showJefaturaTab('reportes')">📈 Reportes</button>
+        </div>
+
+        <!-- Content -->
+        <div class="container">
+            <!-- Dashboard Jefatura -->
+            <div id="jef-dashboard" class="content active">
+                <h2 style="margin-bottom: 2rem;">Panel de Control - Jefatura</h2>
+                
+                <div class="grid grid-4">
+                    <div class="stat-box">
+                        <div class="stat-label">Total Becarios</div>
+                        <div class="stat-number" id="totalBecarios">5</div>
+                    </div>
+
+                    <div class="stat-box success">
+                        <div class="stat-label">Cumplimiento Total</div>
+                        <div class="stat-number" id="cumplimientoTotal">0%</div>
+                    </div>
+
+                    <div class="stat-box warning">
+                        <div class="stat-label">Pendientes Validación</div>
+                        <div class="stat-number" id="pendientesVal">0</div>
+                    </div>
+
+                    <div class="stat-box danger">
+                        <div class="stat-label">Rezagados</div>
+                        <div class="stat-number" id="rezagados">0</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-title">Actividades Pendientes de Aprobación</div>
+                        <div id="pendientesAprobacion"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Estudiantes con Bajo Desempeño</div>
+                        <div id="bajoDesempeño"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estudiantes -->
+            <div id="jef-estudiantes" class="content">
+                <h2 style="margin-bottom: 2rem;">👥 Gestión de Estudiantes</h2>
+                
+                <div class="card">
+                    <div class="card-title">Lista de Becarios</div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" id="buscarEstudiante" placeholder="Buscar estudiante..." style="padding: 0.75rem; border: 1px solid var(--border); border-radius: 0.5rem; width: 100%; max-width: 300px;">
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Beca</th>
+                                    <th>Horas Acum.</th>
+                                    <th>Meta</th>
+                                    <th>Progreso</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaEstudiantes">
+                                <tr>
+                                    <td colspan="6" class="text-center">Cargando estudiantes...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Validación -->
+            <div id="jef-validacion" class="content">
+                <h2 style="margin-bottom: 2rem;">✓ Validación de Horas y Documentos</h2>
+                
+                <div class="alert alert-info">
+                    ℹ️ Aquí puedes validar y verificar que los estudiantes cumplieron con sus horas. Tienes múltiples opciones de validación disponibles.
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Seleccionar Estudiante a Validar</div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <select id="estudianteValidar" onchange="cargarValidacion()" style="padding: 0.75rem; border: 1px solid var(--border); border-radius: 0.5rem; width: 100%;">
+                            <option value="">-- Seleccionar estudiante --</option>
+                            <option value="est1">María López - Beca Bachiller Destacado</option>
+                            <option value="est2">Juan García - Beca Deporte</option>
+                            <option value="est3">Carlos Rodríguez - Beca Social</option>
+                            <option value="est4">Ana Martínez - Beca Cultura</option>
+                            <option value="est5">Luis Pérez - Beca Investigación</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tabs de Validación -->
+                <div id="validacionContent" style="display: none;">
+                    <!-- Tab 1: Resumen de Horas -->
+                    <div class="card">
+                        <div class="card-title">📊 1. RESUMEN DE HORAS COMPLETADAS</div>
+                        <div class="grid grid-3">
+                            <div class="stat-box">
+                                <div class="stat-label">Total Acumulado</div>
+                                <div class="stat-number" id="valTotalHoras">0</div>
+                                <div style="font-size: 0.8rem;">horas</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-label">Meta Requerida</div>
+                                <div class="stat-number" id="valMeta">80</div>
+                                <div style="font-size: 0.8rem;">horas</div>
+                            </div>
+                            <div class="stat-box success">
+                                <div class="stat-label">Cumplimiento</div>
+                                <div class="stat-number" id="valCumplimiento">0%</div>
+                                <div style="font-size: 0.8rem;">del objetivo</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <div style="margin-bottom: 0.5rem; display: flex; justify-content: space-between;">
+                                <span><strong>Barra de Progreso</strong></span>
+                                <span id="valPorciento">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="valBarra" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Detalle por Categoría -->
+                    <div class="card">
+                        <div class="card-title">📋 2. HORAS POR CATEGORÍA</div>
+                        <div id="valCategories"></div>
+                    </div>
+
+                    <!-- Tab 3: Actividades Pendientes -->
+                    <div class="card">
+                        <div class="card-title">⏳ 3. ACTIVIDADES PENDIENTES DE APROBACIÓN</div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Actividad</th>
+                                        <th>Horas</th>
+                                        <th>Fecha</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="valPendientes">
+                                    <tr>
+                                        <td colspan="4" class="text-center">Sin actividades pendientes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tab 4: Documentos/Comprobantes -->
+                    <div class="card">
+                        <div class="card-title">📄 4. VERIFICACIÓN DE DOCUMENTOS Y COMPROBANTES</div>
+                        <div id="valDocumentos"></div>
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem;">
+                            <strong>¿Cómo verificar?</strong>
+                            <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                                <li>✓ Solicitar comprobantes (certificados, cartas de participación)</li>
+                                <li>✓ Verificar datos del estudiante en documentos</li>
+                                <li>✓ Confirmar fechas coincidan con registros</li>
+                                <li>✓ Validar firma o sello de supervisor</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tab 5: Validación de Asistencia -->
+                    <div class="card">
+                        <div class="card-title">✅ 5. VALIDACIÓN DE ASISTENCIA Y REGISTRO</div>
+                        <div id="valAsistencia"></div>
+                        <div style="margin-top: 1.5rem;">
+                            <label style="display: flex; gap: 0.5rem; align-items: center;">
+                                <input type="checkbox" id="checkDocumentos"> ✓ Documentos verificados
+                            </label>
+                            <label style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem;">
+                                <input type="checkbox" id="checkAsistencia"> ✓ Asistencia confirmada
+                            </label>
+                            <label style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem;">
+                                <input type="checkbox" id="checkCumple"> ✓ Cumple con horas requeridas
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Tab 6: Acciones de Validación -->
+                    <div class="card">
+                        <div class="card-title">⚙️ 6. ACCIONES DE VALIDACIÓN DISPONIBLES</div>
+                        <div class="grid grid-2">
+                            <button class="btn btn-success" onclick="validarCompleto()">✓ VALIDAR COMO COMPLETO</button>
+                            <button class="btn btn-warning" onclick="validarParcial()">⚠️ SOLICITAR DOCUMENTOS</button>
+                            <button class="btn btn-primary" onclick="generarReporteEstudiante()">📄 GENERAR REPORTE</button>
+                            <button class="btn btn-danger" onclick="marcarObservacion()">❌ MARCAR OBSERVACIÓN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reportes Jefatura -->
+            <div id="jef-reportes" class="content">
+                <h2 style="margin-bottom: 2rem;">📈 Reportes Generales</h2>
+                
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-title">Cumplimiento por Becario</div>
+                        <div style="height: 300px;">
+                            <canvas id="reporteCumplimiento"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Actividades por Categoría</div>
+                        <div style="height: 300px;">
+                            <canvas id="reporteCategories"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Resumen General</div>
+                    <div class="grid grid-4">
+                        <div>
+                            <p style="color: var(--gray-700); font-size: 0.9rem;">Total Horas Acumuladas</p>
+                            <p style="font-size: 2rem; font-weight: bold; color: var(--primary);" id="reportTotalGen">320</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--gray-700); font-size: 0.9rem;">Promedio por Becario</p>
+                            <p style="font-size: 2rem; font-weight: bold; color: var(--primary);" id="reportPromGen">64</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--gray-700); font-size: 0.9rem;">Becarios Completos</p>
+                            <p style="font-size: 2rem; font-weight: bold; color: var(--success);" id="reportCompletosGen">3</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--gray-700); font-size: 0.9rem;">Tasa Cumplimiento</p>
+                            <p style="font-size: 2rem; font-weight: bold; color: var(--success);" id="reportTasaGen">60%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =============== DATOS GLOBALES ===============
+        let usuarioActual = null;
+        let tipoUsuario = null;
+
+        const estudiantes = {
+            est1: {
+                id: '80123456',
+                nombre: 'María López',
+                beca: 'Beca Bachiller Destacado',
+                semestre: '2-2025',
+                meta: 80,
+                email: 'maria@utepsa.edu.bo',
+                actividades: [
+                    { id: 1, nombre: 'Limpieza de Campus', categoria: 'Voluntariado', horas: 4, fecha: '2025-06-10', estado: 'aprobada' },
+                    { id: 2, nombre: 'Tutoría', categoria: 'Tutorías', horas: 3, fecha: '2025-06-15', estado: 'aprobada' }
+                ]
+            },
+            est2: {
+                id: '80234567',
+                nombre: 'Juan García',
+                beca: 'Beca Deporte',
+                semestre: '2-2025',
+                meta: 80,
+                email: 'juan@utepsa.edu.bo',
+                actividades: [
+                    { id: 3, nombre: 'Entrenamiento Fútbol', categoria: 'Deporte', horas: 5, fecha: '2025-06-12', estado: 'aprobada' }
+                ]
+            },
+            est3: {
+                id: '80345678',
+                nombre: 'Carlos Rodríguez',
+                beca: 'Beca Social',
+                semestre: '2-2025',
+                meta: 80,
+                email: 'carlos@utepsa.edu.bo',
+                actividades: []
+            },
+            est4: {
+                id: '80456789',
+                nombre: 'Ana Martínez',
+                beca: 'Beca Cultura',
+                semestre: '2-2025',
+                meta: 80,
+                email: 'ana@utepsa.edu.bo',
+                actividades: []
+            },
+            est5: {
+                id: '80567890',
+                nombre: 'Luis Pérez',
+                beca: 'Beca Investigación',
+                semestre: '2-2025',
+                meta: 80,
+                email: 'luis@utepsa.edu.bo',
+                actividades: []
             }
-            
-            window.scrollTo(0, 0);
+        };
+
+        const actividadesDisponibles = [
+            { id: 1, nombre: 'Voluntariado Campus', categoria: 'Voluntariado', fecha: '2025-06-20', duracion: '4 horas', cupo: 5, description: 'Limpieza y mantenimiento general del campus' },
+            { id: 2, nombre: 'Tutoría Matemáticas', categoria: 'Tutorías', fecha: '2025-06-22', duracion: '3 horas', cupo: 3, description: 'Apoyo a estudiantes de primer semestre' },
+            { id: 3, nombre: 'Festival Cultural', categoria: 'Cultura', fecha: '2025-06-25', duracion: '6 horas', cupo: 8, description: 'Participación en evento cultural de UTEPSA' },
+            { id: 4, nombre: 'Práctica Deporte', categoria: 'Deporte', fecha: '2025-06-23', duracion: '5 horas', cupo: 10, description: 'Entrenamiento de voleibol' },
+            { id: 5, nombre: 'Investigación Social', categoria: 'Investigación', fecha: '2025-06-28', duracion: '4 horas', cupo: 4, description: 'Recopilación de datos para proyecto' }
+        ];
+
+        // =============== LOGIN ===============
+        function setUserType(type) {
+            document.querySelectorAll('.btn-role').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('estudianteLogin').style.display = type === 'estudiante' ? 'block' : 'none';
+            document.getElementById('jefaturaLogin').style.display = type === 'jefatura' ? 'block' : 'none';
         }
 
-        // --- Student Tabs Management ---
-        function switchStudentTab(tabId, btn) {
-            // Hide all student tabs
-            document.querySelectorAll('#becado-view .content-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove active class from nav
-            document.querySelectorAll('#student-nav button').forEach(button => {
-                button.classList.remove('sidebar-active');
-                button.classList.add('text-gray-600', 'hover:bg-gray-100');
-            });
-            
-            // Show target tab
-            const targetTab = document.getElementById(tabId);
-            if (targetTab) targetTab.classList.add('active');
-            
-            // Highlight button
-            if (btn) {
-                btn.classList.add('sidebar-active');
-                btn.classList.remove('text-gray-600', 'hover:bg-gray-100');
-            }
-        }
+        function loginEstudiante() {
+            const usuario = document.getElementById('usuarioEstudiante').value;
+            const password = document.getElementById('passwordEstudiante').value;
 
-        // --- Admin Tabs Management ---
-        function switchAdminTab(tabId, btn) {
-            // Hide all admin tabs
-            document.querySelectorAll('#jefatura-view .content-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove active class from nav
-            document.querySelectorAll('#admin-nav button').forEach(button => {
-                button.classList.remove('sidebar-active-admin');
-                button.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
-            });
-            
-            // Show target tab
-            const targetTab = document.getElementById(tabId);
-            if (targetTab) targetTab.classList.add('active');
-            
-            // Highlight button
-            if (btn) {
-                btn.classList.add('sidebar-active-admin');
-                btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
-            }
-        }
-
-        // --- Login Handlers ---
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const userId = document.getElementById('user-id').value.toLowerCase();
-            
-            // Simulation logic
-            if (userId === 'admin' || userId.includes('jefe') || userId === 'jefatura') {
-                showView('jefatura-view');
+            if (usuario === '80123456' && password === 'demo') {
+                usuarioActual = estudiantes.est1;
+                tipoUsuario = 'estudiante';
+                iniciarSesionEstudiante();
             } else {
-                showView('becado-view');
+                alert('Usuario o contraseña incorrectos. Usa: 80123456 / demo');
             }
-        });
+        }
 
-        // --- Logout Action ---
-        document.querySelectorAll('.logout-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                showView('login-view');
+        function loginJefatura() {
+            const usuario = document.getElementById('usuarioJefatura').value;
+            const password = document.getElementById('passwordJefatura').value;
+
+            if (usuario === 'jefe001' && password === 'demo') {
+                tipoUsuario = 'jefatura';
+                iniciarSesionJefatura();
+            } else {
+                alert('Usuario o contraseña incorrectos. Usa: jefe001 / demo');
+            }
+        }
+
+        function iniciarSesionEstudiante() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('estudiantePage').classList.remove('hidden');
+            
+            document.getElementById('estudianteNombre').textContent = usuarioActual.nombre;
+            document.getElementById('estudianteBeca').textContent = `${usuarioActual.beca} · Semestre ${usuarioActual.semestre}`;
+            
+            actualizarDashboardEstudiante();
+            cargarCalendario();
+            cargarActividadesEstudiante();
+            document.getElementById('actFecha').value = new Date().toISOString().split('T')[0];
+        }
+
+        function iniciarSesionJefatura() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('jefaturaPage').classList.remove('hidden');
+            
+            cargarDashboardJefatura();
+            cargarListaEstudiantes();
+        }
+
+        // =============== ESTUDIANTE FUNCTIONS ===============
+        function actualizarDashboardEstudiante() {
+            const totalHoras = usuarioActual.actividades
+                .filter(a => a.estado === 'aprobada')
+                .reduce((sum, a) => sum + a.horas, 0);
+            
+            const faltantes = Math.max(0, usuarioActual.meta - totalHoras);
+            const porcentaje = Math.round((totalHoras / usuarioActual.meta) * 100);
+            const pendientes = usuarioActual.actividades.filter(a => a.estado === 'pendiente').length;
+
+            document.getElementById('horasAcum').textContent = totalHoras;
+            document.getElementById('horasFalt').textContent = faltantes;
+            document.getElementById('totalActiv').textContent = usuarioActual.actividades.length;
+            document.getElementById('pendientes').textContent = pendientes;
+            document.getElementById('porcentaje').textContent = porcentaje + '% completado';
+            
+            const progreso = document.getElementById('progreso');
+            progreso.style.width = Math.min(porcentaje, 100) + '%';
+            progreso.textContent = porcentaje > 10 ? porcentaje + '%' : '';
+
+            cargarActividadesEstudiante();
+        }
+
+        function cargarCalendario() {
+            let html = '';
+            actividadesDisponibles.forEach(act => {
+                html += `
+                    <div class="activity-card" onclick="mostrarDetalleActividad(${act.id})">
+                        <div class="activity-name">${act.nombre}</div>
+                        <div class="activity-info">
+                            📅 ${act.fecha} | ⏱️ ${act.duracion}
+                            <br>
+                            🎯 ${act.categoria} | Cupo: ${act.cupo}
+                        </div>
+                        <span class="activity-date">${act.description}</span>
+                    </div>
+                `;
             });
-        });
+            document.getElementById('actividadesCalendario').innerHTML = html;
+        }
 
-        // --- UI Polish ---
-        document.addEventListener('mousemove', (e) => {
-            const glow = document.querySelector('.bento-glow');
-            if (glow && glow.offsetParent !== null) {
-                const x = e.clientX;
-                const y = e.clientY;
-                glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(211, 47, 47, 0.05) 0%, transparent 50%)`;
+        function mostrarDetalleActividad(id) {
+            const act = actividadesDisponibles.find(a => a.id === id);
+            if (act) {
+                document.getElementById('detalleActividad').innerHTML = `
+                    <div style="text-align: left;">
+                        <p><strong>📌 ${act.nombre}</strong></p>
+                        <p>📅 <strong>Fecha:</strong> ${act.fecha}</p>
+                        <p>⏱️ <strong>Duración:</strong> ${act.duracion}</p>
+                        <p>🎯 <strong>Categoría:</strong> ${act.categoria}</p>
+                        <p>👥 <strong>Cupo:</strong> ${act.cupo} participantes</p>
+                        <p>📝 <strong>Descripción:</strong> ${act.description}</p>
+                        <button class="btn btn-primary" onclick="registrarDesdeCalendario(${id}, '${act.nombre}', '${act.categoria}', '${act.duracion.split()[0]}', '${act.fecha}')">Registrar esta actividad</button>
+                    </div>
+                `;
             }
-        });
+        }
+
+        function registrarDesdeCalendario(id, nombre, categoria, horas, fecha) {
+            document.getElementById('actNombre').value = nombre;
+            document.getElementById('actCategoria').value = categoria;
+            document.getElementById('actHoras').value = horas;
+            document.getElementById('actFecha').value = fecha;
+            showEstudianteTab('registrar');
+        }
+
+        function registrarActividadEst(e) {
+            e.preventDefault();
+
+            const nuevaActividad = {
+                id: Math.max(...usuarioActual.actividades.map(a => a.id), 0) + 1,
+                nombre: document.getElementById('actNombre').value,
+                categoria: document.getElementById('actCategoria').value,
+                horas: parseFloat(document.getElementById('actHoras').value),
+                fecha: document.getElementById('actFecha').value,
+                descripcion: document.getElementById('actDesc').value,
+                estado: 'pendiente'
+            };
+
+            usuarioActual.actividades.push(nuevaActividad);
+            alert('✓ Actividad registrada correctamente. Pendiente de aprobación por jefatura.');
+            
+            document.getElementById('actNombre').value = '';
+            document.getElementById('actCategoria').value = '';
+            document.getElementById('actHoras').value = '';
+            document.getElementById('actDesc').value = '';
+            
+            actualizarDashboardEstudiante();
+            showEstudianteTab('misioras');
+        }
+
+        function cargarActividadesEstudiante() {
+            let html = '';
+            if (usuarioActual.actividades.length === 0) {
+                html = '<tr><td colspan="5" class="text-center">No hay actividades registradas</td></tr>';
+            } else {
+                usuarioActual.actividades.forEach(act => {
+                    const badge = `badge-${act.estado === 'aprobada' ? 'success' : act.estado === 'pendiente' ? 'pending' : 'rejected'}`;
+                    html += `
+                        <tr>
+                            <td>${act.nombre}</td>
+                            <td>${act.categoria}</td>
+                            <td>${act.horas} hrs</td>
+                            <td>${act.fecha}</td>
+                            <td><span class="badge ${badge}">${act.estado}</span></td>
+                        </tr>
+                    `;
+                });
+            }
+            document.getElementById('tablaActividadesEst').innerHTML = html;
+        }
+
+        function filtrarHistorial() {
+            const mes = document.getElementById('filtroMes').value;
+            let html = '';
+
+            const filtradas = usuarioActual.actividades.filter(a => {
+                if (!mes) return true;
+                return new Date(a.fecha).getMonth() + 1 == mes;
+            });
+
+            if (filtradas.length === 0) {
+                html = '<tr><td colspan="4" class="text-center">Sin actividades en este mes</td></tr>';
+            } else {
+                filtradas.forEach(act => {
+                    const badge = `badge-${act.estado === 'aprobada' ? 'success' : 'pending'}`;
+                    html += `
+                        <tr>
+                            <td>${act.nombre}</td>
+                            <td>${act.horas}</td>
+                            <td>${act.fecha}</td>
+                            <td><span class="badge ${badge}">${act.estado}</span></td>
+                        </tr>
+                    `;
+                });
+            }
+            document.getElementById('tablaHistorial').innerHTML = html;
+        }
+
+        function showEstudianteTab(tabName) {
+            document.querySelectorAll('#estudiantePage .content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('#estudiantePage .nav-tab').forEach(el => el.classList.remove('active'));
+
+            document.getElementById('est-' + tabName).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tabName === 'reportes') {
+                generarReportesEstudiante();
+            }
+        }
+
+        function generarReportesEstudiante() {
+            const aprobadas = usuarioActual.actividades.filter(a => a.estado === 'aprobada');
+            const totalHoras = aprobadas.reduce((sum, a) => sum + a.horas, 0);
+            const cumplimiento = Math.round((totalHoras / usuarioActual.meta) * 100);
+
+            document.getElementById('totalHoras').textContent = totalHoras;
+            document.getElementById('cumplimiento').textContent = cumplimiento;
+
+            const categorias = {};
+            aprobadas.forEach(a => {
+                if (!categorias[a.categoria]) categorias[a.categoria] = 0;
+                categorias[a.categoria] += a.horas;
+            });
+
+            const catFav = Object.entries(categorias).sort((a, b) => b[1] - a[1])[0];
+            document.getElementById('catFav').textContent = catFav ? catFav[0] : '-';
+            document.getElementById('promedioMes').textContent = (totalHoras / 6).toFixed(1);
+        }
+
+        // =============== JEFATURA FUNCTIONS ===============
+        function cargarDashboardJefatura() {
+            let totalHoras = 0;
+            let totalCumplido = 0;
+            let totalPendientes = 0;
+            let rezagados = 0;
+
+            Object.values(estudiantes).forEach(est => {
+                const horas = est.actividades.filter(a => a.estado === 'aprobada').reduce((sum, a) => sum + a.horas, 0);
+                totalHoras += horas;
+                if (horas >= est.meta) totalCumplido++;
+                else if (horas < est.meta * 0.5) rezagados++;
+                totalPendientes += est.actividades.filter(a => a.estado === 'pendiente').length;
+            });
+
+            document.getElementById('totalBecarios').textContent = Object.keys(estudiantes).length;
+            document.getElementById('cumplimientoTotal').textContent = Math.round((totalCumplido / Object.keys(estudiantes).length) * 100) + '%';
+            document.getElementById('pendientesVal').textContent = totalPendientes;
+            document.getElementById('rezagados').textContent = rezagados;
+
+            // Cargar pendientes
+            let pendHtml = '';
+            Object.values(estudiantes).forEach(est => {
+                est.actividades.filter(a => a.estado === 'pendiente').forEach(act => {
+                    pendHtml += `
+                        <div class="activity-card">
+                            <div class="activity-name">${act.nombre} - ${est.nombre}</div>
+                            <div class="activity-info">📅 ${act.fecha} | ${act.horas} horas</div>
+                        </div>
+                    `;
+                });
+            });
+            document.getElementById('pendientesAprobacion').innerHTML = pendHtml || '<p style="color: var(--gray-700);">Sin actividades pendientes</p>';
+
+            // Bajo desempeño
+            let bajHtml = '';
+            Object.values(estudiantes).forEach(est => {
+                const horas = est.actividades.filter(a => a.estado === 'aprobada').reduce((sum, a) => sum + a.horas, 0);
+                const porcentaje = (horas / est.meta) * 100;
+                if (porcentaje < 50) {
+                    bajHtml += `
+                        <div class="activity-card">
+                            <div class="activity-name">⚠️ ${est.nombre}</div>
+                            <div class="activity-info">${horas}/${est.meta} horas (${Math.round(porcentaje)}%)</div>
+                        </div>
+                    `;
+                }
+            });
+            document.getElementById('bajoDesempeño').innerHTML = bajHtml || '<p style="color: var(--gray-700);">Todos con buen desempeño</p>';
+        }
+
+        function cargarListaEstudiantes() {
+            let html = '';
+            Object.values(estudiantes).forEach(est => {
+                const horas = est.actividades.filter(a => a.estado === 'aprobada').reduce((sum, a) => sum + a.horas, 0);
+                const porcentaje = Math.round((horas / est.meta) * 100);
+                const statusBadge = porcentaje >= 100 ? 'success' : porcentaje >= 50 ? 'warning' : 'danger';
+                
+                html += `
+                    <tr>
+                        <td>${est.nombre}</td>
+                        <td>${est.beca}</td>
+                        <td>${horas}</td>
+                        <td>${est.meta}</td>
+                        <td><div class="progress-bar"><div class="progress-fill" style="width: ${Math.min(porcentaje, 100)}%">${porcentaje}%</div></div></td>
+                        <td><button class="btn btn-small btn-primary" onclick="abrirValidacion('${Object.keys(estudiantes).find(k => estudiantes[k] === est)}')">Validar</button></td>
+                    </tr>
+                `;
+            });
+            document.getElementById('tablaEstudiantes').innerHTML = html;
+        }
+
+        function abrirValidacion(idEst) {
+            document.getElementById('estudianteValidar').value = idEst;
+            cargarValidacion();
+            showJefaturaTab('validacion');
+        }
+
+        function cargarValidacion() {
+            const idEst = document.getElementById('estudianteValidar').value;
+            if (!idEst) {
+                document.getElementById('validacionContent').style.display = 'none';
+                return;
+            }
+
+            const est = estudiantes[idEst];
+            const aprobadas = est.actividades.filter(a => a.estado === 'aprobada');
+            const pendientes = est.actividades.filter(a => a.estado === 'pendiente');
+            const totalHoras = aprobadas.reduce((sum, a) => sum + a.horas, 0);
+            const cumplimiento = Math.round((totalHoras / est.meta) * 100);
+
+            // Actualizar Tab 1: Resumen
+            document.getElementById('valTotalHoras').textContent = totalHoras;
+            document.getElementById('valMeta').textContent = est.meta;
+            document.getElementById('valCumplimiento').textContent = cumplimiento + '%';
+            document.getElementById('valPorciento').textContent = cumplimiento + '%';
+            const barra = document.getElementById('valBarra');
+            barra.style.width = Math.min(cumplimiento, 100) + '%';
+            barra.textContent = cumplimiento > 10 ? cumplimiento + '%' : '';
+
+            // Tab 2: Por Categoría
+            const categorias = {};
+            aprobadas.forEach(a => {
+                if (!categorias[a.categoria]) categorias[a.categoria] = 0;
+                categorias[a.categoria] += a.horas;
+            });
+
+            let catHtml = '';
+            Object.entries(categorias).forEach(([cat, hrs]) => {
+                catHtml += `
+                    <div class="activity-card">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span><strong>${cat}</strong></span>
+                            <span><strong>${hrs} horas</strong></span>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('valCategories').innerHTML = catHtml || '<p>Sin datos</p>';
+
+            // Tab 3: Pendientes
+            let pendHtml = '';
+            pendientes.forEach(act => {
+                pendHtml += `
+                    <tr>
+                        <td>${act.nombre}</td>
+                        <td>${act.horas}</td>
+                        <td>${act.fecha}</td>
+                        <td>
+                            <button class="btn btn-small btn-success" onclick="aprobarActividadJef(${act.id})">Aprobar</button>
+                            <button class="btn btn-small btn-danger" onclick="rechazarActividadJef(${act.id})">Rechazar</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            if (pendHtml === '') pendHtml = '<tr><td colspan="4" class="text-center">Sin actividades pendientes</td></tr>';
+            document.getElementById('valPendientes').innerHTML = pendHtml;
+
+            // Tab 4: Documentos
+            document.getElementById('valDocumentos').innerHTML = `
+                <div class="alert alert-warning">
+                    ⚠️ Requiere verificación de documentos: Certificados, cartas de participación, comprobantes de asistencia
+                </div>
+                <div style="margin-top: 1rem;">
+                    <label style="display: flex; gap: 0.5rem;">
+                        <input type="checkbox" id="docVerif"> ✓ Documentos entregados y verificados
+                    </label>
+                </div>
+            `;
+
+            // Tab 5: Asistencia
+            document.getElementById('valAsistencia').innerHTML = `
+                <div style="padding: 1rem; background: var(--gray-50); border-radius: 0.5rem;">
+                    <p><strong>Estudiante:</strong> ${est.nombre}</p>
+                    <p><strong>Cédula/ID:</strong> ${est.id}</p>
+                    <p><strong>Email:</strong> ${est.email}</p>
+                    <p><strong>Beca:</strong> ${est.beca}</p>
+                    <p><strong>Total Registros:</strong> ${est.actividades.length}</p>
+                    <p><strong>Aprobados:</strong> ${aprobadas.length}</p>
+                    <p><strong>Pendientes:</strong> ${pendientes.length}</p>
+                </div>
+            `;
+
+            document.getElementById('validacionContent').style.display = 'block';
+        }
+
+        function aprobarActividadJef(actId) {
+            const idEst = document.getElementById('estudianteValidar').value;
+            const est = estudiantes[idEst];
+            const act = est.actividades.find(a => a.id === actId);
+            if (act) {
+                act.estado = 'aprobada';
+                alert('✓ Actividad aprobada: ' + act.nombre);
+                cargarValidacion();
+            }
+        }
+
+        function rechazarActividadJef(actId) {
+            const idEst = document.getElementById('estudianteValidar').value;
+            const est = estudiantes[idEst];
+            const act = est.actividades.find(a => a.id === actId);
+            if (act) {
+                act.estado = 'rechazada';
+                alert('❌ Actividad rechazada: ' + act.nombre);
+                cargarValidacion();
+            }
+        }
+
+        function validarCompleto() {
+            alert('✅ Estudiante validado como COMPLETO. Se registra el cumplimiento total.');
+        }
+
+        function validarParcial() {
+            alert('⚠️ Se requieren documentos adicionales. Notificación enviada al estudiante.');
+        }
+
+        function generarReporteEstudiante() {
+            const idEst = document.getElementById('estudianteValidar').value;
+            const est = estudiantes[idEst];
+            alert(`📄 Reporte generado para: ${est.nombre}\n\nArchivo: Reporte_${est.nombre.replace(' ', '_')}_2026.pdf`);
+        }
+
+        function marcarObservacion() {
+            alert('📝 Observación registrada. Se enviará comentario al estudiante.');
+        }
+
+        function showJefaturaTab(tabName) {
+            document.querySelectorAll('#jefaturaPage .content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('#jefaturaPage .nav-tab').forEach(el => el.classList.remove('active'));
+
+            document.getElementById('jef-' + tabName).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tabName === 'reportes') {
+                generarReportesJefatura();
+            }
+        }
+
+        function generarReportesJefatura() {
+            const ctx1 = document.getElementById('reporteCumplimiento')?.getContext('2d');
+            const ctx2 = document.getElementById('reporteCategories')?.getContext('2d');
+
+            if (ctx1) {
+                new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.values(estudiantes).map(e => e.nombre),
+                        datasets: [{
+                            label: 'Porcentaje de Cumplimiento',
+                            data: Object.values(estudiantes).map(e => {
+                                const horas = e.actividades.filter(a => a.estado === 'aprobada').reduce((s, a) => s + a.horas, 0);
+                                return Math.round((horas / e.meta) * 100);
+                            }),
+                            backgroundColor: '#10b981'
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 100 } } }
+                });
+            }
+
+            if (ctx2) {
+                const allCats = {};
+                Object.values(estudiantes).forEach(est => {
+                    est.actividades.filter(a => a.estado === 'aprobada').forEach(act => {
+                        if (!allCats[act.categoria]) allCats[act.categoria] = 0;
+                        allCats[act.categoria] += act.horas;
+                    });
+                });
+
+                new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(allCats),
+                        datasets: [{
+                            data: Object.values(allCats),
+                            backgroundColor: ['#3b82f6', '#ec4899', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+                });
+            }
+        }
+
+        // =============== GENERAL ===============
+        function logout() {
+            if (confirm('¿Deseas cerrar sesión?')) {
+                document.getElementById('loginPage').classList.remove('hidden');
+                document.getElementById('estudiantePage').classList.add('hidden');
+                document.getElementById('jefaturaPage').classList.add('hidden');
+                usuarioActual = null;
+                tipoUsuario = null;
+            }
+        }
     </script>
-</body></html>
+</body>
+</html>
