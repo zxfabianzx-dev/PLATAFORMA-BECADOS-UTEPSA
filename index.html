@@ -14,63 +14,63 @@
             theme: {
                 extend: {
                     "colors": {
-                        "error-bg": "#FFEBEE",
-                        "on-error-container": "#93000a",
-                        "on-primary-container": "#9ac5ff",
-                        "on-primary-fixed-variant": "#004882",
-                        "on-background": "#191c20",
-                        "surface": "#f8f9ff",
-                        "surface-container-high": "#e7e8ee",
-                        "inverse-surface": "#2e3035",
-                        "surface-bright": "#f8f9ff",
-                        "surface-dim": "#d9dae0",
-                        "primary-container": "#005191",
-                        "on-secondary": "#ffffff",
-                        "on-primary-fixed": "#001c38",
-                        "on-error": "#ffffff",
-                        "surface-container": "#ededf4",
-                        "info-text": "#1565C0",
-                        "secondary-container": "#90efef",
-                        "tertiary-fixed": "#ffdbc8",
-                        "error": "#ba1a1a",
-                        "on-surface": "#191c20",
-                        "info-bg": "#E3F2FD",
-                        "error-text": "#C62828",
-                        "surface-container-lowest": "#ffffff",
-                        "tertiary": "#5e2a00",
-                        "on-surface-variant": "#424750",
-                        "surface-variant": "#e1e2e8",
-                        "primary": "#003a6a",
-                        "outline": "#727781",
-                        "surface-tint": "#2060a1",
-                        "on-secondary-fixed": "#002020",
-                        "success-bg": "#E8F5E9",
-                        "on-primary": "#ffffff",
-                        "inverse-primary": "#a3c9ff",
-                        "warning-bg": "#FFF8E1",
-                        "tertiary-container": "#813c00",
-                        "inverse-on-surface": "#f0f0f6",
-                        "on-tertiary-container": "#ffb07e",
-                        "primary-fixed": "#d3e4ff",
-                        "surface-bg": "#F8FAFC",
-                        "on-tertiary-fixed-variant": "#743500",
-                        "success-text": "#2E7D32",
-                        "on-tertiary": "#ffffff",
                         "background": "#f8f9ff",
-                        "surface-container-low": "#f3f3f9",
-                        "error-container": "#ffdad6",
-                        "surface-container-highest": "#e1e2e8",
                         "outline-variant": "#c2c7d2",
-                        "surface-card": "#FFFFFF",
-                        "secondary": "#006a6a",
-                        "secondary-fixed-dim": "#76d6d5",
-                        "primary-fixed-dim": "#a3c9ff",
-                        "warning-text": "#F57F17",
-                        "secondary-fixed": "#93f2f2",
-                        "on-tertiary-fixed": "#311300",
+                        "on-error-container": "#93000a",
+                        "info-text": "#1565C0",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d9dae0",
+                        "inverse-primary": "#a3c9ff",
+                        "on-background": "#191c20",
+                        "error-bg": "#FFEBEE",
+                        "outline": "#727781",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#ededf4",
+                        "tertiary": "#5e2a00",
+                        "on-primary-fixed-variant": "#004882",
+                        "tertiary-container": "#813c00",
+                        "success-bg": "#E8F5E9",
+                        "surface-container-low": "#f3f3f9",
                         "on-secondary-container": "#006e6e",
-                        "on-secondary-fixed-variant": "#004f4f",
+                        "primary-fixed": "#d3e4ff",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3035",
+                        "surface-variant": "#e1e2e8",
+                        "success-text": "#2E7D32",
+                        "on-tertiary-fixed-variant": "#743500",
+                        "inverse-on-surface": "#f0f0f6",
+                        "error-text": "#C62828",
+                        "on-surface": "#191c20",
+                        "on-tertiary-container": "#ffb07e",
+                        "on-primary-container": "#9ac5ff",
+                        "primary-fixed-dim": "#a3c9ff",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e1e2e8",
+                        "tertiary-fixed": "#ffdbc8",
+                        "on-secondary-fixed": "#002020",
+                        "warning-bg": "#FFF8E1",
+                        "on-tertiary": "#ffffff",
+                        "surface-bg": "#F8FAFC",
+                        "secondary-container": "#90efef",
+                        "info-bg": "#E3F2FD",
+                        "on-tertiary-fixed": "#311300",
+                        "on-primary-fixed": "#001c38",
+                        "primary": "#d32f2f",
+                        "secondary": "#006a6a",
+                        "secondary-fixed": "#93f2f2",
                         "tertiary-fixed-dim": "#ffb689",
+                        "surface-container-high": "#e7e8ee",
+                        "secondary-fixed-dim": "#76d6d5",
+                        "surface-card": "#FFFFFF",
+                        "warning-text": "#F57F17",
+                        "on-surface-variant": "#424750",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#2060a1",
+                        "surface": "#f8f9ff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#b71c1c",
                         "utepsa-red": '#d32f2f',
                         "utepsa-red-dark": '#b71c1c'
                     },
@@ -83,10 +83,13 @@
                     },
                     "fontFamily": {
                         "sans": ['Montserrat', 'sans-serif'],
+                        "display-lg": ['Montserrat', 'sans-serif'],
+                        "headline-md": ['Montserrat', 'sans-serif'],
+                        "headline-sm": ['Montserrat', 'sans-serif'],
                         "body": ['Inter', 'sans-serif'],
-                        "stat-number": ["Montserrat"],
-                        "headline-md": ["Montserrat"],
-                        "display-lg": ["Montserrat"]
+                        "body-md": ['Inter', 'sans-serif'],
+                        "body-lg": ['Inter', 'sans-serif'],
+                        "stat-number": ["Montserrat"]
                     }
                 }
             }
@@ -107,17 +110,17 @@
             color: white !important;
         }
         .sidebar-active-admin {
-            background-color: #003a6a !important;
+            background-color: #b71c1c !important;
             color: white !important;
         }
         .card-shadow {
-            box-shadow: 0 4px 20px rgba(0, 58, 106, 0.05);
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.05);
         }
         .bento-glow {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 81, 145, 0.03) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(211, 47, 47, 0.03) 0%, transparent 70%);
             pointer-events: none;
         }
         .view-section { display: none; }
@@ -130,23 +133,23 @@
 <!-- SECTION: LOGIN VIEW -->
 <div class="view-section active w-full h-screen flex flex-col md:flex-row overflow-hidden bg-white" id="login-view">
 <!-- Left Side: Hero Image -->
-<section class="hidden md:flex md:w-1/2 lg:w-3/5 relative overflow-hidden bg-primary">
+<section class="hidden md:flex md:w-1/2 lg:w-3/5 relative overflow-hidden bg-utepsa-red">
 <div class="absolute inset-0 z-0">
 <div class="w-full h-full bg-cover bg-center opacity-80" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvtOHV6bZYacxM-Nve4WKGcisbsZGsEAtR3FXGWup5SkwcaKNMiUTvs08ra9YJuKNxQFeJbmtZ0SCmKA9SZIfr7KcJY7Oc-OJ3jJXrfUMg7x8927mLlkamoKmsrEQCknSySPmI8JHRdhpOsXtSuxYlgLwVuOG5FGUVLGBZ4Pcw41FT-uGX_MaBwW2m25JKOUoJABIHcSHA8KI5lDTPB4VCyVpY2QW-FiaYdEWd-NGG7N8OhUj4ky8WFdHi3LeKDnEFzmdRwmEdISjG')"></div>
-<div class="absolute inset-0 bg-gradient-to-tr from-primary via-primary/40 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-tr from-utepsa-red via-utepsa-red/40 to-transparent"></div>
 </div>
 <div class="relative z-10 p-16 flex flex-col justify-between h-full text-white">
 <div>
 <h1 class="font-display-lg text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                    Transformamos tu <br/> <span class="text-secondary-fixed">potencial en éxito.</span>
+                        Transformamos tu <br/> <span class="text-white/90">potencial en éxito.</span>
 </h1>
-<p class="text-lg max-w-md opacity-90">
-                    Accede al Portal de Becados y gestiona tu trayectoria académica con las herramientas diseñadas para tu crecimiento constante.
-                </p>
+<p class="text-lg max-w-md opacity-90 font-body">
+                        Accede al Portal de Becados y gestiona tu trayectoria académica con las herramientas diseñadas para tu crecimiento constante.
+                    </p>
 </div>
 <div class="flex items-center gap-4">
-<div class="w-12 h-1 bg-secondary-fixed rounded-full"></div>
-<span class="font-bold tracking-widest uppercase text-xs">Campus UTEPSA</span>
+<div class="w-12 h-1 bg-white rounded-full"></div>
+<span class="font-display-lg font-bold tracking-widest uppercase text-xs">Campus UTEPSA</span>
 </div>
 </div>
 </section>
@@ -156,53 +159,53 @@
 <div class="w-full max-w-md space-y-8 z-10">
 <div class="text-center md:text-left">
 <div class="flex items-center justify-center md:justify-start gap-3 mb-8">
-<div class="bg-primary p-2 rounded-lg">
+<div class="bg-utepsa-red p-2 rounded-lg">
 <span class="material-symbols-outlined text-white text-3xl">school</span>
 </div>
-<span class="text-2xl font-bold text-primary tracking-tight">Becas UTEPSA</span>
+<span class="text-2xl font-display-lg font-bold text-utepsa-red tracking-tight">Becas UTEPSA</span>
 </div>
-<h2 class="text-2xl font-bold text-on-surface">Bienvenido de nuevo</h2>
-<p class="text-on-surface-variant mt-2">Ingresa tus credenciales institucionales para continuar.</p>
+<h2 class="text-2xl font-display-lg font-bold text-on-surface">Bienvenido de nuevo</h2>
+<p class="text-on-surface-variant mt-2 font-body">Ingresa tus credenciales institucionales para continuar.</p>
 </div>
 <form class="mt-8 space-y-6" id="loginForm">
 <div class="space-y-4">
 <div class="space-y-2">
-<label class="text-xs font-bold text-on-surface-variant uppercase ml-1" for="user-id">REGISTRO O CORREO INSTITUCIONAL</label>
+<label class="text-xs font-display-lg font-bold text-on-surface-variant uppercase ml-1" for="user-id">REGISTRO O CORREO INSTITUCIONAL</label>
 <div class="relative group">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-outline group-focus-within:text-primary transition-colors">person</span>
+<span class="material-symbols-outlined text-outline group-focus-within:text-utepsa-red transition-colors">person</span>
 </div>
-<input class="block w-full pl-11 pr-4 py-3 bg-[#F1F5F9] border border-outline-variant rounded-xl font-body text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" id="user-id" placeholder="Ej: 221054321" required="" type="text"/>
+<input class="block w-full pl-11 pr-4 py-3 bg-[#F1F5F9] border border-outline-variant rounded-xl font-body text-on-surface focus:ring-2 focus:ring-utepsa-red/20 focus:border-utepsa-red transition-all outline-none" id="user-id" placeholder="Ej: 221054321" required="" type="text"/>
 </div>
 </div>
 <div class="space-y-2">
 <div class="flex justify-between items-center px-1">
-<label class="text-xs font-bold text-on-surface-variant uppercase" for="password">CONTRASEÑA</label>
-<a class="text-xs font-bold text-secondary hover:underline" href="#">¿Olvidaste tu contraseña?</a>
+<label class="text-xs font-display-lg font-bold text-on-surface-variant uppercase" for="password">CONTRASEÑA</label>
+<a class="text-xs font-display-lg font-bold text-utepsa-red hover:underline" href="#">¿Olvidaste tu contraseña?</a>
 </div>
 <div class="relative group">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-<span class="material-symbols-outlined text-outline group-focus-within:text-primary transition-colors">lock</span>
+<span class="material-symbols-outlined text-outline group-focus-within:text-utepsa-red transition-colors">lock</span>
 </div>
-<input class="block w-full pl-11 pr-12 py-3 bg-[#F1F5F9] border border-outline-variant rounded-xl font-body text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" id="password" placeholder="••••••••" required="" type="password"/>
+<input class="block w-full pl-11 pr-12 py-3 bg-[#F1F5F9] border border-outline-variant rounded-xl font-body text-on-surface focus:ring-2 focus:ring-utepsa-red/20 focus:border-utepsa-red transition-all outline-none" id="password" placeholder="••••••••" required="" type="password"/>
 </div>
 </div>
 </div>
 <div class="space-y-4 pt-2">
-<button class="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-lg font-bold text-white bg-primary hover:bg-primary-container active:scale-[0.98] transition-all" type="submit">
-                        Iniciar Sesión
-                    </button>
-<button class="w-full text-xs text-outline hover:text-primary transition-colors text-center underline" onclick="showView('jefatura-view')" type="button">
-                        Acceso Administrativo (Simulación)
-                    </button>
+<button class="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-lg font-display-lg font-bold text-white bg-utepsa-red hover:bg-utepsa-red-dark active:scale-[0.98] transition-all" type="submit">
+                            Iniciar Sesión
+                        </button>
+<button class="w-full text-xs font-body text-outline hover:text-utepsa-red transition-colors text-center underline" onclick="showView('jefatura-view')" type="button">
+                            Acceso Administrativo (Simulación)
+                        </button>
 </div>
 </form>
 <div class="pt-8 border-t border-outline-variant flex flex-col sm:flex-row justify-between items-center gap-4">
-<p class="text-sm text-on-surface-variant text-center sm:text-left">¿Problemas para ingresar?</p>
-<a class="flex items-center gap-2 text-xs font-bold text-primary bg-primary-fixed/20 px-4 py-2 rounded-full hover:bg-primary-fixed/40 transition-colors" href="#">
+<p class="text-sm font-body text-on-surface-variant text-center sm:text-left">¿Problemas para ingresar?</p>
+<a class="flex items-center gap-2 text-xs font-display-lg font-bold text-utepsa-red bg-utepsa-red/10 px-4 py-2 rounded-full hover:bg-utepsa-red/20 transition-colors" href="#">
 <span class="material-symbols-outlined text-[18px]">support_agent</span>
-                    Soporte Técnico
-                </a>
+                        Soporte Técnico
+                    </a>
 </div>
 </div>
 </section>
@@ -215,55 +218,55 @@
 <div class="p-6">
 <div class="flex items-center gap-2 mb-8">
 <div class="w-10 h-10 bg-utepsa-red rounded flex items-center justify-center text-white font-bold">
-<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+<span class="material-symbols-outlined">school</span>
 </div>
 <div>
-<h1 class="text-utepsa-red font-bold text-sm leading-tight">Portal Becados</h1>
-<p class="text-[10px] text-gray-500 uppercase tracking-tighter">Estudiante</p>
+<h1 class="text-utepsa-red font-display-lg font-bold text-sm leading-tight">Portal Becados</h1>
+<p class="text-[10px] font-display-lg text-gray-500 uppercase tracking-tighter">Estudiante</p>
 </div>
 </div>
 <nav class="space-y-1" id="student-nav">
-<button class="w-full flex items-center gap-3 px-4 py-3 rounded-utepsa text-sm font-medium transition-colors sidebar-active" onclick="switchStudentTab('s-inicio', this)">
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-utepsa text-sm font-display-lg font-semibold transition-colors sidebar-active" onclick="switchStudentTab('s-inicio', this)">
 <span class="material-symbols-outlined !text-xl">dashboard</span> Inicio
-                    </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-medium transition-colors" onclick="switchStudentTab('s-horas', this)">
+                        </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-display-lg font-semibold transition-colors" onclick="switchStudentTab('s-horas', this)">
 <span class="material-symbols-outlined !text-xl">timer</span> Mis Horas
-                    </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-medium transition-colors" onclick="switchStudentTab('s-actividades', this)">
+                        </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-display-lg font-semibold transition-colors" onclick="switchStudentTab('s-actividades', this)">
 <span class="material-symbols-outlined !text-xl">event_note</span> Actividades
-                    </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-medium transition-colors" onclick="switchStudentTab('s-historial', this)">
+                        </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-display-lg font-semibold transition-colors" onclick="switchStudentTab('s-historial', this)">
 <span class="material-symbols-outlined !text-xl">history</span> Historial
-                    </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-medium transition-colors" onclick="switchStudentTab('s-perfil', this)">
+                        </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-utepsa text-sm font-display-lg font-semibold transition-colors" onclick="switchStudentTab('s-perfil', this)">
 <span class="material-symbols-outlined !text-xl">person</span> Perfil
-                    </button>
+                        </button>
 </nav>
 </div>
 <div class="mt-auto p-4 border-t border-gray-100 space-y-2">
-<button class="w-full bg-utepsa-red text-white py-2.5 rounded-utepsa text-sm font-semibold flex items-center justify-center gap-2 hover:bg-utepsa-red-dark transition-all">
+<button class="w-full bg-utepsa-red text-white py-2.5 rounded-utepsa text-sm font-display-lg font-bold flex items-center justify-center gap-2 hover:bg-utepsa-red-dark transition-all">
 <span class="material-symbols-outlined">add_circle</span> Registrar Horas
-                </button>
-<button class="w-full text-gray-500 py-2.5 rounded-utepsa text-sm font-medium flex items-center justify-center gap-2 hover:bg-gray-100 transition-all logout-btn">
+                    </button>
+<button class="w-full text-gray-500 py-2.5 rounded-utepsa text-sm font-display-lg font-bold flex items-center justify-center gap-2 hover:bg-gray-100 transition-all logout-btn">
 <span class="material-symbols-outlined">logout</span> Cerrar Sesión
-                </button>
+                    </button>
 </div>
 </aside>
 <!-- Main Content -->
 <main class="flex-1 ml-64 min-h-screen">
 <header class="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center sticky top-0 z-20">
-<h2 class="text-utepsa-red text-2xl font-bold">Dashboard de Estudiante</h2>
+<h2 class="text-utepsa-red text-2xl font-display-lg font-bold">Dashboard de Estudiante</h2>
 <div class="flex items-center gap-6">
 <div class="flex items-center gap-3">
 <button class="p-2 text-gray-400 hover:text-utepsa-red relative">
 <span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2 right-2 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
+<span class="absolute top-2 right-2 block h-2 w-2 rounded-full bg-utepsa-red ring-2 ring-white"></span>
 </button>
 </div>
 <div class="flex items-center gap-3 pl-6 border-l border-gray-200">
 <div class="text-right">
-<p class="text-sm font-bold text-slate-900 leading-tight">María López</p>
-<p class="text-[10px] text-gray-500 uppercase">Becado Pregrado</p>
+<p class="text-sm font-display-lg font-bold text-slate-900 leading-tight">María López</p>
+<p class="text-[10px] font-display-lg text-gray-500 uppercase">Becado Pregrado</p>
 </div>
 <img alt="María López" class="w-10 h-10 rounded-full border-2 border-utepsa-red object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQN6nypHDWAl7YNkKqiW498ryXBOWzzejVfLiRhAVPu9Jkttb4sCBscmxveIn-YrolFe0erszFv8srAP_LwhBL1DRsb-gUsqnv2o0ko1nyUwtJjWZqexQ5U2Q6PrhxlrjKgJ-rEdcg6Vc9hkWwJGUCYdV17cIfdRwnURbx0UKnbbCWaaCONN99lFe8v1358NoHdxW0S6lsIBMwe_dSTaBnFyW-6H8NzvGyzB2dvts3TMBHl5m4e3H8kXgWdseCHZCmk61CphE2ykA5"/>
 </div>
@@ -274,11 +277,11 @@
 <div class="content-tab active" id="s-inicio">
 <section class="bg-utepsa-red rounded-2xl p-8 text-white flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden mb-8">
 <div class="relative z-10 flex-1">
-<h3 class="text-4xl font-bold mb-4">¡Bienvenida, María! 👋</h3>
-<p class="opacity-80 max-w-xl mb-8">Tu compromiso académico es fundamental. Actualmente cuentas con la <strong>Beca Bachiller Destacado</strong> para el periodo <strong>Semestre 2-2025</strong>.</p>
+<h3 class="text-4xl font-display-lg font-bold mb-4">¡Bienvenida, María! 👋</h3>
+<p class="opacity-80 max-w-xl mb-8 font-body">Tu compromiso académico es fundamental. Actualmente cuentas con la <strong>Beca Bachiller Destacado</strong> para el periodo <strong>Semestre 2-2025</strong>.</p>
 <div class="flex gap-4">
-<div class="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-utepsa text-sm font-semibold">80 Horas Requeridas</div>
-<div class="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-utepsa text-sm font-semibold">Área: Apoyo Académico</div>
+<div class="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-utepsa text-sm font-display-lg font-semibold">80 Horas Requeridas</div>
+<div class="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-utepsa text-sm font-display-lg font-semibold">Área: Apoyo Académico</div>
 </div>
 </div>
 <div class="relative z-10 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 flex flex-col items-center">
@@ -288,99 +291,58 @@
 <circle class="text-white progress-ring-circle" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="110.5" stroke-linecap="round" stroke-width="8"></circle>
 </svg>
 <div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="text-3xl font-bold">56%</span>
-<span class="text-[8px] uppercase tracking-tighter">Progreso</span>
+<span class="text-3xl font-stat-number font-bold">56%</span>
+<span class="text-[8px] font-display-lg uppercase tracking-tighter">Progreso</span>
 </div>
 </div>
-<p class="text-xs font-bold uppercase tracking-widest text-center">45 de 80 Horas</p>
+<p class="text-xs font-display-lg font-bold uppercase tracking-widest text-center">45 de 80 Horas</p>
 </div>
-<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-utepsa-red-dark/30 rounded-full blur-3xl"></div>
 </section>
 <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 <div class="bg-white p-6 rounded-xl card-shadow border border-gray-100">
 <div class="flex justify-between mb-4">
 <div class="w-10 h-10 bg-red-50 text-utepsa-red rounded flex items-center justify-center"><span class="material-symbols-outlined">timer</span></div>
-<span class="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded">+5h esta semana</span>
+<span class="text-[10px] font-display-lg font-bold text-green-600 bg-green-50 px-2 py-1 rounded">+5h esta semana</span>
 </div>
-<p class="text-[10px] text-gray-500 uppercase font-bold">Horas Registradas</p>
-<h4 class="text-4xl font-bold text-utepsa-red">45</h4>
+<p class="text-[10px] text-gray-500 uppercase font-display-lg font-bold">Horas Registradas</p>
+<h4 class="text-4xl font-stat-number font-bold text-utepsa-red">45</h4>
 </div>
 <div class="bg-white p-6 rounded-xl card-shadow border border-gray-100">
 <div class="flex justify-between mb-4">
 <div class="w-10 h-10 bg-gray-50 text-gray-400 rounded flex items-center justify-center"><span class="material-symbols-outlined">pending_actions</span></div>
-<span class="text-[10px] font-bold text-gray-500">Meta: 80h</span>
+<span class="text-[10px] font-display-lg font-bold text-gray-500">Meta: 80h</span>
 </div>
-<p class="text-[10px] text-gray-500 uppercase font-bold">Horas Pendientes</p>
-<h4 class="text-4xl font-bold text-slate-800">35</h4>
+<p class="text-[10px] text-gray-500 uppercase font-display-lg font-bold">Horas Pendientes</p>
+<h4 class="text-4xl font-stat-number font-bold text-slate-800">35</h4>
 </div>
 <div class="bg-utepsa-red p-6 rounded-xl card-shadow text-white">
 <div class="flex items-center gap-2 mb-4">
 <span class="material-symbols-outlined !text-sm">event</span>
-<span class="text-[10px] font-bold uppercase tracking-widest">Próxima Actividad</span>
+<span class="text-[10px] font-display-lg font-bold uppercase tracking-widest">Próxima Actividad</span>
 </div>
-<h4 class="text-xl font-bold mb-4">Feria de Innovación</h4>
-<button class="w-full bg-white text-utepsa-red font-bold py-2 rounded-utepsa text-sm hover:bg-gray-100 transition-all">Ver Inscripción</button>
-</div>
-</section>
-<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<div class="lg:col-span-2 bg-white rounded-xl card-shadow border border-gray-100 p-8">
-<div class="flex justify-between items-center mb-8">
-<h3 class="text-xl font-bold text-utepsa-red">Resumen de Actividades</h3>
-<button class="text-utepsa-red text-xs font-bold underline" onclick="switchStudentTab('s-historial', document.querySelector('[onclick*=\'s-historial\']'))">Ver historial</button>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-left">
-<thead class="border-b border-gray-100">
-<tr>
-<th class="pb-4 text-[10px] uppercase text-gray-400">Actividad</th>
-<th class="pb-4 text-[10px] uppercase text-gray-400">Fecha</th>
-<th class="pb-4 text-[10px] uppercase text-gray-400 text-center">Horas</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-gray-50">
-<tr>
-<td class="py-5 font-semibold text-sm">Registro Académico</td>
-<td class="py-5 text-sm text-gray-500">12 May, 2025</td>
-<td class="py-5 text-sm font-bold text-center">4.0</td>
-</tr>
-<tr>
-<td class="py-5 font-semibold text-sm">Evento Emprendimiento</td>
-<td class="py-5 text-sm text-gray-500">08 May, 2025</td>
-<td class="py-5 text-sm font-bold text-center">6.5</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="bg-white rounded-xl card-shadow border border-gray-100 p-8">
-<h3 class="text-xl font-bold text-utepsa-red mb-8">Avisos</h3>
-<div class="space-y-4">
-<div class="p-4 bg-red-50 rounded-lg border-l-4 border-utepsa-red">
-<p class="text-[10px] font-bold text-utepsa-red uppercase mb-1">Cierre de Registro</p>
-<p class="text-xs text-gray-600">Plazo para Mayo vence el día 30.</p>
-</div>
-</div>
+<h4 class="text-xl font-display-lg font-bold mb-4">Feria de Innovación</h4>
+<button class="w-full bg-white text-utepsa-red font-display-lg font-bold py-2 rounded-utepsa text-sm hover:bg-gray-100 transition-all">Ver Inscripción</button>
 </div>
 </section>
 </div>
-<!-- Tab: Mis Horas (Simulated) -->
+<!-- Tab: Mis Horas -->
 <div class="content-tab" id="s-horas">
 <div class="bg-white rounded-xl card-shadow p-8 border border-gray-100">
-<h3 class="text-2xl font-bold text-utepsa-red mb-6">Mis Horas Detalladas</h3>
-<p class="text-gray-600 mb-8">Aquí puedes ver el desglose de todas las horas que has registrado y su estado de aprobación.</p>
+<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Mis Horas Detalladas</h3>
+<p class="text-gray-600 mb-8 font-body">Aquí puedes ver el desglose de todas las horas que has registrado y su estado de aprobación.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="p-6 border border-gray-100 rounded-xl bg-gray-50">
-<h4 class="font-bold mb-4">Resumen Semestral</h4>
+<h4 class="font-display-lg font-bold mb-4">Resumen Semestral</h4>
 <div class="space-y-4">
-<div class="flex justify-between text-sm">
+<div class="flex justify-between text-sm font-body">
 <span class="text-gray-500">Horas Aprobadas</span>
 <span class="font-bold text-green-600">45.0 hrs</span>
 </div>
-<div class="flex justify-between text-sm">
+<div class="flex justify-between text-sm font-body">
 <span class="text-gray-500">Horas Pendientes</span>
 <span class="font-bold text-orange-500">8.0 hrs</span>
 </div>
-<div class="flex justify-between text-sm">
+<div class="flex justify-between text-sm font-body">
 <span class="text-gray-500">Horas Rechazadas</span>
 <span class="font-bold text-red-500">0.0 hrs</span>
 </div>
@@ -389,7 +351,7 @@
 <div class="p-6 border border-gray-100 rounded-xl bg-gray-50 flex items-center justify-center">
 <div class="text-center">
 <span class="material-symbols-outlined text-4xl text-gray-300 mb-2">monitoring</span>
-<p class="text-sm text-gray-400">Gráfico de actividad mensual próximamente</p>
+<p class="text-sm font-body text-gray-400">Gráfico de actividad mensual próximamente</p>
 </div>
 </div>
 </div>
@@ -398,41 +360,42 @@
 <!-- Tab: Actividades -->
 <div class="content-tab" id="s-actividades">
 <div class="bg-white rounded-xl card-shadow p-8 border border-gray-100">
-<h3 class="text-2xl font-bold text-utepsa-red mb-6">Próximas Actividades</h3>
+<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Próximas Actividades</h3>
 <div class="space-y-4">
 <div class="flex items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-red-50 transition-colors">
 <div>
-<h4 class="font-bold">Feria de Innovación 2025</h4>
-<p class="text-xs text-gray-500">Campus Principal • 25 de Junio, 2025</p>
+<h4 class="font-display-lg font-bold">Feria de Innovación 2025</h4>
+<p class="text-xs font-body text-gray-500">Campus Principal • 25 de Junio, 2025</p>
 </div>
-<button class="bg-utepsa-red text-white text-xs font-bold px-4 py-2 rounded-utepsa">Inscribirme</button>
+<button class="bg-utepsa-red text-white text-xs font-display-lg font-bold px-4 py-2 rounded-utepsa">Inscribirme</button>
 </div>
 <div class="flex items-center justify-between p-4 border border-gray-100 rounded-lg hover:bg-red-50 transition-colors">
 <div>
-<h4 class="font-bold">Seminario de Liderazgo</h4>
-<p class="text-xs text-gray-500">Virtual (Teams) • 28 de Junio, 2025</p>
+<h4 class="font-display-lg font-bold">Seminario de Liderazgo</h4>
+<p class="text-xs font-body text-gray-500">Virtual (Teams) • 28 de Junio, 2025</p>
 </div>
-<button class="bg-utepsa-red text-white text-xs font-bold px-4 py-2 rounded-utepsa">Inscribirme</button>
-</div>
-</div>
+<button class="bg-utepsa-red text-white text-xs font-display-lg font-bold px-4 py-2 rounded-utepsa">Inscribirme</button>
 </div>
 </div>
-<!-- Other Tabs (Placeholders for Demo) -->
+</div>
+</div>
+<!-- Tab: Historial -->
 <div class="content-tab" id="s-historial">
 <div class="bg-white rounded-xl card-shadow p-8 border border-gray-100">
-<h3 class="text-2xl font-bold text-utepsa-red mb-6">Historial de Becas</h3>
-<p class="text-gray-500">No hay registros de semestres anteriores.</p>
+<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Historial de Becas</h3>
+<p class="text-gray-500 font-body">No hay registros de semestres anteriores.</p>
 </div>
 </div>
+<!-- Tab: Perfil -->
 <div class="content-tab" id="s-perfil">
 <div class="bg-white rounded-xl card-shadow p-8 border border-gray-100">
-<h3 class="text-2xl font-bold text-utepsa-red mb-6">Mi Perfil</h3>
+<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Mi Perfil</h3>
 <div class="flex items-center gap-6 mb-8">
 <img class="w-24 h-24 rounded-full border-4 border-utepsa-red" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQN6nypHDWAl7YNkKqiW498ryXBOWzzejVfLiRhAVPu9Jkttb4sCBscmxveIn-YrolFe0erszFv8srAP_LwhBL1DRsb-gUsqnv2o0ko1nyUwtJjWZqexQ5U2Q6PrhxlrjKgJ-rEdcg6Vc9hkWwJGUCYdV17cIfdRwnURbx0UKnbbCWaaCONN99lFe8v1358NoHdxW0S6lsIBMwe_dSTaBnFyW-6H8NzvGyzB2dvts3TMBHl5m4e3H8kXgWdseCHZCmk61CphE2ykA5"/>
 <div>
-<h4 class="text-xl font-bold">María López</h4>
-<p class="text-gray-500">Registro: 221054321</p>
-<p class="text-gray-500">Carrera: Ingeniería de Sistemas</p>
+<h4 class="text-xl font-display-lg font-bold">María López</h4>
+<p class="text-gray-500 font-body">Registro: 221054321</p>
+<p class="text-gray-500 font-body">Carrera: Ingeniería de Sistemas</p>
 </div>
 </div>
 </div>
@@ -447,48 +410,48 @@
 <aside class="w-64 bg-surface-container-lowest border-r border-outline-variant shadow-md flex flex-col fixed h-full z-30">
 <div class="p-6">
 <div class="flex items-center gap-3 mb-8">
-<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<div class="w-10 h-10 bg-utepsa-red rounded-lg flex items-center justify-center text-on-primary">
 <span class="material-symbols-outlined">school</span>
 </div>
 <div>
-<h1 class="font-headline-md text-primary leading-tight text-sm">Portal Becados</h1>
-<p class="text-[10px] uppercase text-outline">Jefatura</p>
+<h1 class="font-display-lg text-utepsa-red leading-tight text-sm font-bold">Portal Becados</h1>
+<p class="text-[10px] font-display-lg uppercase text-outline">Jefatura</p>
 </div>
 </div>
 <nav class="space-y-1" id="admin-nav">
-<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-bold sidebar-active-admin" onclick="switchAdminTab('a-dashboard', this)">
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-display-lg font-bold sidebar-active-admin" onclick="switchAdminTab('a-dashboard', this)">
 <span class="material-symbols-outlined">dashboard</span> Panel de Control
-                    </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" onclick="switchAdminTab('a-validaciones', this)">
+                        </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-display-lg font-bold transition-all" onclick="switchAdminTab('a-validaciones', this)">
 <span class="material-symbols-outlined">timer</span> Aprobaciones
-                    </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" onclick="switchAdminTab('a-asistencia', this)">
+                        </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-display-lg font-bold transition-all" onclick="switchAdminTab('a-asistencia', this)">
 <span class="material-symbols-outlined">how_to_reg</span> Asistencia
-                    </button>
-<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" onclick="switchAdminTab('a-base-datos', this)">
+                        </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-display-lg font-bold transition-all" onclick="switchAdminTab('a-base-datos', this)">
 <span class="material-symbols-outlined">database</span> Base de Datos
-                    </button>
+                        </button>
 </nav>
 </div>
 <div class="mt-auto p-4 border-t border-outline-variant space-y-2">
-<button class="w-full bg-primary text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-sm hover:brightness-110 active:scale-95 transition-all">
+<button class="w-full bg-utepsa-red text-on-primary font-display-lg font-bold py-3 rounded-lg flex items-center justify-center gap-2 shadow-sm hover:brightness-110 active:scale-95 transition-all">
 <span class="material-symbols-outlined">add_circle</span> Validar Horas
-                </button>
-<button class="w-full text-error text-sm font-bold py-3 flex items-center justify-center gap-2 hover:bg-error-bg rounded-lg transition-all logout-btn">
+                    </button>
+<button class="w-full text-error text-sm font-display-lg font-bold py-3 flex items-center justify-center gap-2 hover:bg-error-bg rounded-lg transition-all logout-btn">
 <span class="material-symbols-outlined">logout</span> Cerrar Sesión
-                </button>
+                    </button>
 </div>
 </aside>
 <main class="flex-1 ml-64 min-h-screen flex flex-col">
 <header class="flex justify-between items-center px-10 py-4 bg-surface border-b border-outline-variant sticky top-0 z-20">
-<h2 class="text-2xl font-bold text-primary">Panel Administrativo</h2>
+<h2 class="text-2xl font-display-lg font-bold text-utepsa-red">Panel Administrativo</h2>
 <div class="flex items-center gap-4">
 <div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
 <div class="text-right">
-<p class="text-sm font-bold text-on-surface">Lic. Admin UTEPSA</p>
-<p class="text-[10px] text-outline">Jefatura de Becas</p>
+<p class="text-sm font-display-lg font-bold text-on-surface">Lic. Admin UTEPSA</p>
+<p class="text-[10px] font-display-lg text-outline">Jefatura de Becas</p>
 </div>
-<img class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4-33USOJU91AY45tyXyvn1PKuIyAcNCXvpkhoassUW5sLHBYP2nMTwwqIT4-HLuwbIjXwVn3KWe1Qp4WyEL_ZAw6syYS-G3o1cLjaW6qrmvr9CzmvKSwUixdmxhy5ObFpBoM3YsjGIU_ErV2qCRivtc4vO4f1ceD4TPfGvMd7nJnGWTuXa1lE5Lpp_4qa86u6ZlfBK3oHS52nyhYBDxTjZ2VM1HzaqrAScuNG7yla9-0bmCqTv_A3Q3BInYDVETI47ZOLzf1j85q6"/>
+<img class="w-10 h-10 rounded-full border-2 border-utepsa-red object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4-33USOJU91AY45tyXyvn1PKuIyAcNCXvpkhoassUW5sLHBYP2nMTwwqIT4-HLuwbIjXwVn3KWe1Qp4WyEL_ZAw6syYS-G3o1cLjaW6qrmvr9CzmvKSwUixdmxhy5ObFpBoM3YsjGIU_ErV2qCRivtc4vO4f1ceD4TPfGvMd7nJnGWTuXa1lE5Lpp_4qa86u6ZlfBK3oHS52nyhYBDxTjZ2VM1HzaqrAScuNG7yla9-0bmCqTv_A3Q3BInYDVETI47ZOLzf1j85q6"/>
 </div>
 </div>
 </header>
@@ -496,41 +459,41 @@
 <!-- Tab: Admin Dashboard -->
 <div class="content-tab active" id="a-dashboard">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-<div class="bg-surface-card p-6 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col gap-2 relative overflow-hidden group">
-<p class="text-on-surface-variant text-[10px] font-bold uppercase">Becados Activos</p>
-<h3 class="text-4xl font-bold text-primary">1,248</h3>
-<p class="text-success-text text-xs flex items-center gap-1"><span class="material-symbols-outlined !text-sm">trending_up</span> +12%</p>
+<div class="bg-surface-card p-6 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col gap-2">
+<p class="text-on-surface-variant text-[10px] font-display-lg font-bold uppercase">Becados Activos</p>
+<h3 class="text-4xl font-stat-number font-bold text-utepsa-red">1,248</h3>
+<p class="text-success-text text-xs font-body flex items-center gap-1"><span class="material-symbols-outlined !text-sm">trending_up</span> +12%</p>
 </div>
-<div class="bg-surface-card p-6 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col gap-2 relative overflow-hidden">
-<p class="text-on-surface-variant text-[10px] font-bold uppercase">Horas por Validar</p>
-<h3 class="text-4xl font-bold text-tertiary">452</h3>
-<p class="text-warning-text text-xs">Atención requerida</p>
+<div class="bg-surface-card p-6 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col gap-2">
+<p class="text-on-surface-variant text-[10px] font-display-lg font-bold uppercase">Horas por Validar</p>
+<h3 class="text-4xl font-stat-number font-bold text-tertiary">452</h3>
+<p class="text-warning-text text-xs font-body">Atención requerida</p>
 </div>
-<div class="bg-primary text-on-primary p-6 rounded-xl shadow-lg flex flex-col gap-3">
-<div class="flex items-center gap-2"><span class="material-symbols-outlined">qr_code_scanner</span><h4 class="font-bold">Validación Rápida</h4></div>
-<input class="w-full bg-white/10 border border-white/20 rounded-lg py-2 px-4 text-white placeholder-white/40 outline-none" placeholder="Código de Actividad" type="text"/>
-<button class="w-full bg-white text-primary font-bold py-2 rounded-lg hover:bg-opacity-90 active:scale-95 transition-all">Validar</button>
+<div class="bg-utepsa-red text-on-primary p-6 rounded-xl shadow-lg flex flex-col gap-3">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined">qr_code_scanner</span><h4 class="font-display-lg font-bold">Validación Rápida</h4></div>
+<input class="w-full bg-white/10 border border-white/20 rounded-lg py-2 px-4 text-white placeholder-white/40 outline-none font-body" placeholder="Código de Actividad" type="text"/>
+<button class="w-full bg-white text-utepsa-red font-display-lg font-bold py-2 rounded-lg hover:bg-opacity-90 active:scale-95 transition-all">Validar</button>
 </div>
 </div>
 <div class="bg-surface-card rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden">
 <div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
-<h4 class="font-bold text-primary">Pendientes de Validación</h4>
-<button class="text-primary text-xs font-bold hover:underline" onclick="switchAdminTab('a-validaciones', document.querySelector('[onclick*=\'a-validaciones\']'))">Ver todas</button>
+<h4 class="font-display-lg font-bold text-utepsa-red">Pendientes de Validación</h4>
+<button class="text-utepsa-red text-xs font-display-lg font-bold hover:underline" onclick="switchAdminTab('a-validaciones', document.querySelector('[onclick*=\'a-validaciones\']'))">Ver todas</button>
 </div>
 <div class="overflow-x-auto">
 <table class="w-full text-left">
 <thead class="bg-surface-container-low text-on-surface-variant">
 <tr>
-<th class="px-6 py-3 text-[10px] font-bold uppercase">Becado</th>
-<th class="px-6 py-3 text-[10px] font-bold uppercase">Actividad</th>
-<th class="px-6 py-3 text-[10px] font-bold uppercase">Horas</th>
-<th class="px-6 py-3 text-[10px] font-bold uppercase text-center">Acciones</th>
+<th class="px-6 py-3 text-[10px] font-display-lg font-bold uppercase">Becado</th>
+<th class="px-6 py-3 text-[10px] font-display-lg font-bold uppercase">Actividad</th>
+<th class="px-6 py-3 text-[10px] font-display-lg font-bold uppercase">Horas</th>
+<th class="px-6 py-3 text-[10px] font-display-lg font-bold uppercase text-center">Acciones</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-outline-variant/30">
-<tr class="hover:bg-surface-container-lowest transition-colors">
+<tr class="hover:bg-surface-container-lowest transition-colors font-body">
 <td class="px-6 py-4 flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-[10px] font-bold">CA</div>
+<div class="w-8 h-8 rounded-full bg-utepsa-red text-white flex items-center justify-center text-[10px] font-bold">CA</div>
 <span class="text-sm font-medium">Carlos Aranda</span>
 </td>
 <td class="px-6 py-4 text-sm text-on-surface-variant">Apoyo en Biblioteca</td>
@@ -545,49 +508,49 @@
 </div>
 </div>
 </div>
-<!-- Tab: Admin Validaciones (Simulated) -->
+<!-- Tab: Admin Validaciones -->
 <div class="content-tab" id="a-validaciones">
 <div class="bg-surface-card p-8 rounded-xl shadow-sm border border-outline-variant/30">
-<h3 class="text-2xl font-bold text-primary mb-6">Módulo de Validaciones</h3>
+<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Módulo de Validaciones</h3>
 <div class="flex gap-4 mb-8">
-<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg">Pendientes (15)</button>
-<button class="px-4 py-2 bg-surface-container-high text-on-surface text-xs font-bold rounded-lg">Historial</button>
+<button class="px-4 py-2 bg-utepsa-red text-white text-xs font-display-lg font-bold rounded-lg">Pendientes (15)</button>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface text-xs font-display-lg font-bold rounded-lg">Historial</button>
 </div>
-<p class="text-gray-400 text-center py-12">Lista extendida de aprobaciones...</p>
+<p class="text-gray-400 font-body text-center py-12">Lista extendida de aprobaciones...</p>
 </div>
 </div>
-<!-- Tab: Admin Asistencia (Simulated) -->
+<!-- Tab: Admin Asistencia -->
 <div class="content-tab" id="a-asistencia">
 <div class="bg-surface-card p-8 rounded-xl shadow-sm border border-outline-variant/30">
-<h3 class="text-2xl font-bold text-primary mb-6">Control de Asistencia</h3>
+<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Control de Asistencia</h3>
 <div class="p-6 bg-surface-container-low rounded-xl mb-6">
-<h4 class="font-bold mb-2">Escáner de Evento</h4>
-<p class="text-sm text-on-surface-variant mb-4">Usa la cámara o ingresa el código del evento para empezar a registrar becados.</p>
-<button class="px-6 py-3 bg-primary text-white font-bold rounded-lg flex items-center gap-2"><span class="material-symbols-outlined">qr_code_scanner</span> Iniciar Escáner</button>
+<h4 class="font-display-lg font-bold mb-2">Escáner de Evento</h4>
+<p class="text-sm font-body text-on-surface-variant mb-4">Usa la cámara o ingresa el código del evento para empezar a registrar becados.</p>
+<button class="px-6 py-3 bg-utepsa-red text-white font-display-lg font-bold rounded-lg flex items-center gap-2"><span class="material-symbols-outlined">qr_code_scanner</span> Iniciar Escáner</button>
 </div>
 </div>
 </div>
-<!-- Tab: Admin Base Datos (Simulated) -->
+<!-- Tab: Admin Base Datos -->
 <div class="content-tab" id="a-base-datos">
 <div class="bg-surface-card p-8 rounded-xl shadow-sm border border-outline-variant/30">
-<h3 class="text-2xl font-bold text-primary mb-6">Gestión de Becados</h3>
+<h3 class="text-2xl font-display-lg font-bold text-utepsa-red mb-6">Gestión de Becados</h3>
 <div class="flex justify-between mb-6">
 <div class="relative w-72">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg text-sm" placeholder="Buscar por registro o nombre..." type="text"/>
+<input class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg text-sm font-body" placeholder="Buscar por registro o nombre..." type="text"/>
 </div>
-<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold">+ Nuevo Registro</button>
+<button class="bg-utepsa-red text-white px-4 py-2 rounded-lg text-sm font-display-lg font-bold">+ Nuevo Registro</button>
 </div>
-<p class="text-gray-400 text-center py-12">Tabla de datos maestros...</p>
+<p class="text-gray-400 font-body text-center py-12">Tabla de datos maestros...</p>
 </div>
 </div>
 </div>
 <footer class="mt-auto w-full py-8 border-t border-outline-variant bg-surface-container-low">
-<div class="px-10 flex justify-between items-center text-xs text-on-surface-variant">
+<div class="px-10 flex justify-between items-center text-xs font-body text-on-surface-variant">
 <p>© 2024 UTEPSA - Universidad Tecnológica de Santa Cruz</p>
 <div class="flex gap-6">
-<a class="hover:text-primary transition-colors" href="#">Soporte Técnico</a>
-<a class="hover:text-primary transition-colors" href="#">Reglamento</a>
+<a class="hover:text-utepsa-red transition-colors" href="#">Soporte Técnico</a>
+<a class="hover:text-utepsa-red transition-colors" href="#">Reglamento</a>
 </div>
 </div>
 </footer>
@@ -595,99 +558,98 @@
 </div>
 </div>
 <script>
-    // --- View Management ---
-    function showView(viewId) {
-        // Hide all top-level views
-        document.querySelectorAll('.view-section').forEach(view => {
-            view.classList.remove('active');
-        });
-        
-        // Show selected view
-        const targetView = document.getElementById(viewId);
-        if (targetView) {
-            targetView.classList.add('active');
+        // --- View Management ---
+        function showView(viewId) {
+            // Hide all top-level views
+            document.querySelectorAll('.view-section').forEach(view => {
+                view.classList.remove('active');
+            });
+            
+            // Show selected view
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+            
+            window.scrollTo(0, 0);
         }
-        
-        window.scrollTo(0, 0);
-    }
 
-    // --- Student Tabs Management ---
-    function switchStudentTab(tabId, btn) {
-        // Hide all student tabs
-        document.querySelectorAll('#becado-view .content-tab').forEach(tab => {
-            tab.classList.remove('active');
-        });
-        
-        // Remove active class from nav
-        document.querySelectorAll('#student-nav button').forEach(button => {
-            button.classList.remove('sidebar-active');
-            button.classList.add('text-gray-600', 'hover:bg-gray-100');
-        });
-        
-        // Show target tab
-        const targetTab = document.getElementById(tabId);
-        if (targetTab) targetTab.classList.add('active');
-        
-        // Highlight button
-        if (btn) {
-            btn.classList.add('sidebar-active');
-            btn.classList.remove('text-gray-600', 'hover:bg-gray-100');
+        // --- Student Tabs Management ---
+        function switchStudentTab(tabId, btn) {
+            // Hide all student tabs
+            document.querySelectorAll('#becado-view .content-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from nav
+            document.querySelectorAll('#student-nav button').forEach(button => {
+                button.classList.remove('sidebar-active');
+                button.classList.add('text-gray-600', 'hover:bg-gray-100');
+            });
+            
+            // Show target tab
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) targetTab.classList.add('active');
+            
+            // Highlight button
+            if (btn) {
+                btn.classList.add('sidebar-active');
+                btn.classList.remove('text-gray-600', 'hover:bg-gray-100');
+            }
         }
-    }
 
-    // --- Admin Tabs Management ---
-    function switchAdminTab(tabId, btn) {
-        // Hide all admin tabs
-        document.querySelectorAll('#jefatura-view .content-tab').forEach(tab => {
-            tab.classList.remove('active');
-        });
-        
-        // Remove active class from nav
-        document.querySelectorAll('#admin-nav button').forEach(button => {
-            button.classList.remove('sidebar-active-admin');
-            button.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
-        });
-        
-        // Show target tab
-        const targetTab = document.getElementById(tabId);
-        if (targetTab) targetTab.classList.add('active');
-        
-        // Highlight button
-        if (btn) {
-            btn.classList.add('sidebar-active-admin');
-            btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+        // --- Admin Tabs Management ---
+        function switchAdminTab(tabId, btn) {
+            // Hide all admin tabs
+            document.querySelectorAll('#jefatura-view .content-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from nav
+            document.querySelectorAll('#admin-nav button').forEach(button => {
+                button.classList.remove('sidebar-active-admin');
+                button.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+            });
+            
+            // Show target tab
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) targetTab.classList.add('active');
+            
+            // Highlight button
+            if (btn) {
+                btn.classList.add('sidebar-active-admin');
+                btn.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+            }
         }
-    }
 
-    // --- Login Handlers ---
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const userId = document.getElementById('user-id').value.toLowerCase();
-        
-        // Simulation logic
-        if (userId === 'admin' || userId.includes('jefe') || userId === 'jefatura') {
-            showView('jefatura-view');
-        } else {
-            showView('becado-view');
-        }
-    });
-
-    // --- Logout Action ---
-    document.querySelectorAll('.logout-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            showView('login-view');
+        // --- Login Handlers ---
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userId = document.getElementById('user-id').value.toLowerCase();
+            
+            // Simulation logic
+            if (userId === 'admin' || userId.includes('jefe') || userId === 'jefatura') {
+                showView('jefatura-view');
+            } else {
+                showView('becado-view');
+            }
         });
-    });
 
-    // --- UI Polish ---
-    // Glow effect for login screen
-    document.addEventListener('mousemove', (e) => {
-        const glow = document.querySelector('.bento-glow');
-        if (glow && glow.offsetParent !== null) {
-            const x = e.clientX;
-            const y = e.clientY;
-            glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0, 81, 145, 0.05) 0%, transparent 50%)`;
-        }
-    });
-</script>
+        // --- Logout Action ---
+        document.querySelectorAll('.logout-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                showView('login-view');
+            });
+        });
+
+        // --- UI Polish ---
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.querySelector('.bento-glow');
+            if (glow && glow.offsetParent !== null) {
+                const x = e.clientX;
+                const y = e.clientY;
+                glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(211, 47, 47, 0.05) 0%, transparent 50%)`;
+            }
+        });
+    </script>
 </body></html>
