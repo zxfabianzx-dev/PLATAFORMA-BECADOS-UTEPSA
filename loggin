@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Becados UTEPSA · Campus Virtual</title>
+<style>
+:root{
+  --azul-900:#0A2E4D;
+  --azul-800:#0F3D63;
+  --azul-700:#15497A;
+  --azul-100:#E4ECF4;
+  --oro-600:#B9881F;
+  --oro-100:#FAF1DC;
+  --verde-700:#1F7A4D;
+  --verde-100:#E3F3E9;
+  --rojo-700:#B0392A;
+  --rojo-100:#F8E6E2;
+  --crema:#F7F4EC;
+  --crema-2:#F1ECE0;
+  --tinta:#1E2430;
+  --tinta-suave:#5B6472;
+  --linea:#DCD5C2;
+  --blanco:#FFFFFF;
+  --radius:10px;
+  --serif:'Source Serif 4','Iowan Old Style','Georgia',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:var(--sans);
+  background:var(--crema);
+  color:var(--tinta);
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+}
+
+a{color:inherit;}
+button{font-family:inherit;}
+
+/* ======== Utility ======== */
+.visually-hidden{position:absolute;left:-9999px;}
+.hidden{display:none !important;}
+
+/* ======== Topbar institucional ======== */
+.topbar{
+  background:var(--azul-900);
+  color:#fff;
+  font-size:12.5px;
+  letter-spacing:.02em;
+  padding:6px 0;
+}
+.topbar .wrap{
+  max-width:1140px;margin:0 auto;padding:0 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  opacity:.85;
+}
+
+/* ======== Login screen ======== */
+.login-screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(15,61,99,0.05), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(185,136,31,0.06), transparent 40%),
+    var(--crema);
+}
+.login-wrap{
+  width:100%;
+  max-width:920px;
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  background:var(--blanco);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 30px 60px -20px rgba(10,46,77,0.25), 0 0 0 1px rgba(10,46,77,0.04);
+}
+@media (max-width:760px){
+  .login-wrap{grid-template-columns:1fr;}
+}
+
+.login-side{
+  background:linear-gradient(160deg, var(--azul-900) 0%, var(--azul-700) 100%);
+  color:#fff;
+  padding:48px 40px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:420px;
+}
+.login-side::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 14px);
+  pointer-events:none;
+}
+.brand-mark{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  position:relative;
+  z-index:1;
+}
+.brand-crest{
+  width:46px;height:46px;
+  border-radius:50%;
+  background:var(--oro-600);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:19px;
+  color:var(--azul-900);
+  flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(255,255,255,0.18);
+}
+.brand-text{font-family:var(--serif);}
+.brand-text .top{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;display:block;}
+.brand-text .main{font-size:18px;font-weight:600;display:block;line-height:1.2;}
+
+.login-side-quote{
+  position:relative;z-index:1;
+  margin-top:48px;
+}
+.login-side-quote .eyebrow{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--oro-100);opacity:.8;margin-bottom:14px;
+}
+.login-side-quote h1{
+  font-family:var(--serif);
+  font-size:30px;
+  line-height:1.25;
+  font-weight:600;
+  margin:0 0 16px 0;
+}
+.login-side-quote p{
+  font-size:14.5px;
+  line-height:1.65;
+  opacity:.82;
+  max-width:360px;
+}
+.login-stats{
+  display:flex;gap:28px;margin-top:32px;position:relative;z-index:1;
+}
+.login-stats div{}
+.login-stats strong{font-family:var(--serif);font-size:24px;display:block;font-weight:600;}
+.login-stats span{font-size:11.5px;opacity:.7;letter-spacing:.02em;}
+
+.login-form-side{
+  padding:48px 44px;
+  display:flex;
+  flex-direction:column;
+}
+.login-form-side h2{
+  font-family:var(--serif);
+  font-size:23px;
+  margin:0 0 6px 0;
+  font-weight:600;
+}
+.login-form-side .sub{
+  color:var(--tinta-suave);
+  font-size:13.5px;
+  margin:0 0 28px 0;
+}
+
+.role-switch{
+  display:flex;
+  background:var(--crema-2);
+  border-radius:999px;
+  padding:4px;
+  margin-bottom:26px;
+  border:1px solid var(--linea);
+}
+.role-switch button{
+  flex:1;
+  border:none;
+  background:transparent;
+  padding:9px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--tinta-suave);
+  cursor:pointer;
+  transition:all .18s ease;
+}
+.role-switch button.active{
+  background:var(--azul-900);
+  color:#fff;
+  box-shadow:0 4px 10px -4px rgba(10,46,77,0.5);
+}
+
+.field{margin-bottom:16px;}
+.field label{
+  display:block;
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--tinta);
+  margin-bottom:6px;
+  letter-spacing:.01em;
+}
+.field input, .field select{
+  width:100%;
+  padding:11px 13px;
+  border:1.5px solid var(--linea);
+  border-radius:8px;
+  font-size:14px;
+  font-family:inherit;
+  background:var(--blanco);
+  color:var(--tinta);
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.field input:focus, .field select:focus{
+  outline:none;
+  border-color:var(--azul-700);
+  box-shadow:0 0 0 3px var(--azul-100);
+}
+.field .hint{font-size:11.5px;color:var(--tinta-suave);margin-top:5px;}
+
+.btn-primary{
+  width:100%;
+  padding:13px;
+  background:var(--azul-900);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:14.5px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:6px;
+  transition:background .15s ease, transform .1s ease;
+}
+.btn-primary:hover{background:var(--azul-700);}
+.btn-primary:active{transform:scale(0.99);}
+
+.demo-note{
+  margin-top:20px;
+  padding:13px 14px;
+  background:var(--oro-100);
+  border:1px solid #E8D8AA;
+  border-radius:8px;
+  font-size:12px;
+  line-height:1.55;
+  color:#6B5212;
+}
+.demo-note strong{color:#4A3A0D;}
+
+.login-foot{
+  margin-top:auto;
+  padding-top:20px;
+  font-size:11.5px;
+  color:var(--tinta-suave);
+}
+
+/* ======== App shell ======== */
+.app{display:none;min-height:100vh;flex-direction:column;}
+.app.active{display:flex;}
+
+.app-header{
+  background:var(--blanco);
+  border-bottom:1px solid var(--linea);
+  position:sticky;top:0;z-index:30;
+}
+.app-header-inner{
+  max-width:1180px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;
+}
+.app-brand{display:flex;align-items:center;gap:11px;}
+.app-brand .brand-crest{width:38px;height:38px;font-size:16px;}
+.app-brand-text{font-family:var(--serif);}
+.app-brand-text .top{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);display:block;}
+.app-brand-text .main{font-size:15.5px;font-weight:600;color:var(--azul-900);display:block;line-height:1.2;}
+
+.app-nav{display:flex;gap:4px;}
+.app-nav button{
+  border:none;background:transparent;
+  padding:9px 16px;border-radius:7px;
+  font-size:13.5px;font-weight:600;
+  color:var(--tinta-suave);
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.app-nav button:hover{background:var(--crema-2);color:var(--tinta);}
+.app-nav button.active{background:var(--azul-100);color:var(--azul-900);}
+
+.app-user{display:flex;align-items:center;gap:12px;}
+.app-user-info{text-align:right;}
+.app-user-info .name{font-size:13px;font-weight:600;display:block;line-height:1.3;}
+.app-user-info .role{font-size:11px;color:var(--tinta-suave);display:block;}
+.avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--azul-800);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;font-family:var(--serif);
+  flex-shrink:0;
+}
+.btn-logout{
+  border:1.5px solid var(--linea);
+  background:transparent;
+  padding:8px 14px;
+  border-radius:7px;
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--tinta-suave);
+  cursor:pointer;
+  margin-left:4px;
+}
+.btn-logout:hover{border-color:var(--rojo-700);color:var(--rojo-700);}
+
+@media (max-width:880px){
+  .app-nav{display:none;}
+  .app-nav.mobile-visible{
+    display:flex;position:fixed;bottom:0;left:0;right:0;
+    background:#fff;border-top:1px solid var(--linea);
+    padding:8px 10px;justify-content:space-around;z-index:40;
+  }
+  .app-nav.mobile-visible button{flex:1;flex-direction:column;font-size:10.5px;padding:8px 4px;}
+}
+
+.app-main{
+  flex:1;
+  max-width:1180px;
+  margin:0 auto;
+  width:100%;
+  padding:32px 24px 80px;
+}
+
+.view{display:none;}
+.view.active{display:block;animation:fadeUp .35s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+.view-head{margin-bottom:26px;}
+.view-head .eyebrow{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--oro-600);font-weight:700;margin-bottom:6px;
+}
+.view-head h1{
+  font-family:var(--serif);font-size:27px;font-weight:600;margin:0 0 6px 0;color:var(--azul-900);
+}
+.view-head p{color:var(--tinta-suave);font-size:14px;margin:0;max-width:640px;line-height:1.55;}
+
+/* ======== Cards / stats ======== */
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:28px;
+}
+@media (max-width:880px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
+.stat-card{
+  background:var(--blanco);
+  border:1px solid var(--linea);
+  border-radius:12px;
+  padding:18px 20px;
+}
+.stat-card .label{font-size:11.5px;color:var(--tinta-suave);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
+.stat-card .value{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--azul-900);line-height:1;}
+.stat-card .value.gold{color:var(--oro-600);}
+.stat-card .value.green{color:var(--verde-700);}
+.stat-card .value.red{color:var(--rojo-700);}
+.stat-card .sub{font-size:12px;color:var(--tinta-suave);margin-top:6px;}
+
+.progress-bar-track{
+  width:100%;height:9px;border-radius:99px;
+  background:var(--crema-2);overflow:hidden;margin-top:10px;
+}
+.progress-bar-fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg, var(--oro-600), #D4A B2F);
+  background:linear-gradient(90deg, var(--oro-600), #D9AE3D);
+  transition:width .5s ease;
+}
+
+.panel{
+  background:var(--blanco);
+  border:1px solid var(--linea);
+  border-radius:14px;
+  padding:24px;
+  margin-bottom:22px;
+}
+.panel-head{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:18px;gap:12px;flex-wrap:wrap;
+}
+.panel-head h2{font-family:var(--serif);font-size:18.5px;font-weight:600;margin:0;color:var(--azul-900);}
+.panel-head .desc{font-size:12.5px;color:var(--tinta-suave);margin-top:4px;}
+
+/* ======== Tables / lists ======== */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+thead th{
+  text-align:left;
+  font-size:11px;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--tinta-suave);
+  font-weight:700;
+  padding:0 12px 10px;
+  border-bottom:1.5px solid var(--linea);
+}
+tbody td{
+  padding:13px 12px;
+  border-bottom:1px solid var(--crema-2);
+  vertical-align:middle;
+}
+tbody tr:hover{background:var(--crema);}
+tbody tr:last-child td{border-bottom:none;}
+
+.pill{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 10px;border-radius:99px;
+  font-size:11.5px;font-weight:700;letter-spacing:.01em;
+}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;}
+.pill.pendiente{background:var(--oro-100);color:#8A6510;}
+.pill.pendiente::before{background:var(--oro-600);}
+.pill.aprobada{background:var(--verde-100);color:var(--verde-700);}
+.pill.aprobada::before{background:var(--verde-700);}
+.pill.rechazada{background:var(--rojo-100);color:var(--rojo-700);}
+.pill.rechazada::before{background:var(--rojo-700);}
+
+.empty-state{
+  text-align:center;padding:50px 20px;color:var(--tinta-suave);
+}
+.empty-state .icon{font-size:34px;margin-bottom:10px;opacity:.5;}
+.empty-state p{font-size:13.5px;margin:0;}
+
+/* ======== Forms ======== */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:640px){.form-grid{grid-template-columns:1fr;}}
+.form-grid .span2{grid-column:1/-1;}
+
+.code-input-wrap{position:relative;}
+.code-input-wrap input{
+  text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-family:monospace,var(--sans);
+}
+.code-badge{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  font-size:10.5px;color:var(--tinta-suave);
+  background:var(--crema-2);padding:3px 8px;border-radius:6px;
+  pointer-events:none;
+}
+
+.btn-secondary{
+  padding:11px 18px;border-radius:8px;border:1.5px solid var(--linea);
+  background:transparent;font-size:13.5px;font-weight:600;color:var(--tinta);cursor:pointer;
+}
+.btn-secondary:hover{border-color:var(--azul-700);color:var(--azul-700);}
+
+.btn-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+
+/* ======== Seal / stamp visual ======== */
+.seal{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1.5px dashed var(--oro-600);
+  border-radius:8px;
+  padding:6px 10px;
+  font-size:11px;
+  font-weight:700;
+  color:var(--oro-600);
+  letter-spacing:.04em;
+  background:var(--oro-100);
+  font-family:monospace,var(--sans);
+}
+
+/* ======== Jefatura: action buttons ======== */
+.action-btns{display:flex;gap:6px;}
+.btn-icon{
+  width:32px;height:32px;border-radius:7px;border:1.5px solid var(--linea);
+  background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:14px;transition:all .15s ease;
+}
+.btn-icon.approve:hover{background:var(--verde-100);border-color:var(--verde-700);}
+.btn-icon.reject:hover{background:var(--rojo-100);border-color:var(--rojo-700);}
+.btn-icon.view:hover{background:var(--azul-100);border-color:var(--azul-700);}
+
+/* ======== Modal ======== */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(10,30,50,0.45);
+  display:none;align-items:center;justify-content:center;z-index:100;
+  padding:20px;backdrop-filter:blur(2px);
+}
+.modal-overlay.active{display:flex;}
+.modal{
+  background:#fff;border-radius:14px;max-width:480px;width:100%;
+  padding:26px;box-shadow:0 30px 60px -10px rgba(0,0,0,0.3);
+  max-height:88vh;overflow-y:auto;
+}
+.modal h3{font-family:var(--serif);font-size:18px;margin:0 0 4px 0;color:var(--azul-900);}
+.modal .modal-sub{font-size:12.5px;color:var(--tinta-suave);margin:0 0 18px 0;}
+.modal-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--crema-2);font-size:13px;}
+.modal-row span:first-child{color:var(--tinta-suave);}
+.modal-row span:last-child{font-weight:600;text-align:right;}
+
+.toast-wrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;}
+.toast{
+  background:var(--azul-900);color:#fff;padding:13px 18px;border-radius:9px;
+  font-size:13px;font-weight:600;box-shadow:0 10px 25px -8px rgba(0,0,0,0.35);
+  animation:toastIn .25s ease;max-width:320px;
+}
+.toast.success{background:var(--verde-700);}
+.toast.error{background:var(--rojo-700);}
+@keyframes toastIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.filter-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+.filter-tabs button{
+  border:1.5px solid var(--linea);background:transparent;
+  padding:7px 14px;border-radius:99px;font-size:12.5px;font-weight:600;
+  color:var(--tinta-suave);cursor:pointer;
+}
+.filter-tabs button.active{background:var(--azul-900);color:#fff;border-color:var(--azul-900);}
+
+.note-box{
+  background:var(--azul-100);border-radius:10px;padding:14px 16px;font-size:12.5px;
+  color:var(--azul-900);line-height:1.6;margin-bottom:18px;
+}
+.note-box strong{display:block;margin-bottom:3px;}
+
+.footer-note{
+  text-align:center;font-size:11.5px;color:var(--tinta-suave);padding:24px;border-top:1px solid var(--linea);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-wrap">
+    <div class="login-side">
+      <div class="brand-mark">
+        <div class="brand-crest">U</div>
+        <div class="brand-text">
+          <span class="top">Campus Virtual</span>
+          <span class="main">UTEPSA</span>
+        </div>
+      </div>
+
+      <div class="login-side-quote">
+        <div class="eyebrow">Extensión · Becas y trabajo social</div>
+        <h1>El registro de horas de tu beca, sin papel y sin esperar el aviso.</h1>
+        <p>Cada actividad queda validada con el código que te entrega el responsable del lugar, y Jefatura de Becas confirma las horas directamente en el sistema.</p>
+      </div>
+
+      <div class="login-stats">
+        <div><strong>0</strong><span>Planillas físicas</span></div>
+        <div><strong>100%</strong><span>Trazabilidad</span></div>
+        <div><strong>1</strong><span>Solo lugar de consulta</span></div>
+      </div>
+    </div>
+
+    <div class="login-form-side">
+      <h2>Iniciar sesión</h2>
+      <p class="sub">Usa tu cuenta institucional de Campus Virtual.</p>
+
+      <div class="role-switch">
+        <button type="button" class="active" data-role="becado" onclick="setLoginRole('becado')">Soy becado/a</button>
+        <button type="button" data-role="jefatura" onclick="setLoginRole('jefatura')">Jefatura de Becas</button>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="field">
+          <label for="loginUser" id="loginUserLabel">Código de estudiante</label>
+          <input type="text" id="loginUser" placeholder="Ej. 2023104521" required>
+        </div>
+        <div class="field">
+          <label for="loginPass">Contraseña</label>
+          <input type="password" id="loginPass" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primary" id="loginSubmitBtn">Ingresar como becado/a</button>
+      </form>
+
+      <div class="demo-note">
+        <strong>Modo demostración — Feria UTEPSA.</strong> Este login es simulado para la presentación del proyecto. Ingresa cualquier código y contraseña para entrar; el rol se elige arriba. En la versión final, el inicio de sesión se conecta directamente con las credenciales reales del Campus Virtual.
+      </div>
+
+      <div class="login-foot">Proyecto Feria UTEPSA 2026 · Estadística Empresarial</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP: BECADO ============ -->
+<div class="app" id="appBecado">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="app-brand">
+        <div class="brand-crest">U</div>
+        <div class="app-brand-text"><span class="top">Campus Virtual</span><span class="main">Becados UTEPSA</span></div>
+      </div>
+      <nav class="app-nav" id="navBecado">
+        <button data-view="inicio" class="active" onclick="goToView('becado','inicio')">Inicio</button>
+        <button data-view="registrar" onclick="goToView('becado','registrar')">Registrar actividad</button>
+        <button data-view="historial" onclick="goToView('becado','historial')">Historial</button>
+      </nav>
+      <div class="app-user">
+        <div class="app-user-info">
+          <span class="name" id="becadoNombre">María López</span>
+          <span class="role" id="becadoBecaInfo">Beca Bachiller Destacado</span>
+        </div>
+        <div class="avatar" id="becadoAvatar">ML</div>
+        <button class="btn-logout" onclick="logout()">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <!-- Vista Inicio -->
+    <section class="view active" id="becado-inicio">
+      <div class="view-head">
+        <div class="eyebrow">Resumen del semestre</div>
+        <h1>Hola, <span id="becadoNombreH1">María</span> 👋</h1>
+        <p>Así va tu cumplimiento de horas de trabajo social este semestre.</p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="label">Horas aprobadas</div>
+          <div class="value green" id="statAprobadas">0</div>
+          <div class="sub">de <span id="statMeta">80</span> horas requeridas</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Pendientes de validación</div>
+          <div class="value gold" id="statPendientes">0</div>
+          <div class="sub">en revisión por Jefatura</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Horas faltantes</div>
+          <div class="value" id="statFaltantes">80</div>
+          <div class="sub">para completar la cuota</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Avance</div>
+          <div class="value" id="statAvance">0%</div>
+          <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="note-box">
+        <strong>¿Cómo se valida una actividad?</strong>
+        El responsable del lugar donde realizas tu trabajo social te entrega un código de verificación al finalizar. Lo registras aquí y Jefatura de Becas confirma las horas — ya no necesitas anotarte en una planilla de papel.
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Últimas actividades</h2>
+            <div class="desc">Tus registros más recientes y su estado de validación</div>
+          </div>
+          <button class="btn-secondary" onclick="goToView('becado','registrar')">+ Registrar actividad</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Actividad</th><th>Lugar</th><th>Fecha</th><th>Horas</th><th>Estado</th></tr></thead>
+            <tbody id="becadoRecientesBody"></tbody>
+          </table>
+        </div>
+        <div id="becadoRecientesEmpty" class="empty-state hidden">
+          <div class="icon">📋</div>
+          <p>Todavía no registraste ninguna actividad este semestre.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vista Registrar -->
+    <section class="view" id="becado-registrar">
+      <div class="view-head">
+        <div class="eyebrow">Nuevo registro</div>
+        <h1>Registrar actividad</h1>
+        <p>Completa los datos y el código de verificación que te entregó el responsable del lugar. Tu actividad quedará en estado "Pendiente" hasta que Jefatura de Becas la confirme.</p>
+      </div>
+
+      <div class="panel">
+        <form id="formActividad" onsubmit="registrarActividad(event)">
+          <div class="form-grid">
+            <div class="field span2">
+              <label for="actNombre">Nombre de la actividad</label>
+              <input type="text" id="actNombre" placeholder="Ej. Apoyo en jornada de salud comunitaria" required>
+            </div>
+            <div class="field">
+              <label for="actCategoria">Categoría</label>
+              <select id="actCategoria" required>
+                <option value="">Selecciona una categoría</option>
+                <option>Apoyo administrativo</option>
+                <option>Proyección social</option>
+                <option>Apoyo académico / tutorías</option>
+                <option>Eventos institucionales</option>
+                <option>Deporte y cultura</option>
+                <option>Otra</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="actFecha">Fecha de la actividad</label>
+              <input type="date" id="actFecha" required>
+            </div>
+            <div class="field">
+              <label for="actLugar">Lugar / unidad responsable</label>
+              <input type="text" id="actLugar" placeholder="Ej. Biblioteca UTEPSA, sede Equipetrol" required>
+            </div>
+            <div class="field">
+              <label for="actHoras">Horas reportadas</label>
+              <input type="number" id="actHoras" min="0.5" max="40" step="0.5" placeholder="Ej. 4" required>
+              <div class="hint">Jefatura puede ajustar este valor al validar.</div>
+            </div>
+            <div class="field span2">
+              <label for="actCodigo">Código de verificación del responsable</label>
+              <div class="code-input-wrap">
+                <input type="text" id="actCodigo" placeholder="Ej. AB12-CD34" maxlength="12" required>
+                <span class="code-badge">Sello digital</span>
+              </div>
+              <div class="hint">Este código te lo entrega la persona encargada del lugar al terminar tu actividad. Reemplaza la firma en la planilla física.</div>
+            </div>
+            <div class="field span2">
+              <label for="actResponsable">Nombre del responsable que validó tu presencia</label>
+              <input type="text" id="actResponsable" placeholder="Ej. Lic. Carla Rivero" required>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button type="submit" class="btn-primary" style="width:auto;padding:13px 26px;">Enviar a validación</button>
+            <button type="button" class="btn-secondary" onclick="goToView('becado','inicio')">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Vista Historial -->
+    <section class="view" id="becado-historial">
+      <div class="view-head">
+        <div class="eyebrow">Trazabilidad completa</div>
+        <h1>Historial de actividades</h1>
+        <p>Todo lo que registraste este semestre, con su estado y observaciones de Jefatura.</p>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="active" data-filter="todas" onclick="filtrarHistorialBecado('todas')">Todas</button>
+        <button data-filter="pendiente" onclick="filtrarHistorialBecado('pendiente')">Pendientes</button>
+        <button data-filter="aprobada" onclick="filtrarHistorialBecado('aprobada')">Aprobadas</button>
+        <button data-filter="rechazada" onclick="filtrarHistorialBecado('rechazada')">Rechazadas</button>
+      </div>
+
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Actividad</th><th>Lugar</th><th>Responsable</th><th>Fecha</th><th>Horas reportadas</th><th>Horas validadas</th><th>Estado</th></tr></thead>
+            <tbody id="becadoHistorialBody"></tbody>
+          </table>
+        </div>
+        <div id="becadoHistorialEmpty" class="empty-state hidden">
+          <div class="icon">🗂️</div>
+          <p>No hay actividades en esta categoría.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="app-nav mobile-visible">
+    <button data-view="inicio" class="active" onclick="goToView('becado','inicio')">Inicio</button>
+    <button data-view="registrar" onclick="goToView('becado','registrar')">Registrar</button>
+    <button data-view="historial" onclick="goToView('becado','historial')">Historial</button>
+  </nav>
+
+  <div class="footer-note">Proyecto Feria UTEPSA 2026 · Sistema Digital de Registro de Horas de Trabajo Social · Estadística Empresarial</div>
+</div>
+
+<!-- ============ APP: JEFATURA ============ -->
+<div class="app" id="appJefatura">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="app-brand">
+        <div class="brand-crest">U</div>
+        <div class="app-brand-text"><span class="top">Campus Virtual</span><span class="main">Jefatura de Becas</span></div>
+      </div>
+      <nav class="app-nav" id="navJefatura">
+        <button data-view="panel" class="active" onclick="goToView('jefatura','panel')">Panel general</button>
+        <button data-view="validar" onclick="goToView('jefatura','validar')">Validar solicitudes</button>
+        <button data-view="becarios" onclick="goToView('jefatura','becarios')">Becarios</button>
+      </nav>
+      <div class="app-user">
+        <div class="app-user-info">
+          <span class="name">Jefatura de Becas</span>
+          <span class="role">Administración</span>
+        </div>
+        <div class="avatar" style="background:var(--oro-600);color:var(--azul-900);">JB</div>
+        <button class="btn-logout" onclick="logout()">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <!-- Panel general -->
+    <section class="view active" id="jefatura-panel">
+      <div class="view-head">
+        <div class="eyebrow">Vista institucional</div>
+        <h1>Panel general de becas</h1>
+        <p>Estado del cumplimiento de horas de trabajo social de todos los becarios registrados en el sistema.</p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="label">Becarios activos</div>
+          <div class="value" id="jefStatBecarios">0</div>
+          <div class="sub">con registros en el sistema</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Solicitudes pendientes</div>
+          <div class="value gold" id="jefStatPendientes">0</div>
+          <div class="sub">requieren tu validación</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Horas aprobadas (total)</div>
+          <div class="value green" id="jefStatHorasAprobadas">0</div>
+          <div class="sub">acumuladas este semestre</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Tasa de rechazo</div>
+          <div class="value red" id="jefStatRechazo">0%</div>
+          <div class="sub">de las solicitudes recibidas</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Solicitudes recientes</h2>
+            <div class="desc">Últimos registros enviados por becarios, de cualquier estado</div>
+          </div>
+          <button class="btn-secondary" onclick="goToView('jefatura','validar')">Ir a validar →</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Becario</th><th>Actividad</th><th>Lugar</th><th>Fecha</th><th>Horas</th><th>Estado</th></tr></thead>
+            <tbody id="jefRecientesBody"></tbody>
+          </table>
+        </div>
+        <div id="jefRecientesEmpty" class="empty-state hidden">
+          <div class="icon">📭</div>
+          <p>Aún no hay solicitudes registradas en el sistema.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Validar solicitudes -->
+    <section class="view" id="jefatura-validar">
+      <div class="view-head">
+        <div class="eyebrow">Cola de revisión</div>
+        <h1>Validar solicitudes</h1>
+        <p>Confirma que el código de verificación corresponde a una actividad real antes de aprobar. Puedes ajustar las horas finales que se acreditarán al becario.</p>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="active" data-filter="pendiente" onclick="filtrarValidar('pendiente')">Pendientes</button>
+        <button data-filter="aprobada" onclick="filtrarValidar('aprobada')">Aprobadas</button>
+        <button data-filter="rechazada" onclick="filtrarValidar('rechazada')">Rechazadas</button>
+        <button data-filter="todas" onclick="filtrarValidar('todas')">Todas</button>
+      </div>
+
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Becario</th><th>Actividad</th><th>Código</th><th>Responsable</th><th>Horas</th><th>Estado</th><th>Acciones</th></tr></thead>
+            <tbody id="jefValidarBody"></tbody>
+          </table>
+        </div>
+        <div id="jefValidarEmpty" class="empty-state hidden">
+          <div class="icon">✅</div>
+          <p>No hay solicitudes en esta categoría.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Becarios -->
+    <section class="view" id="jefatura-becarios">
+      <div class="view-head">
+        <div class="eyebrow">Seguimiento individual</div>
+        <h1>Becarios registrados</h1>
+        <p>Avance de cada becario frente a su meta de horas del semestre.</p>
+      </div>
+
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Becario</th><th>Tipo de beca</th><th>Horas aprobadas</th><th>Meta</th><th>Avance</th><th>Pendientes</th></tr></thead>
+            <tbody id="jefBecariosBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="app-nav mobile-visible">
+    <button data-view="panel" class="active" onclick="goToView('jefatura','panel')">Panel</button>
+    <button data-view="validar" onclick="goToView('jefatura','validar')">Validar</button>
+    <button data-view="becarios" onclick="goToView('jefatura','becarios')">Becarios</button>
+  </nav>
+
+  <div class="footer-note">Proyecto Feria UTEPSA 2026 · Sistema Digital de Registro de Horas de Trabajo Social · Estadística Empresarial</div>
+</div>
+
+<!-- ============ MODAL: Rechazar / Detalle ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+/* =========================================================
+   ESTADO Y DATOS DE EJEMPLO
+   (localStorage — datos de demostración para la feria)
+========================================================= */
+const STORAGE_KEY = 'becados_utepsa_demo_v2';
+
+const BECARIOS_DEMO = [
+  { id:'b1', nombre:'María López', beca:'Beca Bachiller Destacado', meta:80 },
+  { id:'b2', nombre:'Luis Suárez', beca:'Beca Social', meta:100 },
+  { id:'b3', nombre:'Alice Berríos', beca:'Beca Deporte', meta:60 },
+];
+
+const ACTIVIDADES_DEMO = [
+  { id:'a1', becarioId:'b1', actividad:'Apoyo en feria de orientación vocacional', categoria:'Eventos institucionales', lugar:'Campus Equipetrol', fecha:'2026-04-12', horas:4, horasValidadas:4, codigo:'OR45-XP12', responsable:'Lic. Carla Rivero', estado:'aprobada', motivo:'' },
+  { id:'a2', becarioId:'b1', actividad:'Tutoría de Estadística a estudiantes de primer año', categoria:'Apoyo académico / tutorías', lugar:'Biblioteca UTEPSA', fecha:'2026-05-03', horas:6, horasValidadas:0, codigo:'TUT9-22KD', responsable:'Ing. Edwin Mamani', estado:'pendiente', motivo:'' },
+  { id:'a3', becarioId:'b2', actividad:'Brigada de limpieza en comunidad aledaña', categoria:'Proyección social', lugar:'Comunidad Urubó', fecha:'2026-05-10', horas:8, horasValidadas:0, codigo:'BR88-7ZQ1', responsable:'Lic. Pedro Gutiérrez', estado:'pendiente', motivo:'' },
+  { id:'a4', becarioId:'b2', actividad:'Apoyo logístico en graduación', categoria:'Eventos institucionales', lugar:'Auditorio Central', fecha:'2026-04-28', horas:5, horasValidadas:3, codigo:'GR12-AA90', responsable:'Lic. Carla Rivero', estado:'rechazada', motivo:'Horas reportadas no coinciden con el horario registrado por el responsable del evento.' },
+  { id:'a5', becarioId:'b3', actividad:'Apoyo en torneo deportivo interfacultativo', categoria:'Deporte y cultura', lugar:'Coliseo UTEPSA', fecha:'2026-05-15', horas:3, horasValidadas:3, codigo:'DEP3-1190', responsable:'Lic. Marco Antezana', estado:'aprobada', motivo:'' },
+];
+
+function loadState(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw){
+    try{ return JSON.parse(raw); }catch(e){}
+  }
+  const initial = { becarios:BECARIOS_DEMO, actividades:ACTIVIDADES_DEMO };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+  return initial;
+}
+function saveState(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+let state = loadState();
+let session = null; // { role: 'becado'|'jefatura', becarioId: 'b1' }
+let loginRole = 'becado';
+let historialFiltro = 'todas';
+let validarFiltro = 'pendiente';
+
+/* =========================================================
+   LOGIN
+========================================================= */
+function setLoginRole(role){
+  loginRole = role;
+  document.querySelectorAll('.role-switch button').forEach(b=>b.classList.toggle('active', b.dataset.role===role));
+  const label = document.getElementById('loginUserLabel');
+  const submitBtn = document.getElementById('loginSubmitBtn');
+  const userInput = document.getElementById('loginUser');
+  if(role==='becado'){
+    label.textContent = 'Código de estudiante';
+    userInput.placeholder = 'Ej. 2023104521';
+    submitBtn.textContent = 'Ingresar como becado/a';
+  } else {
+    label.textContent = 'Usuario institucional';
+    userInput.placeholder = 'Ej. jefatura.becas';
+    submitBtn.textContent = 'Ingresar a Jefatura de Becas';
+  }
+}
+
+function handleLogin(e){
+  e.preventDefault();
+  // Login simulado para la demo de feria: cualquier credencial es válida.
+  if(loginRole === 'becado'){
+    session = { role:'becado', becarioId:'b1' };
+  } else {
+    session = { role:'jefatura' };
+  }
+  document.getElementById('loginScreen').style.display = 'none';
+  if(session.role === 'becado'){
+    document.getElementById('appBecado').classList.add('active');
+    renderBecado();
+  } else {
+    document.getElementById('appJefatura').classList.add('active');
+    renderJefatura();
+  }
+}
+
+function logout(){
+  session = null;
+  document.getElementById('appBecado').classList.remove('active');
+  document.getElementById('appJefatura').classList.remove('active');
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('loginForm').reset();
+}
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+function goToView(area, viewName){
+  document.querySelectorAll(`#app${cap(area)} .view`).forEach(v=>v.classList.remove('active'));
+  document.getElementById(`${area}-${viewName}`).classList.add('active');
+  document.querySelectorAll(`#app${cap(area)} .app-nav button`).forEach(b=>{
+    b.classList.toggle('active', b.dataset.view===viewName);
+  });
+  if(area==='jefatura' && viewName==='validar') renderValidar();
+  if(area==='jefatura' && viewName==='becarios') renderBecarios();
+  if(area==='becado' && viewName==='historial') renderHistorialBecado();
+}
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+
+/* =========================================================
+   HELPERS
+========================================================= */
+function iniciales(nombre){
+  return nombre.split(' ').map(p=>p[0]).slice(0,2).join('').toUpperCase();
+}
+function fmtFecha(iso){
+  const [y,m,d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
+function pillHTML(estado){
+  const labels = { pendiente:'Pendiente', aprobada:'Aprobada', rechazada:'Rechazada' };
+  return `<span class="pill ${estado}">${labels[estado]}</span>`;
+}
+function showToast(msg, type=''){
+  const wrap = document.getElementById('toastWrap');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  wrap.appendChild(t);
+  setTimeout(()=>{ t.remove(); }, 3200);
+}
+function getBecario(id){ return state.becarios.find(b=>b.id===id); }
+function actividadesDe(becarioId){ return state.actividades.filter(a=>a.becarioId===becarioId); }
+
+/* =========================================================
+   VISTA BECADO
+========================================================= */
+function renderBecado(){
+  const b = getBecario(session.becarioId);
+  document.getElementById('becadoNombre').textContent = b.nombre;
+  document.getElementById('becadoNombreH1').textContent = b.nombre.split(' ')[0];
+  document.getElementById('becadoBecaInfo').textContent = b.beca;
+  document.getElementById('becadoAvatar').textContent = iniciales(b.nombre);
+
+  const acts = actividadesDe(b.id);
+  const aprobadas = acts.filter(a=>a.estado==='aprobada');
+  const pendientes = acts.filter(a=>a.estado==='pendiente');
+  const horasAprobadas = aprobadas.reduce((s,a)=>s+a.horasValidadas,0);
+  const faltantes = Math.max(b.meta - horasAprobadas, 0);
+  const avance = Math.min(Math.round((horasAprobadas/b.meta)*100),100);
+
+  document.getElementById('statAprobadas').textContent = horasAprobadas;
+  document.getElementById('statMeta').textContent = b.meta;
+  document.getElementById('statPendientes').textContent = pendientes.length;
+  document.getElementById('statFaltantes').textContent = faltantes;
+  document.getElementById('statAvance').textContent = avance+'%';
+  document.getElementById('progressFill').style.width = avance+'%';
+
+  const recientes = [...acts].sort((x,y)=> new Date(y.fecha)-new Date(x.fecha)).slice(0,5);
+  const body = document.getElementById('becadoRecientesBody');
+  body.innerHTML = '';
+  if(recientes.length===0){
+    document.getElementById('becadoRecientesEmpty').classList.remove('hidden');
+  } else {
+    document.getElementById('becadoRecientesEmpty').classList.add('hidden');
+    recientes.forEach(a=>{
+      body.innerHTML += `<tr>
+        <td>${a.actividad}</td>
+        <td>${a.lugar}</td>
+        <td>${fmtFecha(a.fecha)}</td>
+        <td>${a.estado==='pendiente' ? a.horas+' (reportadas)' : a.horasValidadas}</td>
+        <td>${pillHTML(a.estado)}</td>
+      </tr>`;
+    });
+  }
+
+  renderHistorialBecado();
+}
+
+function filtrarHistorialBecado(filtro){
+  historialFiltro = filtro;
+  document.querySelectorAll('#becado-historial .filter-tabs button').forEach(b=>b.classList.toggle('active', b.dataset.filter===filtro));
+  renderHistorialBecado();
+}
+
+function renderHistorialBecado(){
+  if(!session || session.role!=='becado') return;
+  const acts = actividadesDe(session.becarioId)
+    .filter(a=> historialFiltro==='todas' ? true : a.estado===historialFiltro)
+    .sort((x,y)=> new Date(y.fecha)-new Date(x.fecha));
+  const body = document.getElementById('becadoHistorialBody');
+  body.innerHTML = '';
+  if(acts.length===0){
+    document.getElementById('becadoHistorialEmpty').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('becadoHistorialEmpty').classList.add('hidden');
+  acts.forEach(a=>{
+    body.innerHTML += `<tr>
+      <td>${a.actividad}${a.estado==='rechazada' && a.motivo ? `<div style="font-size:11.5px;color:var(--rojo-700);margin-top:3px;">${a.motivo}</div>` : ''}</td>
+      <td>${a.lugar}</td>
+      <td>${a.responsable}</td>
+      <td>${fmtFecha(a.fecha)}</td>
+      <td>${a.horas}</td>
+      <td>${a.estado==='pendiente' ? '—' : a.horasValidadas}</td>
+      <td>${pillHTML(a.estado)}</td>
+    </tr>`;
+  });
+}
+
+function generarCodigoSugerido(){
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let s='';
+  for(let i=0;i<8;i++){ s += chars[Math.floor(Math.random()*chars.length)]; if(i===3) s+='-'; }
+  return s;
+}
+
+function registrarActividad(e){
+  e.preventDefault();
+  const nueva = {
+    id:'a'+Date.now(),
+    becarioId: session.becarioId,
+    actividad: document.getElementById('actNombre').value.trim(),
+    categoria: document.getElementById('actCategoria').value,
+    lugar: document.getElementById('actLugar').value.trim(),
+    fecha: document.getElementById('actFecha').value,
+    horas: parseFloat(document.getElementById('actHoras').value),
+    horasValidadas: 0,
+    codigo: document.getElementById('actCodigo').value.trim().toUpperCase(),
+    responsable: document.getElementById('actResponsable').value.trim(),
+    estado:'pendiente',
+    motivo:''
+  };
+  state.actividades.unshift(nueva);
+  saveState();
+  document.getElementById('formActividad').reset();
+  showToast('Actividad enviada a validación de Jefatura de Becas.', 'success');
+  goToView('becado','inicio');
+  renderBecado();
+}
+
+/* =========================================================
+   VISTA JEFATURA
+========================================================= */
+function renderJefatura(){
+  const acts = state.actividades;
+  const pendientes = acts.filter(a=>a.estado==='pendiente');
+  const aprobadas = acts.filter(a=>a.estado==='aprobada');
+  const rechazadas = acts.filter(a=>a.estado==='rechazada');
+  const horasAprobadasTotal = aprobadas.reduce((s,a)=>s+a.horasValidadas,0);
+  const tasaRechazo = acts.length ? Math.round((rechazadas.length/acts.length)*100) : 0;
+
+  document.getElementById('jefStatBecarios').textContent = state.becarios.length;
+  document.getElementById('jefStatPendientes').textContent = pendientes.length;
+  document.getElementById('jefStatHorasAprobadas').textContent = horasAprobadasTotal;
+  document.getElementById('jefStatRechazo').textContent = tasaRechazo+'%';
+
+  const recientes = [...acts].sort((x,y)=> new Date(y.fecha)-new Date(x.fecha)).slice(0,6);
+  const body = document.getElementById('jefRecientesBody');
+  body.innerHTML = '';
+  if(recientes.length===0){
+    document.getElementById('jefRecientesEmpty').classList.remove('hidden');
+  } else {
+    document.getElementById('jefRecientesEmpty').classList.add('hidden');
+    recientes.forEach(a=>{
+      const b = getBecario(a.becarioId);
+      body.innerHTML += `<tr>
+        <td>${b.nombre}</td>
+        <td>${a.actividad}</td>
+        <td>${a.lugar}</td>
+        <td>${fmtFecha(a.fecha)}</td>
+        <td>${a.estado==='pendiente' ? a.horas : a.horasValidadas}</td>
+        <td>${pillHTML(a.estado)}</td>
+      </tr>`;
+    });
+  }
+  renderValidar();
+  renderBecarios();
+}
+
+function filtrarValidar(filtro){
+  validarFiltro = filtro;
+  document.querySelectorAll('#jefatura-validar .filter-tabs button').forEach(b=>b.classList.toggle('active', b.dataset.filter===filtro));
+  renderValidar();
+}
+
+function renderValidar(){
+  if(!session || session.role!=='jefatura') return;
+  const acts = state.actividades
+    .filter(a => validarFiltro==='todas' ? true : a.estado===validarFiltro)
+    .sort((x,y)=> new Date(y.fecha)-new Date(x.fecha));
+  const body = document.getElementById('jefValidarBody');
+  body.innerHTML = '';
+  if(acts.length===0){
+    document.getElementById('jefValidarEmpty').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('jefValidarEmpty').classList.add('hidden');
+  acts.forEach(a=>{
+    const b = getBecario(a.becarioId);
+    const accionesPendiente = a.estado==='pendiente' ? `
+      <button class="btn-icon approve" title="Aprobar" onclick="abrirModalAprobar('${a.id}')">✓</button>
+      <button class="btn-icon reject" title="Rechazar" onclick="abrirModalRechazar('${a.id}')">✕</button>
+    ` : '';
+    body.innerHTML += `<tr>
+      <td>${b.nombre}</td>
+      <td>${a.actividad}<div style="font-size:11.5px;color:var(--tinta-suave);">${a.lugar} · ${fmtFecha(a.fecha)}</div></td>
+      <td><span class="seal">${a.codigo}</span></td>
+      <td>${a.responsable}</td>
+      <td>${a.estado==='pendiente' ? a.horas+' (rep.)' : a.horasValidadas}</td>
+      <td>${pillHTML(a.estado)}</td>
+      <td><div class="action-btns">
+        <button class="btn-icon view" title="Ver detalle" onclick="abrirModalDetalle('${a.id}')">👁</button>
+        ${accionesPendiente}
+      </div></td>
+    </tr>`;
+  });
+}
+
+function renderBecarios(){
+  const body = document.getElementById('jefBecariosBody');
+  body.innerHTML = '';
+  state.becarios.forEach(b=>{
+    const acts = actividadesDe(b.id);
+    const aprobadas = acts.filter(a=>a.estado==='aprobada');
+    const pendientes = acts.filter(a=>a.estado==='pendiente');
+    const horas = aprobadas.reduce((s,a)=>s+a.horasValidadas,0);
+    const avance = Math.min(Math.round((horas/b.meta)*100),100);
+    body.innerHTML += `<tr>
+      <td>${b.nombre}</td>
+      <td>${b.beca}</td>
+      <td>${horas}</td>
+      <td>${b.meta}</td>
+      <td style="min-width:140px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="progress-bar-track" style="flex:1;margin-top:0;"><div class="progress-bar-fill" style="width:${avance}%"></div></div>
+          <span style="font-size:12px;color:var(--tinta-suave);">${avance}%</span>
+        </div>
+      </td>
+      <td>${pendientes.length>0 ? `<span class="pill pendiente">${pendientes.length}</span>` : '—'}</td>
+    </tr>`;
+  });
+}
+
+/* ===== Modales de validación ===== */
+function getActividad(id){ return state.actividades.find(a=>a.id===id); }
+
+function abrirModalDetalle(id){
+  const a = getActividad(id);
+  const b = getBecario(a.becarioId);
+  document.getElementById('modalContent').innerHTML = `
+    <h3>Detalle de la solicitud</h3>
+    <p class="modal-sub">Revisa el código de verificación antes de aprobar o rechazar.</p>
+    <div class="modal-row"><span>Becario</span><span>${b.nombre}</span></div>
+    <div class="modal-row"><span>Actividad</span><span>${a.actividad}</span></div>
+    <div class="modal-row"><span>Categoría</span><span>${a.categoria||'—'}</span></div>
+    <div class="modal-row"><span>Lugar</span><span>${a.lugar}</span></div>
+    <div class="modal-row"><span>Fecha</span><span>${fmtFecha(a.fecha)}</span></div>
+    <div class="modal-row"><span>Responsable del lugar</span><span>${a.responsable}</span></div>
+    <div class="modal-row"><span>Código de verificación</span><span><span class="seal">${a.codigo}</span></span></div>
+    <div class="modal-row"><span>Horas reportadas</span><span>${a.horas}</span></div>
+    <div class="modal-row"><span>Estado</span><span>${pillHTML(a.estado)}</span></div>
+    ${a.motivo ? `<div class="modal-row"><span>Motivo de rechazo</span><span>${a.motivo}</span></div>` : ''}
+    <div class="btn-row"><button class="btn-secondary" onclick="cerrarModal()">Cerrar</button></div>
+  `;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function abrirModalAprobar(id){
+  const a = getActividad(id);
+  const b = getBecario(a.becarioId);
+  document.getElementById('modalContent').innerHTML = `
+    <h3>Aprobar solicitud</h3>
+    <p class="modal-sub">Confirma las horas que se acreditarán a ${b.nombre}. Por defecto se usan las horas reportadas, pero puedes ajustarlas según lo verificado con el responsable del lugar.</p>
+    <div class="modal-row"><span>Código verificado</span><span><span class="seal">${a.codigo}</span></span></div>
+    <div class="modal-row"><span>Responsable</span><span>${a.responsable}</span></div>
+    <div class="field" style="margin-top:16px;">
+      <label for="horasAprobar">Horas a validar</label>
+      <input type="number" id="horasAprobar" value="${a.horas}" min="0" step="0.5">
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary" style="width:auto;background:var(--verde-700);" onclick="confirmarAprobar('${a.id}')">Confirmar aprobación</button>
+      <button class="btn-secondary" onclick="cerrarModal()">Cancelar</button>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function confirmarAprobar(id){
+  const a = getActividad(id);
+  const horas = parseFloat(document.getElementById('horasAprobar').value) || 0;
+  a.estado = 'aprobada';
+  a.horasValidadas = horas;
+  a.motivo = '';
+  saveState();
+  cerrarModal();
+  showToast('Solicitud aprobada y horas acreditadas.', 'success');
+  renderJefatura();
+}
+
+function abrirModalRechazar(id){
+  const a = getActividad(id);
+  const b = getBecario(a.becarioId);
+  document.getElementById('modalContent').innerHTML = `
+    <h3>Rechazar solicitud</h3>
+    <p class="modal-sub">Indica el motivo para que ${b.nombre} pueda corregir o aclarar el registro.</p>
+    <div class="field" style="margin-top:6px;">
+      <label for="motivoRechazo">Motivo del rechazo</label>
+      <input type="text" id="motivoRechazo" placeholder="Ej. El código no corresponde a la fecha indicada">
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary" style="width:auto;background:var(--rojo-700);" onclick="confirmarRechazar('${a.id}')">Confirmar rechazo</button>
+      <button class="btn-secondary" onclick="cerrarModal()">Cancelar</button>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function confirmarRechazar(id){
+  const a = getActividad(id);
+  const motivo = document.getElementById('motivoRechazo').value.trim() || 'No especificado por Jefatura de Becas.';
+  a.estado = 'rechazada';
+  a.horasValidadas = 0;
+  a.motivo = motivo;
+  saveState();
+  cerrarModal();
+  showToast('Solicitud rechazada.', 'error');
+  renderJefatura();
+}
+
+function cerrarModal(){
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+document.getElementById('modalOverlay').addEventListener('click', (e)=>{
+  if(e.target.id==='modalOverlay') cerrarModal();
+});
+
+/* Atajo: prellenar fecha de hoy en el formulario de registro */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const today = new Date().toISOString().split('T')[0];
+  const fechaInput = document.getElementById('actFecha');
+  if(fechaInput) fechaInput.value = today;
+});
+</script>
+</body>
+</html>
