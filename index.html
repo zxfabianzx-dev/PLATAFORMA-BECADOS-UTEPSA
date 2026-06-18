@@ -322,7 +322,7 @@
 </div>
 <div class="relative p-md bg-white border-2 border-primary rounded-xl group cursor-pointer" onclick="updateQRCode()">
 <div class="w-48 h-48 bg-surface-muted flex items-center justify-center relative overflow-hidden" id="qr-container">
-<img alt="QR Code" class="w-full h-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXOJE6zRU5dZAZaeTvz-ReBKpzGzKbFiR79LmgujC5uMzPrilGZiUYRQUl0GQ-8WLS40veQhtktEFNewxMUnOnQQT59xpUPkheeoEuUQ7t77kG2sDp_whxuvsu13gpH7dp_PF6j1co16HxNhUE2JUoFaVjTvhHwrMT2YEraKFwiq0POzG-SIRVLtF7RVzvy0xJEF17ESNKaKNcc3jTeqrIoHbanuPE7yCmUEp7lmwrSKxsxfUZD-exY2gAWWddzyHeHryqBbVbifs"/>
+<img alt="QR Code" class="w-full h-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsDt1Hxi55tomDc9UGcJqYIVIBo_bN060DIWWNKIBxep6V47rlqEmx6D-t7NHSnVQTrhKK9GNtfc2UCTiHLm1_eUDMMPQhH4ZldetUWcp9fQoUmOWfGFSI8cjLxhIiiVxXFOm_NCteFCOt2yqQC98ZLdKo1Cu9N5WPiBEwWiFavtRkaa8POTBSKFqNaH6ggwpK953kI5eyFiVQTfrgD_R4ySxgw6qDKs3KEZr2hFs_EO4FNSP8xZI78fVa3UmZGpipM410CHodP28"/>
 </div>
 <div class="absolute -top-3 -right-3 w-10 h-10 bg-status-approved rounded-full flex items-center justify-center text-white border-4 border-white shadow-md">
 <span class="material-symbols-outlined">check</span>
@@ -339,7 +339,7 @@
 </div>
 </section>
 </div>
-<!-- Tab: Student Portfolio (Mis Horas) -->
+<!-- Tab: Student Portfolio -->
 <div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="student-portfolio">
 <header class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
 <div>
@@ -350,8 +350,38 @@
 <span class="material-symbols-outlined">download</span> Descargar Reporte
                 </button>
 </header>
+<!-- Summary Cards Portfolio -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-md">
+<div class="p-3 bg-primary/10 text-primary rounded-xl">
+<span class="material-symbols-outlined text-3xl">list_alt</span>
+</div>
+<div>
+<p class="text-headline-md font-bold" id="port-total-acts">14</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Total de Actividades</p>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-md">
+<div class="p-3 bg-status-approved/10 text-status-approved rounded-xl">
+<span class="material-symbols-outlined text-3xl">verified</span>
+</div>
+<div>
+<p class="text-headline-md font-bold" id="port-with-evidence">12</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Con Evidencia</p>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-md">
+<div class="p-3 bg-status-pending/10 text-status-pending rounded-xl">
+<span class="material-symbols-outlined text-3xl">hourglass_empty</span>
+</div>
+<div>
+<p class="text-headline-md font-bold" id="port-pending-val">2</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Pendientes de Validación</p>
+</div>
+</div>
+</div>
 <div class="space-y-md" id="activities-table-container">
-<!-- Data will be rendered via JS -->
+<!-- Data rendered via JS -->
 </div>
 </div>
 <!-- Tab: Student Activities (Registro) -->
@@ -394,8 +424,8 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
 <div class="bg-surface border border-outline-variant p-md rounded-xl hover:border-primary transition-colors group">
 <div class="flex justify-between items-start mb-md">
-<span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold">ACADÉMICO</span>
-<span class="text-label-sm text-on-surface-variant">4.0 h</span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase">Académico</span>
+<span class="text-label-sm text-on-surface-variant font-bold">4.0 h</span>
 </div>
 <h4 class="font-bold text-lg mb-sm">Auxiliar Matemáticas II</h4>
 <p class="text-sm text-on-surface-variant mb-md">Apoyo al docente en resolución de ejercicios.</p>
@@ -403,8 +433,8 @@
 </div>
 <div class="bg-surface border border-outline-variant p-md rounded-xl hover:border-primary transition-colors group">
 <div class="flex justify-between items-start mb-md">
-<span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold">ADMINISTRATIVO</span>
-<span class="text-label-sm text-on-surface-variant">2.0 h</span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase">Administrativo</span>
+<span class="text-label-sm text-on-surface-variant font-bold">2.0 h</span>
 </div>
 <h4 class="font-bold text-lg mb-sm">Organización Archivo</h4>
 <p class="text-sm text-on-surface-variant mb-md">Digitalización de documentos oficina central.</p>
@@ -430,9 +460,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
 <div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
-<div class="p-2 bg-primary/10 rounded-lg text-primary">
-<span class="material-symbols-outlined text-2xl">group</span>
-</div>
+<div class="p-2 bg-primary/10 rounded-lg text-primary"><span class="material-symbols-outlined text-2xl">group</span></div>
 <span class="text-[10px] font-bold text-status-approved bg-status-approved/10 px-2 py-0.5 rounded">+12%</span>
 </div>
 <p class="text-headline-md font-bold">1,248</p>
@@ -440,9 +468,7 @@
 </div>
 <div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
-<div class="p-2 bg-status-pending/10 rounded-lg text-status-pending">
-<span class="material-symbols-outlined text-2xl">history</span>
-</div>
+<div class="p-2 bg-status-pending/10 rounded-lg text-status-pending"><span class="material-symbols-outlined text-2xl">history</span></div>
 <span class="text-[10px] font-bold text-status-pending bg-status-pending/10 px-2 py-0.5 rounded">Prioridad</span>
 </div>
 <p class="text-headline-md font-bold">86</p>
@@ -450,9 +476,7 @@
 </div>
 <div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
-<div class="p-2 bg-status-approved/10 rounded-lg text-status-approved">
-<span class="material-symbols-outlined text-2xl">check_circle</span>
-</div>
+<div class="p-2 bg-status-approved/10 rounded-lg text-status-approved"><span class="material-symbols-outlined text-2xl">check_circle</span></div>
 <span class="text-[10px] font-bold text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded">Meta: 90%</span>
 </div>
 <p class="text-headline-md font-bold">84.2%</p>
@@ -460,9 +484,7 @@
 </div>
 <div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
-<div class="p-2 bg-primary/10 rounded-lg text-primary">
-<span class="material-symbols-outlined text-2xl">schedule</span>
-</div>
+<div class="p-2 bg-primary/10 rounded-lg text-primary"><span class="material-symbols-outlined text-2xl">schedule</span></div>
 </div>
 <p class="text-headline-md font-bold">12,450</p>
 <p class="text-label-sm text-on-surface-variant uppercase">Horas Registradas</p>
@@ -484,7 +506,7 @@
 <p class="text-label-md font-bold">Carlos Mendez <span class="font-normal text-on-surface-variant">ha subido evidencia</span></p>
 <p class="text-xs text-on-surface-variant">Apoyo Biblioteca Central • Hace 5 min</p>
 </div>
-<button class="text-primary text-xs font-bold underline">Ver Foto</button>
+<button class="text-primary text-xs font-bold underline" onclick="alert('Abriendo vista previa de evidencia...')">Ver Foto</button>
 </div>
 <div class="flex items-center gap-md p-md hover:bg-surface-muted rounded-xl transition-colors border-l-4 border-status-pending">
 <div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">JP</div>
@@ -548,7 +570,7 @@
 </div>
 </div>
 <div class="relative aspect-square m-lg rounded-xl overflow-hidden bg-black group">
-<div class="absolute inset-0 bg-cover bg-center opacity-70" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBou0dKb4L-9GH70p5a9UkxBSv0pkELCb9mjwCnLunHBUdZQkwjiOkCz2VkLaLLvpk_zPsOKaWjAjnI57LFkMgjpo5c14OheF9VVjAJEzwspqLo3CQKX5CsRzXRDx3ZcZypfCDhWd22xSMasm8Vn_qIpwznNiJf_g_OBC4G12cUTC2vBw6lJNI8fmkX2VdNdnNKNj_WvfyeNxBUhpqE-um4-IRbtzcJ44EtoiZxDavSQvV5nUrIzZ73We35HV6jveYPDqHkBFd9T0c')"></div>
+<div class="absolute inset-0 bg-cover bg-center opacity-70" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB01HdcNFDGBdPgsnK2yd3Sf04_jv5FsDGAHJe8iVOjqPj4Iu-FxBqUxGB6K0V79Jj7XVbkMhW3zI1orGsnmA8q1DZw_G9par1jJaNhh0dWWGttmUYATFWIGqtbPTVCUs_ZGcGqABQWRxPpCFU-h8DJwvs5M7e2Mc9Dkd7KF3TKOrzTlWCe9uyBYKYi-hbkpXm5PXyubgD7VoTxW637sOMsaC0-3jeVWTJiCCOhEqcxJfrdBQGxusSjUs-3KykH32adCh_9pxR6JxQ')"></div>
 <div class="absolute inset-0 bg-scanner-overlay"></div>
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-primary/40 rounded-3xl flex items-center justify-center">
 <div class="scanner-line"></div>
@@ -607,7 +629,10 @@
 </td>
 <td class="px-lg py-lg">
 <p class="font-body-sm font-medium">Tutoría Matemáticas I</p>
+<div class="flex items-center gap-2 mt-1">
 <p class="text-[11px] text-primary font-bold">2.5 Horas</p>
+<button class="text-[10px] bg-primary/5 text-primary px-1.5 py-0.5 rounded font-bold hover:bg-primary hover:text-white transition-colors" onclick="alert('Abriendo evidencia de Juan Pablo...')">Ver Evidencia</button>
+</div>
 </td>
 <td class="px-lg py-lg text-right">
 <div class="flex justify-end gap-sm">
@@ -615,6 +640,32 @@
 <span class="material-symbols-outlined">cancel</span>
 </button>
 <button class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md text-[12px] hover:opacity-90" onclick="handleValidationAction('juan', 'approve')">Validar</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-muted/30" id="row-carlos">
+<td class="px-lg py-lg">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">CM</div>
+<div>
+<p class="font-label-md font-bold">Carlos Mendez</p>
+<p class="text-[11px] text-on-surface-variant">ID: 2200543</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg">
+<p class="font-body-sm font-medium">Apoyo Administrativo DACE</p>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-[11px] text-primary font-bold">4.0 Horas</p>
+<button class="text-[10px] bg-primary/5 text-primary px-1.5 py-0.5 rounded font-bold hover:bg-primary hover:text-white transition-colors" onclick="alert('Abriendo evidencia de Carlos Mendez...')">Ver Evidencia</button>
+</div>
+</td>
+<td class="px-lg py-lg text-right">
+<div class="flex justify-end gap-sm">
+<button class="p-2 text-status-rejected hover:bg-status-rejected/10 rounded" onclick="handleValidationAction('carlos', 'reject')">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md text-[12px] hover:opacity-90" onclick="handleValidationAction('carlos', 'approve')">Validar</button>
 </div>
 </td>
 </tr>
@@ -798,6 +849,9 @@
         if (tabId === 'management-reports' || tabId === 'management-dashboard') {
             initCharts(tabId);
         }
+        if (tabId === 'student-portfolio') {
+            renderActivities();
+        }
     }
 
     function updateQRCode() {
@@ -824,7 +878,6 @@
         };
 
         state.activities.unshift(newActivity);
-        renderActivities();
         updateStats(hours);
         
         document.getElementById('activity-form').reset();
@@ -851,13 +904,18 @@
                     </div>
                     <div class="flex items-center justify-end">
                         ${act.evidence 
-                            ? `<button class="p-2 bg-primary/5 text-primary rounded-lg hover:bg-primary/10 transition-all border border-primary/20 flex items-center gap-2 text-xs font-bold" onclick="alert('Mostrando evidencia...')"><span class="material-symbols-outlined text-sm">visibility</span> Ver Evidencia</button>`
-                            : `<button class="p-2 bg-white text-primary rounded-lg border border-primary hover:bg-primary hover:text-white transition-all flex items-center gap-2 text-xs font-bold" onclick="alert('Abriendo selector de cámara/archivos...')"><span class="material-symbols-outlined text-sm">photo_camera</span> Subir Evidencia</button>`
+                            ? `<button class="p-2 bg-primary/5 text-primary rounded-lg hover:bg-primary/10 transition-all border border-primary/20 flex items-center gap-2 text-xs font-bold" onclick="alert('Mostrando evidencia: ${act.name}')"><span class="material-symbols-outlined text-sm">visibility</span> Ver Evidencia</button>`
+                            : `<button class="p-2 bg-white text-primary rounded-lg border border-primary hover:bg-primary hover:text-white transition-all flex items-center gap-2 text-xs font-bold" onclick="alert('Abriendo selector para Subir Foto o Archivo...')"><span class="material-symbols-outlined text-sm">upload_file</span> Subir Foto o Archivo</button>`
                         }
                     </div>
                 </div>
             </div>
         `).join('');
+
+        // Update Portfolio summary cards
+        document.getElementById('port-total-acts').innerText = state.activities.length;
+        document.getElementById('port-with-evidence').innerText = state.activities.filter(a => a.evidence).length;
+        document.getElementById('port-pending-val').innerText = state.activities.filter(a => a.status === 'Pendiente').length;
     }
 
     function updateStats(newHours) {
@@ -877,7 +935,7 @@
         document.getElementById('form-act-cat').value = cat;
         document.getElementById('form-act-hours').value = hours;
         document.getElementById('form-act-date').value = new Date().toISOString().split('T')[0];
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        switchTab('student-activities');
         alert(`Se han pre-cargado los datos de "${name}". Revisa y haz clic en "Registrar Actividad".`);
     }
 
@@ -897,6 +955,14 @@
             icon.className = 'material-symbols-outlined text-status-approved text-3xl';
             title.innerText = 'Carlos Mendez';
             desc.innerText = 'Estudiante de Ing. Sistemas - ID: 2200543';
+        } else if (val === 'juan') {
+            label.innerText = 'DETECTADO';
+            label.className = 'text-[10px] font-bold text-status-approved bg-status-approved/10 px-sm py-0.5 rounded';
+            iconBg.className = 'w-12 h-12 rounded-full bg-status-approved/20 flex items-center justify-center shrink-0';
+            icon.innerText = 'person_check';
+            icon.className = 'material-symbols-outlined text-status-approved text-3xl';
+            title.innerText = 'Juan Pablo Salas';
+            desc.innerText = 'Estudiante de Psicología - ID: 2200981';
         } else {
             label.innerText = 'ESPERANDO';
             label.className = 'text-[10px] font-bold text-status-pending bg-status-pending/10 px-sm py-0.5 rounded';
@@ -922,13 +988,14 @@
     function initCharts(tabId) {
         if (tabId === 'management-dashboard') {
             if (charts.mgmtCategory) charts.mgmtCategory.destroy();
-            charts.mgmtCategory = new Chart(document.getElementById('mgmtCategoryChart'), {
+            const ctx = document.getElementById('mgmtCategoryChart').getContext('2d');
+            charts.mgmtCategory = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Académico', 'Administrativo', 'Social'],
                     datasets: [{
                         data: [40, 35, 25],
-                        backgroundColor: ['#C41E3A', '#f3f4f6', '#4b5563']
+                        backgroundColor: ['#C41E3A', '#e5e7eb', '#4b5563']
                     }]
                 },
                 options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
