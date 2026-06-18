@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-
-<html class="light" lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Plataforma Becados UTEPSA | Sistema de Excelencia</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
         .material-symbols-outlined {
@@ -159,32 +157,30 @@
 </div>
 </div>
 <div class="bg-surface border border-outline-variant p-xl rounded-2xl shadow-sm space-y-lg">
-<!-- Role Toggle -->
 <div class="flex p-1 bg-surface-variant rounded-xl border border-outline-variant">
 <button class="flex-1 py-sm rounded-lg font-label-md text-label-md transition-all bg-white text-primary shadow-sm font-bold" id="role-btn-student" onclick="setLoginRole('student')">ESTUDIANTE</button>
 <button class="flex-1 py-sm rounded-lg font-label-md text-label-md transition-all text-on-surface-variant" id="role-btn-management" onclick="setLoginRole('management')">JEFATURA</button>
 </div>
-<!-- Forms Container -->
 <form class="space-y-md" onsubmit="event.preventDefault(); handleLogin();">
 <div id="student-login-form">
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant ml-1">Usuario / Registro</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Ej. 2200543" type="text" value="2200543"/>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Ej. 2200543" type="text" value="2200543">
 </div>
 </div>
 <div class="hidden" id="management-login-form">
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant ml-1">Usuario Jefatura</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="jefe.administrativo" type="text" value="jefe.administrativo"/>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="jefe.administrativo" type="text" value="jefe.administrativo">
 </div>
 </div>
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant ml-1">Contraseña</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="••••••••" type="password" value="password"/>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="••••••••" type="password" value="password">
 </div>
 <div class="flex items-center justify-between">
 <label class="flex items-center gap-xs cursor-pointer">
-<input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<input class="rounded border-outline text-primary focus:ring-primary" type="checkbox">
 <span class="text-label-sm text-on-surface-variant">Recordarme</span>
 </label>
 <a class="text-label-sm text-primary font-bold hover:underline" href="#">¿Olvidaste tu contraseña?</a>
@@ -201,7 +197,6 @@
 </section>
 <!-- Main App Layout -->
 <div class="hidden" id="app-content">
-<!-- Side Navigation Bar -->
 <aside class="w-64 h-screen fixed left-0 top-0 flex flex-col p-md gap-sm bg-surface border-r border-outline-variant z-50">
 <div class="mb-lg flex items-center gap-md px-sm">
 <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm">
@@ -213,7 +208,6 @@
 </div>
 </div>
 <nav class="flex-1 space-y-xs" id="side-nav">
-<!-- Student Menu -->
 <div class="space-y-xs" id="student-menu">
 <button class="w-full flex items-center gap-md px-md py-sm text-primary font-bold bg-primary/10 rounded-lg transition-all duration-150 nav-item" id="btn-student-dashboard" onclick="switchTab('student-dashboard')">
 <span class="material-symbols-outlined">dashboard</span>
@@ -228,15 +222,18 @@
 <span class="font-label-md text-label-md">Actividades</span>
 </button>
 </div>
-<!-- Management Menu -->
 <div class="hidden space-y-xs" id="management-menu">
-<button class="w-full flex items-center gap-md px-md py-sm text-primary font-bold bg-primary/10 rounded-lg transition-all duration-150 nav-item" id="btn-management-validation" onclick="switchTab('management-validation')">
-<span class="material-symbols-outlined">how_to_reg</span>
-<span class="font-label-md text-label-md">Validación</span>
+<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-management-dashboard" onclick="switchTab('management-dashboard')">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
 </button>
 <button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-management-creation" onclick="switchTab('management-creation')">
 <span class="material-symbols-outlined">add_task</span>
 <span class="font-label-md text-label-md">Gestión Actividades</span>
+</button>
+<button class="w-full flex items-center gap-md px-md py-sm text-primary font-bold bg-primary/10 rounded-lg transition-all duration-150 nav-item" id="btn-management-validation" onclick="switchTab('management-validation')">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Validación Real-time</span>
 </button>
 <button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-management-reports" onclick="switchTab('management-reports')">
 <span class="material-symbols-outlined">assessment</span>
@@ -244,9 +241,8 @@
 </button>
 </div>
 </nav>
-<!-- User Profile Mini-Card -->
 <div class="mt-auto p-md bg-surface-muted rounded-xl flex items-center gap-md border border-outline-variant">
-<img alt="User Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" id="user-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAysDn8RMm9V9RLmS2Qu5z2MjesiRf2i6yny4pp2nCj1AAWUKxKEodbwITKce_5okCDeI7Xw6uv5tPZBaRpKzegpfGrLAA8pCQtlh2_GwDWW244OOlBsBlkLrAPO0HHWRMrPBblRHnB_kI2qptqygMPnJDQGw6ip8hKEu57GToKQke8JwI820NcaIfb78cnc09rMAgyfSwt7wf48uIR_60Pn1272Gsh86ST7oOE2lcKZRa5DYvWXMtAEOCrUEiTeaBGp3_j0dCmbbI"/>
+<img alt="User Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" id="user-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAysDn8RMm9V9RLmS2Qu5z2MjesiRf2i6yny4pp2nCj1AAWUKxKEodbwITKce_5okCDeI7Xw6uv5tPZBaRpKzegpfGrLAA8pCQtlh2_GwDWW244OOlBsBlkLrAPO0HHWRMrPBblRHnB_kI2qptqygMPnJDQGw6ip8hKEu57GToKQke8JwI820NcaIfb78cnc09rMAgyfSwt7wf48uIR_60Pn1272Gsh86ST7oOE2lcKZRa5DYvWXMtAEOCrUEiTeaBGp3_j0dCmbbI">
 <div class="flex-1 min-w-0">
 <p class="font-label-md text-label-md font-bold truncate" id="user-name">Carlos Mendez</p>
 <p class="font-label-sm text-label-sm text-on-surface-variant truncate" id="user-id">ID: 2200543</p>
@@ -256,15 +252,12 @@
 </button>
 </div>
 </aside>
-<!-- Top Navigation Bar -->
 <header class="fixed top-0 right-0 left-64 h-16 bg-surface shadow-sm z-40 flex justify-between items-center px-lg border-b border-outline-variant">
 <h2 class="font-headline-sm text-headline-sm font-bold text-primary" id="header-title">Panel del Becado</h2>
 <div class="flex items-center gap-lg">
 <div class="flex gap-md">
-<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
-</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative"><span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2.5 h-2.5 bg-primary rounded-full border-2 border-surface animate-pulse"></span></button>
 </div>
 <div class="h-8 w-px bg-outline-variant mx-sm"></div>
 <button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors font-bold flex items-center gap-xs" onclick="logout()">
@@ -272,7 +265,6 @@
             </button>
 </div>
 </header>
-<!-- Main Content Canvas -->
 <main class="ml-64 mt-16 p-lg bg-background min-h-screen">
 <!-- Tab: Student Dashboard -->
 <div class="tab-content max-w-[1400px] mx-auto space-y-xl" id="student-dashboard">
@@ -281,20 +273,19 @@
 <div class="relative overflow-hidden bg-primary p-xl rounded-xl text-on-primary shadow-lg flex flex-col justify-between min-h-[300px]">
 <div class="relative z-10">
 <p class="font-label-md text-label-md opacity-80 mb-xs uppercase tracking-widest">Panel del Becado</p>
-<h1 class="font-headline-lg text-headline-lg mb-md">Bienvenido, <span id="welcome-user-name">Carlos Mendez</span></h1>
+<h1 class="font-headline-lg text-headline-lg mb-md">Bienvenido, <span id="welcome-user-name" class="">Carlos Mendez</span></h1>
 <p class="font-body-md text-body-md max-w-md opacity-90 mb-xl">Estás a un paso de completar tus horas de beca del semestre. ¡Sigue así!</p>
 </div>
 <div class="relative z-10 bg-white/10 backdrop-blur-md p-md rounded-lg border border-white/20">
 <div class="flex justify-between items-end mb-xs">
 <span class="font-label-md text-label-md font-bold">Progreso del Semestre</span>
-<span class="font-headline-sm text-headline-sm"><span id="hours-count">60</span> / 80 <span class="text-sm opacity-70 font-normal">Horas</span></span>
+<span class="font-headline-sm text-headline-sm"><span id="hours-count" class="">60</span> / 80 <span class="text-sm opacity-70 font-normal">Horas</span></span>
 </div>
 <div class="w-full h-3 bg-white/20 rounded-full overflow-hidden">
 <div class="h-full bg-white w-[75%] rounded-full shadow-[0_0_12px_rgba(255,255,255,0.5)] transition-all duration-1000 ease-out" id="progress-bar"></div>
 </div>
 </div>
 </div>
-<!-- Stats -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-md">
 <div class="bg-surface p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
 <span class="material-symbols-outlined text-primary mb-sm text-3xl">timer</span>
@@ -318,16 +309,15 @@
 </div>
 </div>
 </div>
-<!-- Student QR -->
 <div class="xl:col-span-4 space-y-lg">
 <div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-lg text-center space-y-lg flex flex-col items-center">
 <div class="flex items-center justify-center gap-sm text-primary">
 <span class="material-symbols-outlined">qr_code_scanner</span>
 <h3 class="font-headline-md text-headline-md">Mi Pase QR</h3>
 </div>
-<div class="relative p-md bg-white border-2 border-primary rounded-xl group cursor-pointer" onclick="updateQRCode()">
+<div class="relative p-md bg-white border-2 border-primary rounded-xl group cursor-pointer" onclick="simulateQRScan()">
 <div class="w-48 h-48 bg-surface-muted flex items-center justify-center relative overflow-hidden" id="qr-container">
-<img alt="QR Code" class="w-full h-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPC-2cJDWIFUuZmhb8ytIRuPf0ayFpfvRBiMtZqt64g2rmRLOmKzTdXW_rQ0TI5JL4OFl1LoIHXqnMUBOecIIhBNUQKC0C8bwKjm_rL38lhlEINOa6mmX_Slayz0GOTGLbgR2KW-iOb7qdxQSHLkI8RdjLT3wZCThEUAn6jRQUbRN16Qm2HxOOx89sN-xUuRTKD6yVsKRCvbkr-bYuhmJm9P-Z4xz4cMD4q_-ZdNVrwb711f2En_hBRGuLmidZplwEacp8qQPBcVw"/>
+<img alt="QR Code" class="w-full h-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl-MVH-ErZyzZ5AnT0gyOwdg8Hlc4bxlIRvxQUAwL-b8G_Cs8yGansAcyad_B_-NNwYjjmher5L2vEy3iPREbJyVF-L7upHBfDLwmtV3gs-UPYIe6MNpRZvHNAlBqLcB3lwjaIJoRr7qm6bHNviPyDE3CdwvrP9Ou3p137YHKuon7OIFJv1NWhpwXwq7COqFoN0E9_MINX4XKyqk3QxqPArT5QlyobUzptXeAVxXqJXEFIuzszkD8Og3psAEBZoPapykHus-_w2n4">
 </div>
 <div class="absolute -top-3 -right-3 w-10 h-10 bg-status-approved rounded-full flex items-center justify-center text-white border-4 border-white shadow-md">
 <span class="material-symbols-outlined">check</span>
@@ -335,7 +325,7 @@
 </div>
 <div class="w-full p-md bg-primary/5 rounded-lg border border-primary/20">
 <p class="font-label-sm text-label-sm text-primary uppercase mb-xs tracking-widest">Código temporal</p>
-<p class="font-headline-sm text-headline-sm text-primary font-bold tracking-widest" id="qr-code-text">UTEPSA-982-XM</p>
+<p class="font-headline-sm text-headline-sm text-primary font-bold tracking-widest" id="qr-code-text">UTEPSA-2200543</p>
 </div>
 <button class="text-primary font-bold text-sm hover:underline flex items-center gap-2" onclick="updateQRCode()">
 <span class="material-symbols-outlined text-sm">refresh</span> Actualizar Código
@@ -344,165 +334,108 @@
 </div>
 </section>
 </div>
-<!-- Tab: Student Portfolio (Mis Horas) -->
-<div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="student-portfolio">
-<header class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
-<div>
-<h1 class="text-headline-lg font-headline-lg text-on-surface">Mi Portafolio de Actividades</h1>
-<p class="text-body-md text-on-surface-variant">Visualiza tus horas y sube evidencia de tus actividades realizadas.</p>
-</div>
-<div class="flex gap-md">
-<button class="border border-outline text-primary font-label-md px-lg py-sm rounded-lg hover:bg-primary/5 transition-colors flex items-center gap-sm">
-<span class="material-symbols-outlined">download</span> Descargar Reporte
-                </button>
-</div>
-</header>
-<!-- Resumen de Evidencias -->
-<section class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-lg">
-<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-2xl">format_list_bulleted</span>
-</div>
-<div>
-<p class="text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Total Actividades</p>
-<h3 class="text-headline-md font-bold" id="portfolio-total-activities">0</h3>
-</div>
-</div>
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-lg">
-<div class="w-12 h-12 rounded-xl bg-status-approved/10 flex items-center justify-center text-status-approved">
-<span class="material-symbols-outlined text-2xl">photo_library</span>
-</div>
-<div>
-<p class="text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Con Evidencia</p>
-<h3 class="text-headline-md font-bold" id="portfolio-with-evidence">0</h3>
-</div>
-</div>
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-lg">
-<div class="w-12 h-12 rounded-xl bg-status-pending/10 flex items-center justify-center text-status-pending">
-<span class="material-symbols-outlined text-2xl">pending_actions</span>
-</div>
-<div>
-<p class="text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Pendientes de Validación</p>
-<h3 class="text-headline-md font-bold" id="portfolio-pending-validation">0</h3>
-</div>
-</div>
-</section>
-<div class="space-y-md" id="activities-table-container">
-<!-- Contenedor dinámico de actividades del portafolio -->
-</div>
-</div>
-<!-- Tab: Student Activities (Inscripción) -->
-<div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="student-activities">
-<div class="flex justify-between items-center mb-md">
-<h3 class="font-headline-lg text-headline-lg">Actividades Disponibles</h3>
-<p class="text-on-surface-variant text-sm">Inscríbete para sumar horas a tu beca.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" id="available-activities-list">
-<!-- Actividades cargadas por JS -->
-</div>
-</div>
-<!-- Tab: Management Validation -->
+<!-- Tab: Management Validation (Updated for Real-time Check-in) -->
 <div class="tab-content hidden max-w-[1400px] mx-auto space-y-lg" id="management-validation">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-md">
 <div>
-<h3 class="font-headline-md text-headline-md">Panel de Control de Asistencia</h3>
-<p class="text-body-sm text-on-surface-variant">Escanea el código QR del estudiante para registrar entrada/salida.</p>
+<h3 class="font-headline-md text-headline-md">Control de Asistencia en Tiempo Real</h3><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mt-1">
+    <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span> En Vivo
+</span>
+<p class="text-body-sm text-on-surface-variant">Monitoreo de entradas y salidas de becarios para la actividad actual.</p>
 </div>
-<div class="w-full md:w-64">
-<label class="font-label-sm text-on-surface-variant mb-xs block">Seleccionar Estudiante</label>
-<select class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="mgmt-student-select" onchange="loadStudentValidation(this.value)">
-<option value="">Buscar por nombre o ID...</option>
-<option value="carlos">Carlos Mendez - 2200543</option>
-<option value="juan">Juan Pablo Salas - 2200981</option>
-</select>
+<div class="bg-primary/10 px-lg py-sm rounded-lg border border-primary/20">
+<span class="text-xs font-bold text-primary block uppercase tracking-wider mb-1">Actividad en Curso</span>
+<p class="font-bold text-sm" id="mgmt-active-activity">Staff Graduaciones 2024</p>
 </div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
-<!-- Escáner Module -->
-<section class="lg:col-span-5 space-y-lg">
+<!-- Scanner & Controls -->
+<section class="lg:col-span-4 space-y-lg">
 <div class="bg-surface border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
 <div class="p-lg border-b border-outline-variant flex justify-between items-center bg-primary/5">
 <h4 class="font-headline-sm text-headline-sm flex items-center gap-md">
 <span class="material-symbols-outlined text-primary">qr_code_scanner</span> Escáner
                             </h4>
 <div class="flex bg-surface-muted rounded-lg p-1 border border-outline-variant">
-<button class="px-md py-1 rounded-md text-[12px] font-bold bg-primary text-on-primary shadow-sm" id="btn-scan-in">ENTRADA</button>
-<button class="px-md py-1 rounded-md text-[12px] font-bold text-on-surface-variant hover:bg-surface-variant" id="btn-scan-out">SALIDA</button>
+<button class="px-md py-1 rounded-md text-[12px] font-bold bg-primary text-on-primary shadow-sm" id="btn-scan-mode">CHECK-IN</button>
 </div>
 </div>
 <div class="relative aspect-square m-lg rounded-xl overflow-hidden bg-black group">
-<div class="absolute inset-0 bg-cover bg-center opacity-70" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvpq3L9md01Q6yZ-M3-ryd-EY-dzM_zUNrgIlyeywG2ZrgTBLMZWBB0SZCpusWyT641c444VX1HZZSJnfVP5fdocR8tsN5iIlreuxK_bpo7piY4GHm5cwyv16en40jlAnp6BwHF9IP0EwvdoQ73GOcpNikidghSPrB6PihuKxwkp2lhuEqUwRt3sk8AhB21xlfRb8YHCKtYc7kT7mf4F_uguJSeasoGMxdfv9kZl1ZI6Va4WZht4k2kEn6kLskGUzObz2kflG4FIE')"></div>
+<div class="absolute inset-0 bg-cover bg-center opacity-70" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHezQxZICqDtw1n11W4oyAyw9khTRwGcNFOhA3zzERdsKczD3gkcszce5aP75iGQqJXjfe8DRVMiqq1fJBdkN08FZk3PUgcaLxnVSlGHASz5gJA1OMqUZy6Ed205psobjxq8VH9mZklx3QJuvWNCfteJOxmdDLQCGysnZ_o58MomnD5RQE0fzZnYP-wTUbm3Unk04PGaXBbdV5fKoA2Iif_BQZOTMu-XIbT0kFHnDV5TIg7s5bOyntnYyWyiyEbw2xBjPZPYFNQCc')"></div>
 <div class="absolute inset-0 bg-scanner-overlay"></div>
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-primary/40 rounded-3xl flex items-center justify-center">
 <div class="scanner-line"></div>
 </div>
-<div class="absolute bottom-md left-1/2 -translate-x-1/2 flex gap-md">
-<button class="bg-primary text-on-primary px-md py-sm rounded-full hover:opacity-90 transition-all flex items-center gap-xs shadow-lg" onclick="alert('Evidencia fotográfica capturada')">
-<span class="material-symbols-outlined text-[18px]">add_a_photo</span>
-<span class="text-[11px] font-bold">Tomar Evidencia</span>
-</button>
-</div>
 </div>
 <div class="px-lg pb-lg">
-<div class="bg-surface-muted p-md rounded-xl border border-outline-variant" id="scan-status-card">
-<div class="flex justify-between items-start mb-sm">
-<p class="font-label-md text-label-md text-on-surface-variant">Estado:</p>
-<span class="text-[10px] font-bold text-status-pending bg-status-pending/10 px-sm py-0.5 rounded" id="scan-label">ESPERANDO</span>
-</div>
-<div class="flex items-center gap-md">
-<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0" id="scan-icon-bg">
-<span class="material-symbols-outlined text-primary text-3xl" id="scan-icon">camera</span>
-</div>
-<div class="flex-1 min-w-0">
-<p class="font-bold text-on-surface" id="scan-title">Esperando QR...</p>
-<p class="text-[12px] text-on-surface-variant" id="scan-desc">Posicione el código frente a la cámara</p>
+<button class="w-full py-md bg-on-tertiary-container text-white rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 mb-md" onclick="simulateQRScanFromManagement()">
+<span class="material-symbols-outlined">sensors</span> Forzar Escaneo Demo
+    </button>
+<div class="bg-surface-muted p-md rounded-xl border border-outline-variant">
+<h5 class="text-[11px] font-bold text-on-surface-variant uppercase mb-md">Preparación de Cierre</h5>
+<button class="w-full py-sm border border-primary text-primary rounded-lg text-sm font-bold hover:bg-primary/5" onclick="alert('Iniciando proceso de Check-out grupal...')">Habilitar Check-out</button>
 </div>
 </div>
 </div>
-</div>
-</div>
-</section>
-<!-- Students Validation list -->
-<section class="lg:col-span-7">
-<div class="bg-surface border border-outline-variant rounded-xl shadow-sm h-full flex flex-col" id="validation-detail-card">
+<div class="bg-surface border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
+    <div class="p-md border-b border-outline-variant bg-surface-muted flex justify-between items-center">
+        <h5 class="text-xs font-bold text-on-surface uppercase tracking-wider flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">campaign</span> Alertas Recientes
+        </h5>
+        <span class="text-[10px] text-primary font-bold">3 nuevas</span>
+    </div>
+    <div class="p-sm space-y-sm max-h-48 overflow-y-auto">
+        <div class="p-2 bg-primary/5 border-l-4 border-primary rounded flex gap-3 items-start animate-pulse-soft">
+            <span class="material-symbols-outlined text-primary text-sm">login</span>
+            <div>
+                <p class="text-[11px] font-bold">Juan García acaba de ingresar</p>
+                <p class="text-[9px] text-on-surface-variant">Hace 2 min • Staff Graduaciones</p>
+            </div>
+        </div>
+        <div class="p-2 hover:bg-surface-muted rounded flex gap-3 items-start transition-colors">
+            <span class="material-symbols-outlined text-status-approved text-sm">cloud_upload</span>
+            <div>
+                <p class="text-[11px] font-bold">Nueva evidencia: Maria Lopez</p>
+                <p class="text-[9px] text-on-surface-variant">Hace 5 min • Auxiliar Matemáticas</p>
+            </div>
+        </div>
+        <div class="p-2 hover:bg-surface-muted rounded flex gap-3 items-start transition-colors">
+            <span class="material-symbols-outlined text-on-surface-variant text-sm">info</span>
+            <div>
+                <p class="text-[11px] font-bold">Capacidad alcanzada: Staff 2024</p>
+                <p class="text-[9px] text-on-surface-variant">Hace 15 min</p>
+            </div>
+        </div>
+    </div>
+</div></section>
+<!-- Live Feed -->
+<section class="lg:col-span-8 space-y-lg">
+<div class="bg-surface border border-outline-variant rounded-xl shadow-sm h-full flex flex-col">
 <div class="p-lg border-b border-outline-variant flex justify-between items-center">
-<h4 class="font-headline-sm text-headline-sm">Evidencias por Validar</h4>
-<button class="text-primary font-bold text-sm" onclick="alert('Todos los registros marcados como validados')">Validar Todo</button>
+<h4 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="w-2 h-2 bg-status-approved rounded-full animate-pulse"></span>
+                Check-in en Vivo
+            </h4>
+<div class="text-xs font-medium text-on-surface-variant">
+                Total Presentes: <span class="font-bold text-primary" id="mgmt-present-count">0</span>
 </div>
-<div class="overflow-x-auto">
+</div>
+<div class="overflow-x-auto flex-1">
 <table class="w-full text-left">
 <thead class="bg-surface-muted border-b border-outline-variant">
 <tr>
-<th class="px-lg py-md font-label-md text-on-surface-variant">Estudiante</th>
-<th class="px-lg py-md font-label-md text-on-surface-variant">Actividad</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">Becario</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">Entrada</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">Evidencia</th>
 <th class="px-lg py-md font-label-md text-on-surface-variant text-right">Acciones</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-outline-variant" id="mgmt-validation-table">
-<tr class="hover:bg-surface-muted/30" id="row-juan">
-<td class="px-lg py-lg">
-<div class="flex items-center gap-md">
-<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">JP</div>
-<div>
-<p class="font-label-md font-bold">Juan Pablo Salas</p>
-<p class="text-[11px] text-on-surface-variant">ID: 2200981</p>
-</div>
-</div>
-</td>
-<td class="px-lg py-lg">
-<p class="font-body-sm font-medium">Tutoría Matemáticas I</p>
-<div class="flex items-center gap-xs mt-1">
-<span class="material-symbols-outlined text-[14px] text-primary">image</span>
-<button class="text-[11px] text-primary hover:underline font-bold" onclick="alert('Abriendo previsualización de evidencia...')">Ver Evidencia</button>
-</div>
-</td>
-<td class="px-lg py-lg text-right">
-<div class="flex justify-end gap-sm">
-<button class="p-2 text-status-rejected hover:bg-status-rejected/10 rounded" onclick="handleValidationAction('juan', 'reject')">
-<span class="material-symbols-outlined">cancel</span>
-</button>
-<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md text-[12px] hover:opacity-90" onclick="handleValidationAction('juan', 'approve')">Validar</button>
-</div>
+<tbody class="divide-y divide-outline-variant" id="mgmt-live-checkin-body">
+<!-- Rows will appear here as students scan -->
+<tr id="empty-state-row">
+<td class="px-lg py-20 text-center text-on-surface-variant" colspan="4">
+<span class="material-symbols-outlined text-4xl mb-2 opacity-20">history</span>
+<p class="text-sm">Esperando registros...</p>
 </td>
 </tr>
 </tbody>
@@ -512,7 +445,11 @@
 </section>
 </div>
 </div>
-<!-- Tab: Management Activity Creation -->
+<!-- Other Tabs (Preserved structure) -->
+<div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="management-dashboard">
+<h3 class="font-headline-lg">Dashboard General</h3>
+<p class="text-on-surface-variant">Vista general de cumplimiento por facultad.</p>
+</div>
 <div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="management-creation">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
 <div class="lg:col-span-4">
@@ -521,7 +458,7 @@
 <form class="space-y-md" id="mgmt-activity-form" onsubmit="event.preventDefault(); createNewManagementActivity();">
 <div class="space-y-xs">
 <label class="font-label-sm text-on-surface-variant">Nombre de Actividad</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="m-form-act-name" placeholder="Ej: Staff Graduaciones 2024" required="" type="text"/>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="m-form-act-name" placeholder="Ej: Staff Graduaciones 2024" required="" type="text">
 </div>
 <div class="space-y-xs">
 <label class="font-label-sm text-on-surface-variant">Descripción Corta</label>
@@ -538,297 +475,95 @@
 </div>
 <div class="space-y-xs">
 <label class="font-label-sm text-on-surface-variant">Horas</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="m-form-act-hours" min="0.5" required="" step="0.5" type="number" value="2.0"/>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-md">
-<div class="space-y-xs">
-<label class="font-label-sm text-on-surface-variant">Capacidad</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="m-form-act-cap" min="1" required="" type="number" value="10"/>
-</div>
-<div class="space-y-xs">
-<label class="font-label-sm text-on-surface-variant">Fecha</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="m-form-act-date" required="" type="date"/>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="m-form-act-hours" min="0.5" required="" step="0.5" type="number" value="2.0">
 </div>
 </div>
 <button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2" type="submit">
 <span class="material-symbols-outlined">post_add</span> Publicar Actividad
-                    </button>
+</button>
 </form>
 </div>
 </div>
 <div class="lg:col-span-8 space-y-md">
 <h3 class="font-headline-sm">Actividades Publicadas</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-md" id="mgmt-published-list">
-<!-- Management will see existing activities here -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md" id="mgmt-published-list"></div>
 </div>
 </div>
 </div>
+<div class="tab-content hidden max-w-[1400px] mx-auto space-y-lg" id="management-reports">
+<h1 class="text-headline-lg font-headline-lg">Reportes de Gestión</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
+<h3 class="font-bold mb-md">Horas por Categoría</h3>
+<div class="h-64"><canvas id="categoryChart"></canvas></div>
 </div>
-<!-- Tab: Management Reports -->
-<div class="tab-content hidden max-w-[1400px] mx-auto space-y-xl" id="management-reports">
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-md border-b border-outline-variant pb-lg">
+<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
+<h3 class="font-bold mb-md">Participación Semanal</h3>
+<div class="h-64"><canvas id="weeklyChart"></canvas></div>
+</div>
+</div>
+</div>
+<div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="student-portfolio">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
 <div>
-<h1 class="text-headline-lg font-headline-lg text-on-surface">Reportes de Gestión de Becas</h1>
-<p class="text-body-md text-on-surface-variant">Análisis detallado de impacto y cumplimiento de horas beca.</p>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Mi Portafolio</h1>
+<p class="text-body-md text-on-surface-variant">Subida de evidencias para actividades en curso o finalizadas.</p>
 </div>
-<div class="flex flex-wrap gap-md">
-<div class="flex bg-surface-variant rounded-lg p-1 border border-outline-variant">
-<select class="bg-transparent border-none text-label-sm font-bold px-sm focus:ring-0 cursor-pointer" id="filter-semester">
-<option value="2-2023">Semestre 2/2023</option>
-<option value="1-2023">Semestre 1/2023</option>
-</select>
-<div class="w-px h-full bg-outline-variant mx-1"></div>
-<select class="bg-transparent border-none text-label-sm font-bold px-sm focus:ring-0 cursor-pointer" id="filter-category">
-<option value="all">Todas las Categorías</option>
-<option value="academic">Académico</option>
-<option value="admin">Administrativo</option>
-<option value="social">Social</option>
-</select>
+</header>
+<div class="space-y-md" id="activities-table-container">
+            <div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row mb-4">
+                <div class="w-2 bg-status-approved"></div>
+                <div class="p-lg flex-grow grid grid-cols-1 md:grid-cols-4 items-center">
+                    <div class="md:col-span-1">
+                        <h3 class="font-bold text-on-surface">Apoyo Biblioteca Central</h3>
+                        <p class="text-xs text-on-surface-variant">Administrativo</p>
+                    </div>
+                    <div><p class="text-[11px] text-on-surface-variant">Horas</p><p class="font-bold text-primary">5 h</p></div>
+                    <div class="flex flex-col">
+                        <span class="text-status-approved text-xs font-bold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px]">check_circle</span> Validado
+                        </span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-status-approved font-bold">Evidencia Subida</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
-<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-bold shadow-lg hover:opacity-90 transition-all flex items-center gap-sm" onclick="generateProfessionalReport()">
-<span class="material-symbols-outlined">picture_as_pdf</span> Generar Reporte PDF
-            </button>
-</div>
-</div>
-<!-- Performance Summary Dashboard -->
-<section class="grid grid-cols-1 md:grid-cols-3 gap-lg">
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-lg">
-<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-3xl">trending_up</span>
-</div>
-<div>
-<p class="text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Promedio Semanal</p>
-<h3 class="text-headline-md font-bold">4.2 Horas</h3>
-<p class="text-[11px] text-status-approved flex items-center gap-xs font-bold">
-<span class="material-symbols-outlined text-[12px]">arrow_upward</span> +12% vs mes anterior
-                </p>
-</div>
-</div>
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-lg">
-<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-3xl">category</span>
-</div>
-<div>
-<p class="text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Mayor Impacto</p>
-<h3 class="text-headline-md font-bold">Académico</h3>
-<p class="text-[11px] text-on-surface-variant">45% de participación total</p>
-</div>
-</div>
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-lg">
-<div class="w-14 h-14 rounded-full bg-status-approved/10 flex items-center justify-center text-status-approved">
-<span class="material-symbols-outlined text-3xl">verified</span>
-</div>
-<div>
-<p class="text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Validación</p>
-<h3 class="text-headline-md font-bold">92.4%</h3>
-<p class="text-[11px] text-on-surface-variant">148 de 160 registros validados</p>
-</div>
-</div>
-</section>
-<!-- Main Charts -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex flex-col">
-<div class="flex justify-between items-center mb-lg">
-<h3 class="font-headline-sm font-bold flex items-center gap-md text-primary">
-<span class="material-symbols-outlined">pie_chart</span> Distribución por Categoría
-                </h3>
-</div>
-<div class="flex-grow flex items-center justify-center p-md">
-<div class="w-full h-[320px] relative">
-<canvas id="categoryChart"></canvas>
-</div>
-</div>
-<div class="grid grid-cols-3 gap-md mt-lg pt-lg border-t border-outline-variant text-center">
-<div>
-<div class="w-3 h-3 rounded-full bg-[#C41E3A] mx-auto mb-xs"></div>
-<p class="text-[11px] font-bold text-on-surface-variant">Académico</p>
-</div>
-<div>
-<div class="w-3 h-3 rounded-full bg-[#111827] mx-auto mb-xs"></div>
-<p class="text-[11px] font-bold text-on-surface-variant">Administrativo</p>
-</div>
-<div>
-<div class="w-3 h-3 rounded-full bg-[#9ca3af] mx-auto mb-xs"></div>
-<p class="text-[11px] font-bold text-on-surface-variant">Social</p>
-</div>
-</div>
-</div>
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex flex-col">
-<div class="flex justify-between items-center mb-lg">
-<h3 class="font-headline-sm font-bold flex items-center gap-md text-primary">
-<span class="material-symbols-outlined">bar_chart</span> Progreso Mensual (Horas)
-                </h3>
-</div>
-<div class="flex-grow flex items-center justify-center p-md">
-<div class="w-full h-[320px] relative">
-<canvas id="monthlyProgressChart"></canvas>
-</div>
-</div>
-<div class="mt-lg pt-lg border-t border-outline-variant">
-<p class="text-body-sm text-on-surface-variant text-center">Tendencia proyectada: <span class="font-bold text-primary">Cumplimiento al 105%</span> para fin de gestión.</p>
-</div>
-</div>
-</div>
+<div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="student-activities">
+<h3 class="font-headline-lg mb-md">Inscripción a Actividades</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" id="available-activities-list">
+            <div class="bg-surface border border-outline-variant p-lg rounded-xl hover:border-primary transition-all shadow-sm flex flex-col">
+                <div class="flex justify-between items-start mb-md">
+                    <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Social</span>
+                    <span class="text-label-sm text-on-surface-variant font-bold">6 h</span>
+                </div>
+                <h4 class="font-bold text-lg mb-sm">Staff Graduaciones 2024</h4>
+                <p class="text-sm text-on-surface-variant mb-md flex-grow">Apoyo logístico durante el evento de graduación.</p>
+                <div class="flex items-center gap-sm text-xs text-on-surface-variant mb-md">
+                    <span class="material-symbols-outlined text-sm">group</span> Capacidad: 12/20
+                </div>
+                <button class="w-full py-2 bg-primary text-white rounded-lg font-bold hover:bg-primary-container transition-all" onclick="enrollInActivity('Staff Graduaciones 2024', 'Social', 6, 101)">Inscribirme</button>
+            </div>
+        
+            <div class="bg-surface border border-outline-variant p-lg rounded-xl hover:border-primary transition-all shadow-sm flex flex-col">
+                <div class="flex justify-between items-start mb-md">
+                    <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Académico</span>
+                    <span class="text-label-sm text-on-surface-variant font-bold">4 h</span>
+                </div>
+                <h4 class="font-bold text-lg mb-sm">Auxiliar Matemáticas II</h4>
+                <p class="text-sm text-on-surface-variant mb-md flex-grow">Apoyo al docente en resolución de ejercicios.</p>
+                <div class="flex items-center gap-sm text-xs text-on-surface-variant mb-md">
+                    <span class="material-symbols-outlined text-sm">group</span> Capacidad: 5/10
+                </div>
+                <button class="w-full py-2 bg-primary text-white rounded-lg font-bold hover:bg-primary-container transition-all" onclick="enrollInActivity('Auxiliar Matemáticas II', 'Académico', 4, 102)">Inscribirme</button>
+            </div>
+        </div>
 </div>
 </main>
 </div>
-<!-- Modal Professional Report Simulation -->
-<div class="hidden fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-md" id="modal-pdf-report">
-<div class="bg-white w-full max-w-4xl h-[90vh] rounded-xl overflow-hidden flex flex-col shadow-2xl animate-in fade-in zoom-in duration-300">
-<div class="p-lg bg-surface-muted border-b border-outline-variant flex justify-between items-center">
-<div class="flex items-center gap-md">
-<div class="w-10 h-10 bg-primary rounded flex items-center justify-center text-white">
-<span class="material-symbols-outlined">picture_as_pdf</span>
-</div>
-<div>
-<h3 class="font-bold text-lg">Vista Previa: Reporte de Horas Beca</h3>
-<p class="text-xs text-on-surface-variant">Documento Oficial Generado - UTEPSA</p>
-</div>
-</div>
-<div class="flex gap-md">
-<button class="px-lg py-2 border border-outline text-on-surface font-bold rounded-lg hover:bg-surface-muted transition-colors" onclick="document.getElementById('modal-pdf-report').classList.add('hidden')">Cancelar</button>
-<button class="px-lg py-2 bg-primary text-on-primary font-bold rounded-lg hover:opacity-90 transition-all flex items-center gap-sm" onclick="alert('Descargando archivo PDF...'); document.getElementById('modal-pdf-report').classList.add('hidden')">
-<span class="material-symbols-outlined text-[18px]">download</span> Guardar PDF
-                </button>
-</div>
-</div>
-<div class="flex-grow overflow-y-auto p-xl bg-slate-100 flex justify-center">
-<div class="bg-white w-full max-w-[800px] shadow-lg p-[50px] min-h-[1000px] text-on-surface font-serif" id="report-printable-area">
-<!-- Header -->
-<div class="flex justify-between items-start border-b-2 border-primary pb-lg mb-xl">
-<div>
-<h2 class="text-2xl font-bold text-primary font-sans">UTEPSA</h2>
-<p class="text-sm font-sans">Universidad Tecnológica de Santa Cruz</p>
-<p class="text-xs font-sans text-on-surface-variant">Unidad de Bienestar Estudiantil</p>
-</div>
-<div class="text-right">
-<h3 class="text-xl font-bold uppercase tracking-tighter font-sans">Reporte Académico</h3>
-<p class="text-xs font-sans">Fecha: 24/10/2023</p>
-<p class="text-xs font-sans">Código: RE-BEC-2023-441</p>
-</div>
-</div>
-<!-- Identification -->
-<div class="bg-primary/5 p-lg rounded border border-primary/20 mb-xl flex gap-xl">
-<div class="w-24 h-24 bg-surface rounded-lg border border-outline-variant overflow-hidden">
-<img alt="Student" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA5NzSHG5JkUhD_fqVEo_nwZXfjOcTRED2kmJZnm_xamQ1i1S_D26L9Sj7s5Nd0mV8gnKGp-B4Z-jnJy6SGDz4saWe1HRa1T9V8lqhpUfm7G7FTHQ2poycNNdXRxrPawEvTQnsLz4Cqy1tz6hc_kbVM--QhVNRUusJgkdYHoSyOi2YVqoiYKLYDDdHBlq6sf1lBVc-RRR7VY50QsK_6iHpHNXw_OnOtWkN9XXuHaMhry89WB-_c-cyg_zFgRZSdAO-AbIPEIru_PU"/>
-</div>
-<div class="grid grid-cols-2 flex-grow gap-lg font-sans">
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase font-bold">Estudiante</p>
-<p class="font-bold" id="pdf-user-name">Carlos Mendez Gutierrez</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase font-bold">Registro / ID</p>
-<p class="font-bold" id="pdf-user-id">2200543</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase font-bold">Tipo de Beca</p>
-<p class="font-bold">Excelencia - Diamante</p>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant uppercase font-bold">Gestión</p>
-<p class="font-bold">Semestre 2-2023</p>
-</div>
-</div>
-</div>
-<!-- Totals -->
-<div class="mb-xl">
-<h4 class="text-sm font-bold border-b border-outline-variant pb-xs mb-md uppercase font-sans tracking-wide">Resumen de Cumplimiento</h4>
-<div class="grid grid-cols-4 gap-md font-sans">
-<div class="border border-outline-variant p-md rounded text-center">
-<p class="text-xs text-on-surface-variant">Horas Requeridas</p>
-<p class="text-xl font-bold">80.0</p>
-</div>
-<div class="border border-outline-variant p-md rounded text-center">
-<p class="text-xs text-on-surface-variant">Horas Validadas</p>
-<p class="text-xl font-bold text-status-approved">60.0</p>
-</div>
-<div class="border border-outline-variant p-md rounded text-center">
-<p class="text-xs text-on-surface-variant">Pendientes</p>
-<p class="text-xl font-bold text-status-pending">20.0</p>
-</div>
-<div class="border border-outline-variant p-md rounded text-center bg-primary text-on-primary">
-<p class="text-[10px] uppercase">Progreso</p>
-<p class="text-xl font-bold">75%</p>
-</div>
-</div>
-</div>
-<!-- Activities List -->
-<div class="mb-xl">
-<h4 class="text-sm font-bold border-b border-outline-variant pb-xs mb-md uppercase font-sans tracking-wide">Detalle de Actividades</h4>
-<table class="w-full text-left font-sans text-xs">
-<thead class="bg-surface-muted">
-<tr>
-<th class="p-sm">Fecha</th>
-<th class="p-sm">Actividad</th>
-<th class="p-sm">Categoría</th>
-<th class="p-sm">Horas</th>
-<th class="p-sm">Estado</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant">
-<tr>
-<td class="p-sm">15/10/2023</td>
-<td class="p-sm font-bold">Apoyo Biblioteca Central</td>
-<td class="p-sm">Administrativo</td>
-<td class="p-sm">5.0</td>
-<td class="p-sm text-status-approved font-bold">Validado</td>
-</tr>
-<tr>
-<td class="p-sm">20/11/2023</td>
-<td class="p-sm font-bold">Tutoría Programación I</td>
-<td class="p-sm">Académico</td>
-<td class="p-sm">3.0</td>
-<td class="p-sm text-status-pending font-bold">Pendiente</td>
-</tr>
-<tr>
-<td class="p-sm">05/09/2023</td>
-<td class="p-sm font-bold">Staff Evento Emprendedor</td>
-<td class="p-sm">Social</td>
-<td class="p-sm">8.0</td>
-<td class="p-sm text-status-approved font-bold">Validado</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Evidence Thumbnails -->
-<div>
-<h4 class="text-sm font-bold border-b border-outline-variant pb-xs mb-md uppercase font-sans tracking-wide">Registro de Evidencia Visual</h4>
-<div class="grid grid-cols-4 gap-md">
-<div class="aspect-square bg-slate-100 rounded border border-outline-variant overflow-hidden relative">
-<img alt="Evidencia 1" class="w-full h-full object-cover grayscale opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfOGkPY9KDir1ecUTg82GXCTACFV2PLwGtg2a7AsVaz8jPizqkl6MyQJPjMPVgg3nCDkedXg3nwimOFcm8bPlUWKWJtNJAWxqjRbREQ8YTHBtzP3qEw_e3cNkna8zDxOo9wbWHW5yOztZdKEl-MIl1WiZrMf00R73TM4Df5uFMwYSDM_qB51Sq08RCKRJcvROA5deGGOrW0qttIC24txVXpomx3M5jWXFypf8YRXGOEJbGH38f8r6RJ9JmFEm-lL8gR34IvilmcFM"/>
-<div class="absolute bottom-1 right-1 bg-white/90 p-[2px] rounded">
-<span class="material-symbols-outlined text-[10px] text-status-approved">verified</span>
-</div>
-</div>
-<div class="aspect-square bg-slate-100 rounded border border-outline-variant overflow-hidden relative">
-<img alt="Evidencia 2" class="w-full h-full object-cover grayscale opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFXFCkVIny11osVD_iHib4r8XONq7y0HcMiaKWrtdNA4by7MfGYXmRuD73_ap6OU3PPsRe6VDpGKtYE8qANiTrEnCYRfuW-8BgNodr4XcOjmfOj5O-F28_ZQPiV4Qz7GDU36C0hciyeUKLi-Ew5cwG_MSBN2VHyB71a6A1HoehUDfqcl02a7-Cc1SAEVyLD0-9VhmgYpaElZ6nsgnJolFjyt4R7VfiaxA9pYBo0o6Ddhgufb-9OqFAyxOQfA2LAAtMW8t915SG8JQ"/>
-</div>
-<div class="aspect-square bg-slate-100 rounded border border-outline-variant flex items-center justify-center border-dashed">
-<span class="material-symbols-outlined text-outline">add</span>
-</div>
-</div>
-</div>
-<!-- Footer Signature -->
-<div class="mt-24 pt-lg border-t border-outline-variant grid grid-cols-2 gap-xl text-center font-sans">
-<div class="flex flex-col items-center">
-<div class="w-32 h-px bg-on-surface-variant mb-2"></div>
-<p class="text-[10px] font-bold">FIRMA ESTUDIANTE</p>
-</div>
-<div class="flex flex-col items-center">
-<div class="mb-[-10px] opacity-30">
-<img alt="Stamp" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYFA2nlEo4YpRwxAy5ud8MymPm-S3ewYXtOHaCPizhlgAkO-8-yxVqwr1CtFZ6eWpw4d0OXbhBkypcJT5C75BVwsCf29wUil-rsADl1v2Cye-KqPU-BhB7IyRSFNDHvoBLbvpdLlkP_pFqsE0KrGFyR-JCeammyK7krcTTaSJkYQDhYdA6Xihju49rm3Rv2hArVqp_7OfDzodhkvfy7ByLgOvbg6TKH2xa5rmMPEAKavA2GVqp9VduVtACOCoyb7Q4n05ukz8kcso" width="40"/>
-</div>
-<div class="w-32 h-px bg-on-surface-variant mb-2"></div>
-<p class="text-[10px] font-bold">BIENESTAR ESTUDIANTIL</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal Evidence Upload -->
+<!-- Modal Evidence -->
 <div class="hidden fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm flex items-center justify-center p-md" id="modal-evidence">
 <div class="bg-white rounded-2xl w-full max-w-md p-xl space-y-lg shadow-2xl">
 <div class="flex justify-between items-center">
@@ -839,48 +574,30 @@
 </div>
 <div class="space-y-md">
 <p class="text-body-sm text-on-surface-variant" id="modal-activity-name">Actividad: </p>
-<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center gap-md cursor-pointer hover:bg-primary/5 hover:border-primary transition-all group" id="dropzone" onclick="document.getElementById('evidence-input').click()">
-<span class="material-symbols-outlined text-5xl text-outline group-hover:text-primary transition-colors">cloud_upload</span>
-<div class="text-center">
-<p class="text-sm font-bold text-on-surface">Haz clic o arrastra una foto aquí</p>
-<p class="text-[11px] text-on-surface-variant">Formatos permitidos: JPG, PNG, WEBP (Max 5MB)</p>
-</div>
-<input accept="image/*" class="hidden" id="evidence-input" onchange="handleFileSelected(this)" type="file"/>
-<div class="hidden w-full h-48 rounded-lg bg-contain bg-center bg-no-repeat border border-outline-variant" id="file-preview"></div>
-</div>
-<div class="space-y-xs">
-<label class="text-label-sm text-on-surface-variant ml-1 font-bold">Comentario Adicional</label>
-<textarea class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none h-24 text-sm" placeholder="Agrega un detalle sobre tu cumplimiento..."></textarea>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center gap-md cursor-pointer hover:bg-surface-muted transition-colors" onclick="document.getElementById('evidence-input').click()">
+<span class="material-symbols-outlined text-4xl text-outline">add_a_photo</span>
+<p class="text-sm font-medium">Sube fotos de tu participación</p>
+<input accept="image/*" class="hidden" id="evidence-input" onchange="handleFileSelected(this)" type="file">
+<div class="hidden w-full h-32 rounded-lg bg-cover bg-center border border-outline-variant" id="file-preview"></div>
 </div>
 </div>
-<div class="flex gap-md pt-md">
-<button class="flex-1 py-md border border-outline text-on-surface-variant rounded-xl font-bold hover:bg-surface-muted transition-all" onclick="closeEvidenceModal()">Cancelar</button>
-<button class="flex-1 py-md bg-primary text-on-primary rounded-xl font-bold shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="submitEvidence()">
-<span class="material-symbols-outlined text-[20px]">send</span> Enviar
-    </button>
-</div>
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold shadow-lg hover:opacity-90 transition-all" onclick="submitEvidence()">
+            Confirmar Envío
+</button>
 </div>
 </div>
 <script>
     const state = {
         currentTab: 'student-dashboard',
         role: 'student',
-        user: {
-            name: 'Carlos Mendez',
-            id: '2200543',
-            hours: 60,
-            activities: 14
-        },
-        portfolio: [
-            { id: 1, name: 'Apoyo Biblioteca Central', category: 'Administrativo', hours: 5.0, date: '2023-10-15', status: 'Validada', evidence: true },
-            { id: 2, name: 'Tutoría Programación I', category: 'Académico', hours: 3.0, date: '2023-11-20', status: 'Pendiente de Validación', evidence: true },
-            { id: 3, name: 'Charla Inducción 2024', category: 'Social', hours: 2.0, date: '2024-01-10', status: 'Sin Evidencia', evidence: false }
-        ],
+        checkins: [],
         availableActivities: [
-            { id: 101, name: 'Auxiliar Matemáticas II', category: 'Académico', hours: 4.0, capacity: '5/10', desc: 'Apoyo al docente en resolución de ejercicios y atención a dudas.' },
-            { id: 102, name: 'Organización Archivo', category: 'Administrativo', hours: 2.0, capacity: '2/5', desc: 'Digitalización y foliado de documentos en la oficina central.' }
+            { id: 101, name: 'Staff Graduaciones 2024', category: 'Social', hours: 6.0, capacity: '12/20', desc: 'Apoyo logístico durante el evento de graduación.' },
+            { id: 102, name: 'Auxiliar Matemáticas II', category: 'Académico', hours: 4.0, capacity: '5/10', desc: 'Apoyo al docente en resolución de ejercicios.' }
         ],
-        currentEvidenceTarget: null
+        portfolio: [
+            { id: 1, name: 'Apoyo Biblioteca Central', category: 'Administrativo', hours: 5.0, date: '2023-10-15', status: 'Validado', evidence: true }
+        ]
     };
 
     function setLoginRole(role) {
@@ -909,7 +626,6 @@
     function handleLogin() {
         document.getElementById('login-screen').classList.add('hidden');
         document.getElementById('app-content').classList.remove('hidden');
-        
         const studentMenu = document.getElementById('student-menu');
         const managementMenu = document.getElementById('management-menu');
         
@@ -918,14 +634,13 @@
             managementMenu.classList.remove('hidden');
             document.getElementById('user-name').innerText = 'Dr. Ricardo Mendez';
             document.getElementById('user-id').innerText = 'Jefatura Académica';
-            document.getElementById('user-avatar').src = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200';
+            document.getElementById('user-avatar').src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBECw2Wl0PZutI_K4HPAxEgIoR38FgMs71yEOT8qduSJBkoFxG8MccDL2YfLs02WFQxjjyKahO-fW8sb7kCz3TYg2KAjBrP8cN7TbSBNWCdqHnZ-SPn4pbfpkux35hACX-QR3GxNsyJ8Ose-yHT-bSkWJM1ZwXHgkbpCrjHgsAIY5FKbHd4BkEjfqiEvt5P7Sg5T8U565vCEqpZf0P7M6IuqhdlJdAfaBF7rF2C7tDgd89xXh_tYJbO8nTMiymJqsF1DduCBQK1Ia4';
             switchTab('management-validation');
         } else {
             studentMenu.classList.remove('hidden');
             managementMenu.classList.add('hidden');
             document.getElementById('user-name').innerText = 'Carlos Mendez';
             document.getElementById('user-id').innerText = 'ID: 2200543';
-            document.getElementById('user-avatar').src = 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=80&w=200';
             switchTab('student-dashboard');
         }
         renderAvailableActivities();
@@ -941,12 +656,10 @@
     function switchTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
         document.getElementById(tabId).classList.remove('hidden');
-        
         document.querySelectorAll('.nav-item').forEach(item => {
             item.classList.remove('text-primary', 'font-bold', 'bg-primary/10');
             item.classList.add('text-on-surface-variant');
         });
-        
         const activeBtn = document.getElementById(`btn-${tabId}`);
         if(activeBtn) {
             activeBtn.classList.add('text-primary', 'font-bold', 'bg-primary/10');
@@ -956,56 +669,105 @@
         const titleMap = {
             'student-dashboard': 'Panel del Becado',
             'student-portfolio': 'Mi Portafolio',
-            'student-activities': 'Inscripción Actividades',
-            'management-validation': 'Panel de Validación',
+            'student-activities': 'Inscripción',
+            'management-dashboard': 'Dashboard de Jefatura',
+            'management-validation': 'Asistencia Real-time',
             'management-creation': 'Gestión de Actividades',
             'management-reports': 'Reportes de Gestión'
         };
         document.getElementById('header-title').innerText = titleMap[tabId] || 'Becados UTEPSA';
+        if (tabId === 'management-reports') initCharts();
+    }
 
-        if (tabId === 'management-reports') {
-            initCharts();
+    // Real-time Simulation functions
+    const demoStudents = [
+        { name: 'Carlos Mendez', id: '2200543', initial: 'CM' },
+        { name: 'Lucia Ferrufino', id: '2200112', initial: 'LF' },
+        { name: 'Jorge Vaca', id: '2200987', initial: 'JV' },
+        { name: 'Andrea Soleto', id: '2200344', initial: 'AS' }
+    ];
+
+    function simulateQRScanFromManagement() {
+        const student = demoStudents[Math.floor(Math.random() * demoStudents.length)];
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        if(state.checkins.find(c => c.id === student.id)) {
+            alert(`${student.name} ya registró su entrada.`);
+            return;
         }
-    }
 
-    function updateQRCode() {
-        const rand = Math.floor(Math.random() * 1000);
-        const code = `UTEPSA-${rand}-XM`;
-        document.getElementById('qr-code-text').innerText = code;
-        document.getElementById('qr-container').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${code}" class="w-full h-full p-2">`;
-    }
-
-    function createNewManagementActivity() {
-        const name = document.getElementById('m-form-act-name').value;
-        const desc = document.getElementById('m-form-act-desc').value;
-        const cat = document.getElementById('m-form-act-cat').value;
-        const hours = parseFloat(document.getElementById('m-form-act-hours').value);
-        const cap = document.getElementById('m-form-act-cap').value;
-        const date = document.getElementById('m-form-act-date').value;
-
-        const newAct = {
-            id: Date.now(),
-            name,
-            category: cat,
-            hours,
-            capacity: `0/${cap}`,
-            desc,
-            date
+        const newCheckin = {
+            ...student,
+            time,
+            evidence: false,
+            validated: false
         };
 
-        state.availableActivities.unshift(newAct);
-        renderAvailableActivities();
-        renderMgmtPublishedList();
+        state.checkins.unshift(newCheckin);
+        renderLiveCheckins();
+    }
+
+    function renderLiveCheckins() {
+        const body = document.getElementById('mgmt-live-checkin-body');
+        const empty = document.getElementById('empty-state-row');
+        if(empty) empty.remove();
         
-        document.getElementById('mgmt-activity-form').reset();
-        alert('Actividad publicada exitosamente.');
+        document.getElementById('mgmt-present-count').innerText = state.checkins.length;
+
+        body.innerHTML = state.checkins.map(c => `
+            <tr class="hover:bg-surface-muted/30 transition-colors animate-pulse-soft">
+                <td class="px-lg py-lg">
+                    <div class="flex items-center gap-md">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">${c.initial}</div>
+                        <div>
+                            <p class="font-label-md font-bold">${c.name}</p>
+                            <p class="text-[11px] text-on-surface-variant">ID: ${c.id}</p>
+                        </div>
+                    </div>
+                </td>
+                <td class="px-lg py-lg">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-status-approved rounded-full"></span>
+                        <span class="text-sm font-medium text-on-surface">${c.time}</span>
+                        <span class="text-[10px] bg-status-approved/10 text-status-approved px-2 py-0.5 rounded font-bold uppercase tracking-tighter">Checked-in</span>
+                    </div>
+                </td>
+                <td class="px-lg py-lg">
+                    <div class="flex items-center gap-xs">
+                        <span class="material-symbols-outlined text-[16px] ${c.evidence ? 'text-status-approved' : 'text-outline'}">${c.evidence ? 'check_circle' : 'hourglass_top'}</span>
+                        <span class="text-[11px] font-bold ${c.evidence ? 'text-primary cursor-pointer hover:underline' : 'text-on-surface-variant'}">
+                            ${c.evidence ? 'Ver Fotos' : 'Esperando fotos...'}
+                        </span>
+                    </div>
+                </td>
+                <td class="px-lg py-lg text-right">
+                    <button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:opacity-90 disabled:opacity-50" 
+                            ${!c.evidence ? 'disabled' : ''} 
+                            onclick="validateStudent('${c.id}')">
+                        Validar Horas
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    function validateStudent(id) {
+        state.checkins = state.checkins.filter(c => c.id !== id);
+        renderLiveCheckins();
+        alert('Horas validadas correctamente para el estudiante.');
+    }
+
+    function simulateQRScan() {
+        alert("QR Escaneado Correctamente. Bienvenido a 'Staff Graduaciones 2024'. Ya puedes empezar a subir tus evidencias en la pestaña 'Mi Portafolio'.");
+        const act = state.availableActivities.find(a => a.id === 101);
+        enrollInActivity(act.name, act.category, act.hours, act.id);
     }
 
     function renderAvailableActivities() {
         const container = document.getElementById('available-activities-list');
         if (!container) return;
         container.innerHTML = state.availableActivities.map(act => `
-            <div class="bg-surface border border-outline-variant p-lg rounded-xl hover:border-primary transition-all group shadow-sm flex flex-col">
+            <div class="bg-surface border border-outline-variant p-lg rounded-xl hover:border-primary transition-all shadow-sm flex flex-col">
                 <div class="flex justify-between items-start mb-md">
                     <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">${act.category}</span>
                     <span class="text-label-sm text-on-surface-variant font-bold">${act.hours} h</span>
@@ -1020,115 +782,56 @@
         `).join('');
     }
 
-    function renderMgmtPublishedList() {
-        const container = document.getElementById('mgmt-published-list');
+    function renderPortfolio() {
+        const container = document.getElementById('activities-table-container');
         if (!container) return;
-        container.innerHTML = state.availableActivities.map(act => `
-            <div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm flex justify-between items-center">
-                <div class="min-w-0">
-                    <p class="font-bold truncate">${act.name}</p>
-                    <p class="text-[11px] text-on-surface-variant">${act.category} • ${act.hours}h • ${act.capacity}</p>
-                </div>
-                <div class="flex gap-2">
-                    <button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
-                        <span class="material-symbols-outlined text-xl">edit</span>
-                    </button>
-                    <button class="p-2 text-status-rejected hover:bg-status-rejected/10 rounded transition-colors">
-                        <span class="material-symbols-outlined text-xl">delete</span>
-                    </button>
+        container.innerHTML = state.portfolio.map(act => `
+            <div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row mb-4">
+                <div class="w-2 ${act.status === 'Validado' ? 'bg-status-approved' : 'bg-status-pending'}"></div>
+                <div class="p-lg flex-grow grid grid-cols-1 md:grid-cols-4 items-center">
+                    <div class="md:col-span-1">
+                        <h3 class="font-bold text-on-surface">${act.name}</h3>
+                        <p class="text-xs text-on-surface-variant">${act.category}</p>
+                    </div>
+                    <div><p class="text-[11px] text-on-surface-variant">Horas</p><p class="font-bold text-primary">${act.hours} h</p></div>
+                    <div class="flex flex-col">
+                        <span class="${act.status === 'Validado' ? 'text-status-approved' : 'text-status-pending'} text-xs font-bold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px]">${act.status === 'Validado' ? 'check_circle' : 'hourglass_bottom'}</span> ${act.status}
+                        </span>
+                    </div>
+                    <div class="text-right">
+                        ${act.evidence 
+                            ? '<span class="text-[10px] text-status-approved font-bold">Evidencia Subida</span>' 
+                            : `<button class="bg-primary/5 text-primary border border-primary/20 px-3 py-1 rounded text-xs font-bold hover:bg-primary/10" onclick="openEvidenceModal(${act.id}, '${act.name}')">Subir Fotos</button>`
+                        }
+                    </div>
                 </div>
             </div>
         `).join('');
     }
 
-    function renderPortfolio() {
-        const container = document.getElementById('activities-table-container');
-        if (!container) return;
-
-        // Actualizar resumen
-        const total = state.portfolio.length;
-        const withEvidence = state.portfolio.filter(a => a.evidence).length;
-        const pending = state.portfolio.filter(a => a.status === 'Pendiente de Validación').length;
-
-        document.getElementById('portfolio-total-activities').innerText = total;
-        document.getElementById('portfolio-with-evidence').innerText = withEvidence;
-        document.getElementById('portfolio-pending-validation').innerText = pending;
-
-        container.innerHTML = state.portfolio.map(act => {
-            let statusColor = 'bg-gray-100 text-gray-500';
-            let statusIcon = 'report_off';
-            
-            if (act.status === 'Validada') {
-                statusColor = 'bg-status-approved/10 text-status-approved';
-                statusIcon = 'check_circle';
-            } else if (act.status === 'Pendiente de Validación') {
-                statusColor = 'bg-status-pending/10 text-status-pending';
-                statusIcon = 'hourglass_empty';
-            } else {
-                statusColor = 'bg-gray-100 text-gray-500';
-                statusIcon = 'error';
-            }
-
-            return `
-            <div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row mb-4">
-                <div class="w-2 ${act.status === 'Validada' ? 'bg-status-approved' : act.status === 'Pendiente de Validación' ? 'bg-status-pending' : 'bg-gray-300'}"></div>
-                <div class="p-lg flex-grow grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-lg items-center">
-                    <div class="col-span-1 lg:col-span-2">
-                        <h3 class="font-headline-sm text-on-surface">${act.name}</h3>
-                        <p class="text-body-sm text-on-surface-variant">${act.category}</p>
-                    </div>
-                    <div><p class="text-label-sm text-on-surface-variant mb-xs">Fecha</p><p class="font-bold">${act.date}</p></div>
-                    <div><p class="text-label-sm text-on-surface-variant mb-xs">Horas</p><p class="font-bold text-primary">${act.hours} h</p></div>
-                    <div class="flex flex-col gap-sm">
-                        <span class="${statusColor} px-sm py-1 rounded-full text-label-sm font-bold flex items-center justify-center gap-xs">
-                            <span class="material-symbols-outlined text-[14px]">${statusIcon}</span> ${act.status}
-                        </span>
-                    </div>
-                    <div class="flex justify-end">
-                        ${act.evidence 
-                            ? `<button class="flex items-center gap-2 px-md py-2 border border-primary text-primary rounded-lg font-bold hover:bg-primary/5 transition-all" onclick="alert('Visualizando evidencia: ${act.name}')">
-                                <span class="material-symbols-outlined">visibility</span>
-                                <span class="text-sm">Ver Evidencia</span>
-                               </button>`
-                            : `<button class="flex items-center gap-2 px-md py-2 bg-primary text-on-primary rounded-lg font-bold hover:opacity-90 shadow-md transition-all" onclick="openEvidenceModal(${act.id}, '${act.name}')">
-                                <span class="material-symbols-outlined">photo_camera</span>
-                                <span class="text-sm">Subir Evidencia</span>
-                               </button>`
-                        }
-                    </div>
-                </div>
-            </div>`;
-        }).join('');
-    }
-
     function enrollInActivity(name, cat, hours, id) {
+        if(state.portfolio.find(p => p.id === id)) return;
         const newAct = {
-            id: Date.now(),
-            name,
-            category: cat,
-            hours,
+            id, name, category: cat, hours,
             date: new Date().toISOString().split('T')[0],
-            status: 'Sin Evidencia',
+            status: 'En curso',
             evidence: false
         };
         state.portfolio.unshift(newAct);
         renderPortfolio();
-        switchTab('student-portfolio');
-        alert(`¡Inscripción exitosa en "${name}"! Recuerda escanear tu QR al asistir.`);
+        if(state.role === 'student') switchTab('student-portfolio');
     }
 
     function openEvidenceModal(id, name) {
         state.currentEvidenceTarget = id;
         document.getElementById('modal-activity-name').innerText = `Actividad: ${name}`;
         document.getElementById('modal-evidence').classList.remove('hidden');
-        document.getElementById('file-preview').classList.add('hidden');
     }
 
     function closeEvidenceModal() {
         document.getElementById('modal-evidence').classList.add('hidden');
         document.getElementById('file-preview').classList.add('hidden');
-        document.getElementById('file-preview').style.backgroundImage = 'none';
-        state.currentEvidenceTarget = null;
     }
 
     function handleFileSelected(input) {
@@ -1139,131 +842,66 @@
                 const preview = document.getElementById('file-preview');
                 preview.style.backgroundImage = `url(${e.target.result})`;
                 preview.classList.remove('hidden');
-                document.getElementById('dropzone').classList.add('border-primary');
             };
             reader.readAsDataURL(file);
         }
     }
 
     function submitEvidence() {
-        if (state.currentEvidenceTarget) {
-            const act = state.portfolio.find(a => a.id === state.currentEvidenceTarget);
-            if (act) {
-                act.evidence = true;
-                act.status = 'Pendiente de Validación';
-                renderPortfolio();
-                closeEvidenceModal();
-                alert('Evidencia enviada correctamente. El personal de jefatura revisará tu registro.');
-            }
+        const act = state.portfolio.find(a => a.id === state.currentEvidenceTarget);
+        if (act) {
+            act.evidence = true;
+            renderPortfolio();
+            // Reflect in Management View if active
+            const mCheckin = state.checkins.find(c => c.id === '2200543');
+            if(mCheckin) mCheckin.evidence = true;
+            renderLiveCheckins();
+            closeEvidenceModal();
+            alert('Evidencia enviada. La jefatura validará el registro al finalizar la actividad.');
         }
     }
 
-    function loadStudentValidation(val) {
-        const label = document.getElementById('scan-label');
-        const iconBg = document.getElementById('scan-icon-bg');
-        const icon = document.getElementById('scan-icon');
-        const title = document.getElementById('scan-title');
-        const desc = document.getElementById('scan-desc');
-
-        if (val === 'carlos') {
-            label.innerText = 'DETECTADO';
-            label.className = 'text-[10px] font-bold text-status-approved bg-status-approved/10 px-sm py-0.5 rounded';
-            iconBg.className = 'w-12 h-12 rounded-full bg-status-approved/20 flex items-center justify-center shrink-0';
-            icon.innerText = 'person_check';
-            icon.className = 'material-symbols-outlined text-status-approved text-3xl';
-            title.innerText = 'Carlos Mendez';
-            desc.innerText = 'Estudiante de Ing. Sistemas - ID: 2200543';
-        } else {
-            label.innerText = 'ESPERANDO';
-            label.className = 'text-[10px] font-bold text-status-pending bg-status-pending/10 px-sm py-0.5 rounded';
-            iconBg.className = 'w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0';
-            icon.innerText = 'camera';
-            title.innerText = 'Esperando QR...';
-            desc.innerText = 'Posicione el código frente a la cámara';
-        }
+    function renderMgmtPublishedList() {
+        const container = document.getElementById('mgmt-published-list');
+        if (!container) return;
+        container.innerHTML = state.availableActivities.map(act => `
+            <div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm flex justify-between items-center">
+                <div class="min-w-0">
+                    <p class="font-bold truncate">${act.name}</p>
+                    <p class="text-[11px] text-on-surface-variant">${act.category} • ${act.hours}h</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="p-2 text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-xl">edit</span></button>
+                    <button class="p-2 text-status-rejected hover:bg-status-rejected/10 rounded"><span class="material-symbols-outlined text-xl">delete</span></button>
+                </div>
+            </div>
+        `).join('');
     }
 
-    function handleValidationAction(studentId, action) {
-        const row = document.getElementById(`row-${studentId}`);
-        if (action === 'approve') {
-            alert('Evidencia y actividad aprobadas correctamente.');
-        } else {
-            alert('Registro rechazado.');
-        }
-        row.style.opacity = '0.5';
-        row.style.pointerEvents = 'none';
-    }
-
-    function generateProfessionalReport() {
-        document.getElementById('modal-pdf-report').classList.remove('hidden');
-    }
-
-    let charts = {};
     function initCharts() {
-        if (charts.category) return;
-
-        const catCtx = document.getElementById('categoryChart').getContext('2d');
-        charts.category = new Chart(catCtx, {
+        new Chart(document.getElementById('categoryChart'), {
             type: 'doughnut',
             data: {
                 labels: ['Académico', 'Administrativo', 'Social'],
                 datasets: [{
                     data: [45, 30, 25],
-                    backgroundColor: ['#C41E3A', '#111827', '#9ca3af'],
-                    borderWidth: 2,
-                    borderColor: '#ffffff'
+                    backgroundColor: ['#C41E3A', '#f3f4f6', '#4b5563']
                 }]
             },
-            options: {
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
-                cutout: '70%'
-            }
+            options: { maintainAspectRatio: false }
         });
-
-        const progressCtx = document.getElementById('monthlyProgressChart').getContext('2d');
-        charts.progress = new Chart(progressCtx, {
-            type: 'bar',
+        new Chart(document.getElementById('weeklyChart'), {
+            type: 'line',
             data: {
-                labels: ['Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                labels: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie'],
                 datasets: [{
                     label: 'Horas Validadas',
-                    data: [12, 18, 22, 15, 13],
-                    backgroundColor: '#C41E3A',
-                    borderRadius: 6
-                }, {
-                    label: 'Meta Sugerida',
-                    data: [16, 16, 16, 16, 16],
-                    type: 'line',
-                    borderColor: '#111827',
-                    borderDash: [5, 5],
-                    pointRadius: 0,
-                    fill: false
+                    data: [12, 19, 15, 8, 22],
+                    borderColor: '#C41E3A',
+                    tension: 0.4
                 }]
             },
-            options: {
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: {
-                            boxWidth: 10,
-                            font: { size: 10 }
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { display: false }
-                    },
-                    x: {
-                        grid: { display: false }
-                    }
-                }
-            }
+            options: { maintainAspectRatio: false }
         });
     }
 
@@ -1272,4 +910,6 @@
         renderPortfolio();
     });
 </script>
+
+
 </body></html>
