@@ -48,60 +48,21 @@
             backdrop-filter: blur(4px);
         }
 
-        /* Mobile Landscape Fixes */
-        @media (max-height: 500px) and (orientation: landscape) {
-            #login-screen .max-w-md {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-                max-width: 800px;
-                align-items: center;
+        /* Mobile Sidebar State */
+        @media (max-width: 1024px) {
+            #sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
             }
-            #login-screen .text-center {
-                text-align: left;
+            #sidebar.open {
+                transform: translateX(0);
             }
-            #login-screen .w-20.h-20 {
-                margin-left: 0;
-                width: 3rem;
-                height: 3rem;
+            #main-content {
+                margin-left: 0 !important;
+                width: 100% !important;
             }
-            #login-screen .material-symbols-outlined.text-5xl {
-                font-size: 2rem;
-            }
-            #login-screen .font-headline-lg {
-                font-size: 1.5rem;
-                line-height: 2rem;
-            }
-            
-            aside {
-                width: 72px !important;
-                padding: 0.5rem !important;
-            }
-            aside .font-label-md, aside .font-label-sm, aside .truncate, aside h1, aside p {
-                display: none;
-            }
-            aside .mb-lg {
-                margin-bottom: 1rem;
-            }
-            aside .nav-item {
-                justify-content: center;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-            header, main {
-                left: 72px !important;
-                margin-left: 72px !important;
-            }
-            
-            .landscape-grid-fix {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
-            
-            #modal-create-activity .max-w-2xl {
-                max-height: 95vh;
-            }
-            #modal-create-activity .p-xl {
-                padding: 1rem;
+            #top-header {
+                left: 0 !important;
             }
         }
     </style>
@@ -208,11 +169,11 @@
         }
     </script>
 </head>
-<body class="bg-background font-body-md text-on-surface overflow-x-hidden">
+<body class="bg-background font-body-md text-on-surface overflow-x-hidden min-h-screen">
 <!-- Login Screen -->
 <section class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-md overflow-y-auto" id="login-screen">
-<div class="max-w-md w-full space-y-md lg:space-y-xl py-8">
-<div class="text-center space-y-md">
+<div class="w-full max-w-md space-y-md lg:space-y-xl py-8">
+<div class="text-center space-y-md px-4">
 <div class="w-20 h-20 rounded-2xl bg-primary flex items-center justify-center text-on-primary shadow-lg mx-auto">
 <span class="material-symbols-outlined text-5xl">school</span>
 </div>
@@ -221,7 +182,7 @@
 <p class="text-on-surface-variant font-body-md">Accede a tu plataforma de excelencia académica</p>
 </div>
 </div>
-<div class="bg-surface border border-outline-variant p-lg md:p-xl rounded-2xl shadow-sm space-y-lg">
+<div class="bg-surface border border-outline-variant p-lg md:p-xl rounded-2xl shadow-sm space-y-lg mx-4">
 <div class="flex p-1 bg-surface-variant rounded-xl border border-outline-variant">
 <button class="flex-1 py-sm rounded-lg font-label-md text-label-md transition-all bg-white text-primary shadow-sm font-bold" id="role-btn-student" onclick="setLoginRole('student')">ESTUDIANTE</button>
 <button class="flex-1 py-sm rounded-lg font-label-md text-label-md transition-all text-on-surface-variant" id="role-btn-management" onclick="setLoginRole('management')">JEFATURA</button>
@@ -243,7 +204,7 @@
 <label class="font-label-md text-label-md text-on-surface-variant ml-1">Contraseña</label>
 <input class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="••••••••" type="password" value="password"/>
 </div>
-<div class="flex items-center justify-between gap-sm">
+<div class="flex items-center justify-between gap-sm flex-wrap">
 <label class="flex items-center gap-xs cursor-pointer">
 <input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
 <span class="text-label-sm text-on-surface-variant">Recordarme</span>
@@ -262,9 +223,12 @@
 </section>
 <!-- Main App Layout -->
 <div class="hidden" id="app-content">
+<!-- Overlay for mobile sidebar -->
+<div class="fixed inset-0 bg-black/50 z-[45] hidden lg:hidden" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 <!-- Side Navigation Bar -->
-<aside class="w-64 h-screen fixed left-0 top-0 flex flex-col p-md gap-sm bg-surface border-r border-outline-variant z-50">
-<div class="mb-lg flex items-center gap-md px-sm">
+<aside class="w-64 h-screen fixed left-0 top-0 flex flex-col p-md gap-sm bg-surface border-r border-outline-variant z-50 transition-transform duration-300" id="sidebar">
+<div class="mb-lg flex items-center justify-between px-sm">
+<div class="flex items-center gap-md">
 <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0">
 <span class="material-symbols-outlined">school</span>
 </div>
@@ -273,33 +237,37 @@
 <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">Excelencia</p>
 </div>
 </div>
+<button class="lg:hidden text-on-surface-variant" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
 <nav class="flex-1 space-y-xs overflow-y-auto" id="side-nav">
 <!-- Student Menu -->
 <div class="space-y-xs" id="student-menu">
-<button class="w-full flex items-center gap-md px-md py-sm text-primary font-bold bg-primary/10 rounded-lg transition-all duration-150 nav-item" id="btn-student-dashboard" onclick="switchTab('student-dashboard')">
+<button class="w-full flex items-center gap-md px-md py-sm text-primary font-bold bg-primary/10 rounded-lg transition-all duration-150 nav-item" id="btn-student-dashboard" onclick="switchTab('student-dashboard'); toggleSidebar()">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-label-md text-label-md">Dashboard</span>
 </button>
-<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-student-portfolio" onclick="switchTab('student-portfolio')">
+<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-student-portfolio" onclick="switchTab('student-portfolio'); toggleSidebar()">
 <span class="material-symbols-outlined">person_book</span>
 <span class="font-label-md text-label-md">Mi Portafolio</span>
 </button>
-<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-student-activities" onclick="switchTab('student-activities')">
+<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-student-activities" onclick="switchTab('student-activities'); toggleSidebar()">
 <span class="material-symbols-outlined">assignment</span>
 <span class="font-label-md text-label-md">Registro de Actividades</span>
 </button>
 </div>
 <!-- Management Menu -->
 <div class="hidden space-y-xs" id="management-menu">
-<button class="w-full flex items-center gap-md px-md py-sm text-primary font-bold bg-primary/10 rounded-lg transition-all duration-150 nav-item" id="btn-management-dashboard" onclick="switchTab('management-dashboard')">
+<button class="w-full flex items-center gap-md px-md py-sm text-primary font-bold bg-primary/10 rounded-lg transition-all duration-150 nav-item" id="btn-management-dashboard" onclick="switchTab('management-dashboard'); toggleSidebar()">
 <span class="material-symbols-outlined">analytics</span>
 <span class="font-label-md text-label-md">Jefatura</span>
 </button>
-<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-management-validation" onclick="switchTab('management-validation')">
+<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-management-validation" onclick="switchTab('management-validation'); toggleSidebar()">
 <span class="material-symbols-outlined">how_to_reg</span>
 <span class="font-label-md text-label-md">Validación</span>
 </button>
-<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-management-reports" onclick="switchTab('management-reports')">
+<button class="w-full flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-muted transition-colors duration-200 rounded-lg nav-item" id="btn-management-reports" onclick="switchTab('management-reports'); toggleSidebar()">
 <span class="material-symbols-outlined">assessment</span>
 <span class="font-label-md text-label-md">Reportes</span>
 </button>
@@ -317,8 +285,13 @@
 </div>
 </aside>
 <!-- Top Navigation Bar -->
-<header class="fixed top-0 right-0 left-64 h-16 bg-surface shadow-sm z-40 flex justify-between items-center px-lg border-b border-outline-variant transition-all">
+<header class="fixed top-0 right-0 lg:left-64 left-0 h-16 bg-surface shadow-sm z-40 flex justify-between items-center px-lg border-b border-outline-variant transition-all" id="top-header">
+<div class="flex items-center gap-md">
+<button class="lg:hidden w-10 h-10 flex items-center justify-center text-primary" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">menu</span>
+</button>
 <h2 class="font-headline-sm text-headline-sm font-bold text-primary truncate" id="header-title">Panel del Becado</h2>
+</div>
 <div class="flex items-center gap-md md:gap-lg">
 <div class="flex gap-md">
 <button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative">
@@ -333,19 +306,19 @@
 </div>
 </header>
 <!-- Main Content Canvas -->
-<main class="ml-64 mt-16 p-lg bg-background min-h-screen transition-all">
+<main class="lg:ml-64 ml-0 mt-16 p-md md:p-lg bg-background min-h-screen transition-all" id="main-content">
 <!-- Tab: Student Dashboard -->
-<div class="tab-content max-w-[1400px] mx-auto space-y-xl" id="student-dashboard">
+<div class="tab-content max-w-[1400px] mx-auto space-y-lg md:space-y-xl" id="student-dashboard">
 <section class="grid grid-cols-1 xl:grid-cols-12 gap-lg">
 <div class="xl:col-span-8 space-y-lg">
-<div class="relative overflow-hidden bg-primary p-xl rounded-xl text-on-primary shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[300px]">
+<div class="relative overflow-hidden bg-primary p-lg md:p-xl rounded-xl text-on-primary shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[300px]">
 <div class="relative z-10">
 <p class="font-label-md text-label-md opacity-80 mb-xs uppercase tracking-widest">Panel del Becado</p>
 <h1 class="font-headline-lg text-headline-lg mb-md">Bienvenido, <span class="" id="welcome-user-name">Carlos Mendez</span></h1>
-<p class="font-body-md text-body-md max-w-md opacity-90 mb-xl">Estás a un paso de completar tus horas de beca del semestre. ¡Sigue así!</p>
+<p class="font-body-md text-body-md max-w-md opacity-90 mb-lg md:mb-xl">Estás a un paso de completar tus horas de beca del semestre. ¡Sigue así!</p>
 </div>
 <div class="relative z-10 bg-white/10 backdrop-blur-md p-md rounded-lg border border-white/20">
-<div class="flex justify-between items-end mb-xs">
+<div class="flex flex-col sm:flex-row justify-between sm:items-end mb-xs gap-1">
 <span class="font-label-md text-label-md font-bold">Progreso del Semestre</span>
 <span class="font-headline-sm text-headline-sm"><span class="" id="hours-count">60</span> / 80 <span class="text-sm opacity-70 font-normal">Horas</span></span>
 </div>
@@ -366,37 +339,37 @@
 <p class="text-on-surface-variant text-sm italic py-4 text-center">Aún no tienes pre-inscripciones pendientes.</p>
 </div>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-md landscape-grid-fix">
-<div class="bg-surface p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
-<span class="material-symbols-outlined text-primary mb-sm text-3xl">timer</span>
-<p class="font-headline-md text-headline-md text-on-surface" id="stat-total-hours">60</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Horas Totales</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface p-md md:p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
+<span class="material-symbols-outlined text-primary mb-sm text-2xl md:text-3xl">timer</span>
+<p class="font-headline-md text-lg md:text-headline-md text-on-surface" id="stat-total-hours">60</p>
+<p class="font-label-sm text-[10px] md:text-label-sm text-on-surface-variant uppercase">Horas Totales</p>
 </div>
-<div class="bg-surface p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
-<span class="material-symbols-outlined text-status-pending mb-sm text-3xl">hourglass_empty</span>
-<p class="font-headline-md text-headline-md text-on-surface">20</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Pendientes</p>
+<div class="bg-surface p-md md:p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
+<span class="material-symbols-outlined text-status-pending mb-sm text-2xl md:text-3xl">hourglass_empty</span>
+<p class="font-headline-md text-lg md:text-headline-md text-on-surface">20</p>
+<p class="font-label-sm text-[10px] md:text-label-sm text-on-surface-variant uppercase">Pendientes</p>
 </div>
-<div class="bg-surface p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
-<span class="material-symbols-outlined text-status-approved mb-sm text-3xl">task_alt</span>
-<p class="font-headline-md text-headline-md text-on-surface" id="stat-activities-count">14</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Actividades</p>
+<div class="bg-surface p-md md:p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
+<span class="material-symbols-outlined text-status-approved mb-sm text-2xl md:text-3xl">task_alt</span>
+<p class="font-headline-md text-lg md:text-headline-md text-on-surface" id="stat-activities-count">14</p>
+<p class="font-label-sm text-[10px] md:text-label-sm text-on-surface-variant uppercase">Actividades</p>
 </div>
-<div class="bg-surface p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
-<span class="material-symbols-outlined text-primary mb-sm text-3xl">military_tech</span>
-<p class="font-headline-md text-headline-md text-on-surface">Diamante</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Nivel</p>
+<div class="bg-surface p-md md:p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
+<span class="material-symbols-outlined text-primary mb-sm text-2xl md:text-3xl">military_tech</span>
+<p class="font-headline-md text-lg md:text-headline-md text-on-surface">Diamante</p>
+<p class="font-label-sm text-[10px] md:text-label-sm text-on-surface-variant uppercase">Nivel</p>
 </div>
 </div>
 </div>
 <div class="xl:col-span-4 space-y-lg">
-<div class="bg-surface border border-outline-variant rounded-xl p-xl shadow-lg text-center space-y-lg flex flex-col items-center">
+<div class="bg-surface border border-outline-variant rounded-xl p-lg md:p-xl shadow-lg text-center space-y-lg flex flex-col items-center">
 <div class="flex items-center justify-center gap-sm text-primary">
 <span class="material-symbols-outlined">qr_code_scanner</span>
 <h3 class="font-headline-md text-headline-md">Mi Pase QR</h3>
 </div>
 <div class="relative p-md bg-white border-2 border-primary rounded-xl group cursor-pointer" onclick="updateQRCode()">
-<div class="w-48 h-48 bg-surface-muted flex items-center justify-center relative overflow-hidden" id="qr-container">
+<div class="w-full max-w-[192px] aspect-square bg-surface-muted flex items-center justify-center relative overflow-hidden" id="qr-container">
 <img alt="QR Code" class="w-full h-full p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDysnMmd6-saAxpns5I9B7ZSUGMevdMwAtVs8nXrbNGPLfO77k24XRtR1JXkt5U7hpjQqv0EWbd4p6uJ22TBf2rxU-2_AENNpabKQoWLPIaqY9uS8CexQnBPApU3Jg2iMmFhnOnLHjHOEkNkjavajfNsD-sOGiWN-S-bpbADmzxaMrptiZZ4MKs7lhDhBiPnfiSKh_NLIY5xnuHIMCh61PLFNT94wcFjI7sfQMLtii4VhI1gMbnCWGO8ZmmrqfL5Fs0PNrta2NJk0o"/>
 </div>
 <div class="absolute -top-3 -right-3 w-10 h-10 bg-status-approved rounded-full flex items-center justify-center text-white border-4 border-white shadow-md">
@@ -418,14 +391,14 @@
 <div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="student-portfolio">
 <header class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
 <div>
-<h1 class="text-headline-lg font-headline-lg text-on-surface">Mi Portafolio de Actividades</h1>
-<p class="text-body-md text-on-surface-variant">Visualiza tus horas validadas y estados de registro.</p>
+<h1 class="text-2xl md:text-headline-lg font-headline-lg text-on-surface">Mi Portafolio</h1>
+<p class="text-body-sm md:text-body-md text-on-surface-variant">Horas validadas y estados de registro.</p>
 </div>
-<button class="border border-outline text-primary font-label-md px-lg py-sm rounded-lg hover:bg-primary/5 transition-colors flex items-center gap-sm self-start md:self-auto">
+<button class="border border-outline text-primary font-label-md px-lg py-sm rounded-lg hover:bg-primary/5 transition-colors flex items-center justify-center gap-sm w-full md:w-auto">
 <span class="material-symbols-outlined">download</span> Descargar Reporte
                 </button>
 </header>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl landscape-grid-fix">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
 <div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-md">
 <div class="p-3 bg-primary/10 text-primary rounded-xl shrink-0">
 <span class="material-symbols-outlined text-3xl">list_alt</span>
@@ -472,8 +445,8 @@
 </div>
 <div class="space-y-md" id="official-fields">
 <div class="space-y-xs">
-<label class="font-label-sm text-on-surface-variant">Seleccionar Actividad Oficial</label>
-<select class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="form-act-catalog">
+<label class="font-label-sm text-on-surface-variant">Actividad Oficial</label>
+<select class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none bg-white" id="form-act-catalog">
 <option value="Auxiliar Matemáticas II|Académico|4.0">Auxiliar Matemáticas II (4.0 h)</option>
 <option value="Organización Archivo|Administrativo|2.0">Organización Archivo (2.0 h)</option>
 <option value="Apoyo Evento Graduación|Administrativo|3.0">Apoyo Evento Graduación (3.0 h)</option>
@@ -489,7 +462,7 @@
 <label class="font-label-sm text-on-surface-variant">Descripción / Institución</label>
 <textarea class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none text-sm" id="form-act-desc-ext" placeholder="Describa su participación..." rows="2"></textarea>
 </div>
-<p class="text-[10px] text-primary italic">* Las actividades externas requieren validación obligatoria de evidencia.</p>
+<p class="text-[10px] text-primary italic">* Requieren validación obligatoria de evidencia.</p>
 </div>
 <div class="grid grid-cols-2 gap-md">
 <div class="space-y-xs">
@@ -498,10 +471,10 @@
 </div>
 <div class="space-y-xs">
 <label class="font-label-sm text-on-surface-variant">Fecha</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="form-act-date" type="date"/>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none bg-white" id="form-act-date" type="date"/>
 </div>
 </div>
-<button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2" type="submit">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg" type="submit">
 <span class="material-symbols-outlined">check_circle</span> Registrar Participación
                                 </button>
 </div>
@@ -510,54 +483,54 @@
 </div>
 <div class="lg:col-span-8 space-y-md">
 <h3 class="font-headline-sm">Próximas Actividades Oficiales</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-md landscape-grid-fix" id="official-catalog-container">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md" id="official-catalog-container">
 <!-- Catalog items generated via JS -->
 </div>
 </div>
 </div>
 </div>
 <!-- Tab: Management Dashboard -->
-<div class="tab-content hidden max-w-[1400px] mx-auto space-y-xl" id="management-dashboard">
+<div class="tab-content hidden max-w-[1400px] mx-auto space-y-lg md:space-y-xl" id="management-dashboard">
 <header class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-md">
 <div>
 <p class="text-label-md text-primary font-bold uppercase tracking-wider">Dashboard Administrativo</p>
-<h1 class="text-headline-lg font-bold">Estado de la Gestión</h1>
+<h1 class="text-2xl md:text-headline-lg font-bold">Estado de la Gestión</h1>
 </div>
-<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-bold flex items-center gap-2 shadow-lg hover:opacity-90 transition-all" onclick="openCreateActivityModal()">
-<span class="material-symbols-outlined">add_circle</span> <span class="hidden sm:inline">Nueva Actividad</span><span class="sm:hidden">Crear</span>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-bold flex items-center gap-2 shadow-lg hover:opacity-90 transition-all w-full sm:w-auto justify-center" onclick="openCreateActivityModal()">
+<span class="material-symbols-outlined">add_circle</span> <span>Nueva Actividad</span>
 </button>
 </header>
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-md md:gap-lg">
-<div class="bg-surface border border-outline-variant p-md md:p-lg rounded-xl shadow-sm">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-md">
+<div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
 <div class="p-2 bg-primary/10 rounded-lg text-primary shrink-0"><span class="material-symbols-outlined text-2xl">group</span></div>
 <span class="text-[10px] font-bold text-status-approved bg-status-approved/10 px-2 py-0.5 rounded">+12%</span>
 </div>
-<p class="text-headline-md font-bold">1,248</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Becados</p>
+<p class="text-xl md:text-headline-md font-bold">1,248</p>
+<p class="text-[10px] md:text-label-sm text-on-surface-variant uppercase">Becados</p>
 </div>
-<div class="bg-surface border border-outline-variant p-md md:p-lg rounded-xl shadow-sm">
+<div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
 <div class="p-2 bg-status-pending/10 rounded-lg text-status-pending shrink-0"><span class="material-symbols-outlined text-2xl">history</span></div>
 <span class="text-[10px] font-bold text-status-pending bg-status-pending/10 px-2 py-0.5 rounded">Prioridad</span>
 </div>
-<p class="text-headline-md font-bold">86</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Pendientes</p>
+<p class="text-xl md:text-headline-md font-bold">86</p>
+<p class="text-[10px] md:text-label-sm text-on-surface-variant uppercase">Pendientes</p>
 </div>
-<div class="bg-surface border border-outline-variant p-md md:p-lg rounded-xl shadow-sm">
+<div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
 <div class="p-2 bg-status-approved/10 rounded-lg text-status-approved shrink-0"><span class="material-symbols-outlined text-2xl">check_circle</span></div>
 <span class="text-[10px] font-bold text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded">90%</span>
 </div>
-<p class="text-headline-md font-bold">84.2%</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Asistencia</p>
+<p class="text-xl md:text-headline-md font-bold">84.2%</p>
+<p class="text-[10px] md:text-label-sm text-on-surface-variant uppercase">Asistencia</p>
 </div>
-<div class="bg-surface border border-outline-variant p-md md:p-lg rounded-xl shadow-sm">
+<div class="bg-surface border border-outline-variant p-md rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
 <div class="p-2 bg-primary/10 rounded-lg text-primary shrink-0"><span class="material-symbols-outlined text-2xl">event_repeat</span></div>
 </div>
-<p class="text-headline-md font-bold" id="total-preinscriptions">42</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Registros Hoy</p>
+<p class="text-xl md:text-headline-md font-bold" id="total-preinscriptions">42</p>
+<p class="text-[10px] md:text-label-sm text-on-surface-variant uppercase">Registros Hoy</p>
 </div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
@@ -566,7 +539,7 @@
 <h3 class="font-bold mb-md flex items-center gap-2">
 <span class="material-symbols-outlined">monitoring</span> Monitoreo de Actividades
                         </h3>
-<div class="overflow-x-auto">
+<div class="overflow-x-auto -mx-lg px-lg">
 <table class="w-full text-left min-w-[500px]">
 <thead class="bg-surface-muted border-b border-outline-variant">
 <tr>
@@ -586,7 +559,7 @@
 <div class="lg:col-span-4 space-y-lg">
 <div class="bg-surface border border-outline-variant rounded-xl p-lg shadow-sm">
 <h3 class="font-bold mb-md">Distribución de Horas</h3>
-<div class="h-48">
+<div class="h-[250px] relative w-full">
 <canvas id="mgmtCategoryChartDashboard"></canvas>
 </div>
 </div>
@@ -601,13 +574,13 @@
 <!-- Tab: Management Validation -->
 <div class="tab-content hidden max-w-[1400px] mx-auto space-y-lg" id="management-validation">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-md">
-<div>
-<h3 class="font-headline-md text-headline-md">Control de Asistencia</h3>
+<div class="px-2">
+<h3 class="text-xl md:text-headline-md font-bold">Control de Asistencia</h3>
 <p class="text-body-sm text-on-surface-variant">Escanea el código QR del estudiante.</p>
 </div>
-<div class="w-full md:w-64">
+<div class="w-full md:w-64 px-2">
 <label class="font-label-sm text-on-surface-variant mb-xs block">Seleccionar Estudiante</label>
-<select class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="mgmt-student-select" onchange="loadStudentValidation(this.value)">
+<select class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none bg-white" id="mgmt-student-select" onchange="loadStudentValidation(this.value)">
 <option value="">Buscar por nombre o ID...</option>
 <option value="carlos">Carlos Mendez - 2200543</option>
 <option value="juan">Juan Pablo Salas - 2200981</option>
@@ -616,14 +589,14 @@
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
 <section class="lg:col-span-5 space-y-lg">
-<div class="bg-surface border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col">
-<div class="p-lg border-b border-outline-variant flex justify-between items-center bg-primary/5">
+<div class="bg-surface border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col mx-2">
+<div class="p-lg border-b border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center bg-primary/5 gap-3">
 <h4 class="font-headline-sm text-headline-sm flex items-center gap-md">
 <span class="material-symbols-outlined text-primary">qr_code_scanner</span> Escáner
                             </h4>
-<div class="flex bg-surface-muted rounded-lg p-1 border border-outline-variant">
-<button class="px-md py-1 rounded-md text-[12px] font-bold bg-primary text-on-primary shadow-sm" id="btn-scan-in">ENTRADA</button>
-<button class="px-md py-1 rounded-md text-[12px] font-bold text-on-surface-variant hover:bg-surface-variant" id="btn-scan-out">SALIDA</button>
+<div class="flex bg-surface-muted rounded-lg p-1 border border-outline-variant w-full sm:w-auto">
+<button class="flex-1 px-md py-1 rounded-md text-[12px] font-bold bg-primary text-on-primary shadow-sm" id="btn-scan-in">ENTRADA</button>
+<button class="flex-1 px-md py-1 rounded-md text-[12px] font-bold text-on-surface-variant hover:bg-surface-variant" id="btn-scan-out">SALIDA</button>
 </div>
 </div>
 <div class="relative aspect-square m-lg rounded-xl overflow-hidden bg-black group max-w-sm mx-auto w-full lg:max-w-none">
@@ -659,12 +632,12 @@
 </div>
 </section>
 <section class="lg:col-span-7">
-<div class="bg-surface border border-outline-variant rounded-xl shadow-sm h-full flex flex-col" id="validation-detail-card">
+<div class="bg-surface border border-outline-variant rounded-xl shadow-sm h-full flex flex-col mx-2" id="validation-detail-card">
 <div class="p-lg border-b border-outline-variant flex justify-between items-center">
-<h4 class="font-headline-sm text-headline-sm">Pendientes</h4>
+<h4 class="font-bold">Pendientes</h4>
 <button class="text-primary font-bold text-sm" onclick="alert('Todos validados')">Validar Todo</button>
 </div>
-<div class="overflow-x-auto">
+<div class="overflow-x-auto -mx-0">
 <table class="w-full text-left min-w-[500px]">
 <thead class="bg-surface-muted border-b border-outline-variant">
 <tr>
@@ -703,66 +676,54 @@
 </div>
 </div>
 <!-- Tab: Management Reports -->
-<div class="tab-content hidden max-w-[1400px] mx-auto space-y-xl" id="management-reports">
-<header class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="tab-content hidden max-w-[1400px] mx-auto space-y-lg md:space-y-xl" id="management-reports">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-md px-2">
 <div>
 <p class="text-label-md text-primary font-bold uppercase tracking-wider">Módulo de Reportes</p>
-<h1 class="text-headline-lg font-bold">Estadísticas de Gestión</h1>
+<h1 class="text-2xl md:text-headline-lg font-bold">Estadísticas de Gestión</h1>
 </div>
-<div class="flex flex-wrap gap-md">
-<button class="bg-surface border border-primary text-primary px-lg py-sm rounded-xl font-bold flex items-center gap-2 hover:bg-primary/5 transition-all shadow-sm">
-<span class="material-symbols-outlined">table_view</span> <span class="hidden sm:inline">Excel</span>
+<div class="flex flex-wrap gap-md w-full md:w-auto">
+<button class="flex-1 md:flex-none bg-surface border border-primary text-primary px-lg py-sm rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary/5 transition-all shadow-sm">
+<span class="material-symbols-outlined">table_view</span> <span>Excel</span>
 </button>
-<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-bold flex items-center gap-2 shadow-lg hover:opacity-90 transition-all">
-<span class="material-symbols-outlined">picture_as_pdf</span> <span class="hidden sm:inline">PDF Consolidado</span><span class="sm:hidden">PDF</span>
+<button class="flex-1 md:flex-none bg-primary text-on-primary px-lg py-sm rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">picture_as_pdf</span> <span>PDF</span>
 </button>
 </div>
 </header>
 <!-- Resumen General -->
-<section class="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-lg landscape-grid-fix">
-<div class="bg-white border border-outline-variant rounded-2xl p-md md:p-lg shadow-sm space-y-md relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5 hidden sm:block">
-<span class="material-symbols-outlined text-6xl">schedule</span>
-</div>
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md px-2">
+<div class="bg-white border border-outline-variant rounded-2xl p-md shadow-sm space-y-md relative overflow-hidden">
 <p class="text-on-surface-variant font-label-sm uppercase tracking-widest text-[10px] md:text-xs">Horas Totales</p>
-<h2 class="text-headline-sm md:text-headline-lg font-bold text-primary">320 <span class="text-body-sm font-normal text-on-surface-variant">h</span></h2>
+<h2 class="text-xl md:text-headline-lg font-bold text-primary">320 <span class="text-xs md:text-body-sm font-normal text-on-surface-variant">h</span></h2>
 <div class="flex items-center gap-2 text-status-approved text-[10px] font-bold">
 <span class="material-symbols-outlined text-sm">trending_up</span> +12%
                     </div>
 </div>
-<div class="bg-white border border-outline-variant rounded-2xl p-md md:p-lg shadow-sm space-y-md relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5 hidden sm:block">
-<span class="material-symbols-outlined text-6xl">person</span>
-</div>
+<div class="bg-white border border-outline-variant rounded-2xl p-md shadow-sm space-y-md relative overflow-hidden">
 <p class="text-on-surface-variant font-label-sm uppercase tracking-widest text-[10px] md:text-xs">Promedio/Bec.</p>
-<h2 class="text-headline-sm md:text-headline-lg font-bold text-primary">64 <span class="text-body-sm font-normal text-on-surface-variant">h</span></h2>
+<h2 class="text-xl md:text-headline-lg font-bold text-primary">64 <span class="text-xs md:text-body-sm font-normal text-on-surface-variant">h</span></h2>
 <div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-bold">
 <span class="material-symbols-outlined text-sm">remove</span> Meta: 80h
                     </div>
 </div>
-<div class="bg-white border border-outline-variant rounded-2xl p-md md:p-lg shadow-sm space-y-md relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5 hidden sm:block">
-<span class="material-symbols-outlined text-6xl">verified_user</span>
-</div>
+<div class="bg-white border border-outline-variant rounded-2xl p-md shadow-sm space-y-md relative overflow-hidden">
 <p class="text-on-surface-variant font-label-sm uppercase tracking-widest text-[10px] md:text-xs">Finalizados</p>
-<h2 class="text-headline-sm md:text-headline-lg font-bold text-primary">3</h2>
+<h2 class="text-xl md:text-headline-lg font-bold text-primary">3</h2>
 <div class="flex items-center gap-2 text-status-approved text-[10px] font-bold">
 <span class="material-symbols-outlined text-sm">check</span> Listos
                     </div>
 </div>
-<div class="bg-white border border-outline-variant rounded-2xl p-md md:p-lg shadow-sm space-y-md relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5 hidden sm:block">
-<span class="material-symbols-outlined text-6xl">analytics</span>
-</div>
+<div class="bg-white border border-outline-variant rounded-2xl p-md shadow-sm space-y-md relative overflow-hidden">
 <p class="text-on-surface-variant font-label-sm uppercase tracking-widest text-[10px] md:text-xs">% Cumplimiento</p>
-<h2 class="text-headline-sm md:text-headline-lg font-bold text-status-approved">60%</h2>
+<h2 class="text-xl md:text-headline-lg font-bold text-status-approved">60%</h2>
 <div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
 <div class="bg-status-approved h-full w-[60%]"></div>
 </div>
 </div>
 </section>
 <!-- Visual Charts -->
-<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg px-2">
 <div class="lg:col-span-8 bg-white border border-outline-variant rounded-2xl p-lg shadow-sm flex flex-col min-h-[350px]">
 <div class="flex justify-between items-center mb-md">
 <h3 class="font-bold text-primary flex items-center gap-2">
@@ -782,7 +743,7 @@
 <span class="material-symbols-outlined">pie_chart</span> Categorías
                     </h3>
 <div class="flex-1 flex flex-col justify-center items-center gap-md">
-<div class="relative w-full max-w-[180px] md:max-w-[220px] aspect-square">
+<div class="relative w-full max-w-[200px] aspect-square">
 <canvas id="categoryDistributionChart"></canvas>
 </div>
 <div class="w-full space-y-1 mt-2">
@@ -799,7 +760,7 @@
 </div>
 </section>
 <!-- Data Table Section -->
-<section class="bg-white border border-outline-variant rounded-2xl shadow-sm overflow-hidden">
+<section class="bg-white border border-outline-variant rounded-2xl shadow-sm overflow-hidden mx-2">
 <div class="p-lg border-b border-outline-variant flex justify-between items-center flex-wrap gap-md">
 <h3 class="font-bold">Historial Consolidado</h3>
 <div class="flex gap-md w-full sm:w-auto">
@@ -841,11 +802,11 @@
 </div>
 <!-- Modal: Create Activity (Jefatura) -->
 <div class="fixed inset-0 z-[200] hidden flex items-center justify-center p-md modal-overlay" id="modal-create-activity">
-<div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+<div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
 <div class="p-lg bg-primary text-on-primary flex justify-between items-center shrink-0">
 <div class="flex items-center gap-md">
 <span class="material-symbols-outlined">add_task</span>
-<h3 class="font-headline-sm font-bold">Crear Nueva Actividad</h3>
+<h3 class="font-bold">Crear Nueva Actividad</h3>
 </div>
 <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors" onclick="closeCreateActivityModal()">
 <span class="material-symbols-outlined">close</span>
@@ -860,7 +821,7 @@
 </div>
 <div class="space-y-xs">
 <label class="font-label-md text-on-surface-variant">Categoría</label>
-<select class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-category">
+<select class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none bg-white" id="new-act-category">
 <option value="Voluntariado">Voluntariado</option>
 <option value="Tutorías">Tutorías</option>
 <option value="Cultura">Cultura</option>
@@ -870,7 +831,7 @@
 </div>
 <div class="space-y-xs">
 <label class="font-label-md text-on-surface-variant">Fecha</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-date" required="" type="date"/>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none bg-white" id="new-act-date" required="" type="date"/>
 </div>
 <div class="space-y-xs">
 <label class="font-label-md text-on-surface-variant">Horas</label>
@@ -885,9 +846,9 @@
 <textarea class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-desc" placeholder="Detalles..." rows="2"></textarea>
 </div>
 </div>
-<div class="pt-lg flex gap-md">
-<button class="flex-1 py-md border border-outline text-on-surface-variant rounded-xl font-bold hover:bg-surface-muted transition-all" onclick="closeCreateActivityModal()" type="button">Cancelar</button>
-<button class="flex-[2] py-md bg-primary text-on-primary rounded-xl font-bold shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="handleMgmtCreateActivity(event)" type="submit">
+<div class="pt-lg flex flex-col sm:flex-row gap-md">
+<button class="flex-1 py-md border border-outline text-on-surface-variant rounded-xl font-bold hover:bg-surface-muted transition-all order-2 sm:order-1" onclick="closeCreateActivityModal()" type="button">Cancelar</button>
+<button class="flex-1 sm:flex-[2] py-md bg-primary text-on-primary rounded-xl font-bold shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2 order-1 sm:order-2" onclick="handleMgmtCreateActivity(event)" type="submit">
 <span class="material-symbols-outlined">save</span> Publicar
                     </button>
 </div>
@@ -917,6 +878,20 @@
             { id: 'c4', name: 'Tutoría de Python', category: 'Académico', hours: 3.0, date: '2023-11-25', preinscritos: 8 }
         ]
     };
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const isOpen = sidebar.classList.contains('open');
+        
+        if (isOpen) {
+            sidebar.classList.remove('open');
+            overlay.classList.add('hidden');
+        } else {
+            sidebar.classList.add('open');
+            overlay.classList.remove('hidden');
+        }
+    }
 
     function setLoginRole(role) {
         state.role = role;
@@ -964,6 +939,9 @@
     function logout() {
         document.getElementById('app-content').classList.add('hidden');
         document.getElementById('login-screen').classList.remove('hidden');
+        // Reset sidebar state if it was open
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebar-overlay').classList.add('hidden');
     }
 
     function switchTab(tabId) {
@@ -993,10 +971,10 @@
 
         if (tabId === 'management-dashboard') {
             renderMgmtPreinscriptions();
-            initCharts('management-dashboard');
+            setTimeout(() => initCharts('management-dashboard'), 100);
         }
         if (tabId === 'management-reports') {
-            initCharts('management-reports');
+            setTimeout(() => initCharts('management-reports'), 100);
         }
         if (tabId === 'student-activities') {
             renderCatalog();
@@ -1172,8 +1150,8 @@
         const container = document.getElementById('activities-table-container');
         if(!container) return;
         container.innerHTML = state.activities.map(act => `
-            <div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row mb-4">
-                <div class="w-2 h-full md:w-2 ${act.status === 'Validado' ? 'bg-status-approved' : 'bg-status-pending'} shrink-0"></div>
+            <div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row mb-4 mx-2 md:mx-0">
+                <div class="h-1 md:h-auto md:w-1.5 ${act.status === 'Validado' ? 'bg-status-approved' : 'bg-status-pending'} shrink-0"></div>
                 <div class="p-lg flex-grow grid grid-cols-2 md:grid-cols-6 gap-md items-center">
                     <div class="col-span-2 lg:col-span-2">
                         <h3 class="font-bold text-on-surface truncate">${act.name}</h3>
@@ -1187,7 +1165,7 @@
                         </span>
                     </div>
                     <div class="flex items-center justify-end">
-                        <button class="p-2 bg-primary/5 text-primary rounded-lg border border-primary/20 text-xs font-bold">${act.evidence ? 'Ver' : 'Subir'}</button>
+                        <button class="px-4 py-2 bg-primary/5 text-primary rounded-lg border border-primary/20 text-xs font-bold w-full md:w-auto">${act.evidence ? 'Ver' : 'Subir'}</button>
                     </div>
                 </div>
             </div>
@@ -1242,7 +1220,12 @@
                     labels: ['Académico', 'Administrativo', 'Social'],
                     datasets: [{ data: [40, 35, 25], backgroundColor: ['#C41E3A', '#e5e7eb', '#4b5563'], borderWidth: 0 }]
                 },
-                options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
+                options: { 
+                    responsive: true,
+                    maintainAspectRatio: false, 
+                    plugins: { legend: { display: false } }, 
+                    cutout: '70%' 
+                }
             });
         }
         
@@ -1256,7 +1239,11 @@
                         labels: ['Acad.', 'Admin.', 'Vol.', 'Otros'],
                         datasets: [{ data: [42, 28, 15, 15], backgroundColor: ['#C41E3A', '#930013', '#EF4444', '#410004'], borderWidth: 2, borderColor: '#ffffff' }]
                     },
-                    options: { maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                    options: { 
+                        responsive: true,
+                        maintainAspectRatio: false, 
+                        plugins: { legend: { display: false } } 
+                    }
                 });
             }
 
@@ -1269,7 +1256,12 @@
                         labels: ['Ana L.', 'Carlos M.', 'Juan S.', 'Lucia V.', 'Jorge T.'],
                         datasets: [{ label: 'Horas', data: [78, 60, 45, 32, 15], backgroundColor: '#C41E3A', borderRadius: 4 }]
                     },
-                    options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 80, grid: { display: false } }, x: { grid: { display: false } } } }
+                    options: { 
+                        responsive: true,
+                        maintainAspectRatio: false, 
+                        plugins: { legend: { display: false } }, 
+                        scales: { y: { beginAtZero: true, max: 80, grid: { display: false } }, x: { grid: { display: false } } } 
+                    }
                 });
             }
         }
@@ -1287,7 +1279,6 @@
         renderMyUpcoming();
     });
 
-    // Resize handler for charts
     window.addEventListener('resize', () => {
         Object.values(charts).forEach(chart => chart.resize());
     });
