@@ -47,6 +47,63 @@
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
         }
+
+        /* Mobile Landscape Fixes */
+        @media (max-height: 500px) and (orientation: landscape) {
+            #login-screen .max-w-md {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                max-width: 800px;
+                align-items: center;
+            }
+            #login-screen .text-center {
+                text-align: left;
+            }
+            #login-screen .w-20.h-20 {
+                margin-left: 0;
+                width: 3rem;
+                height: 3rem;
+            }
+            #login-screen .material-symbols-outlined.text-5xl {
+                font-size: 2rem;
+            }
+            #login-screen .font-headline-lg {
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+            
+            aside {
+                width: 72px !important;
+                padding: 0.5rem !important;
+            }
+            aside .font-label-md, aside .font-label-sm, aside .truncate, aside h1, aside p {
+                display: none;
+            }
+            aside .mb-lg {
+                margin-bottom: 1rem;
+            }
+            aside .nav-item {
+                justify-content: center;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            header, main {
+                left: 72px !important;
+                margin-left: 72px !important;
+            }
+            
+            .landscape-grid-fix {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            #modal-create-activity .max-w-2xl {
+                max-height: 95vh;
+            }
+            #modal-create-activity .p-xl {
+                padding: 1rem;
+            }
+        }
     </style>
 <script id="tailwind-config">
         tailwind.config = {
@@ -153,8 +210,8 @@
 </head>
 <body class="bg-background font-body-md text-on-surface overflow-x-hidden">
 <!-- Login Screen -->
-<section class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-md" id="login-screen">
-<div class="max-w-md w-full space-y-xl">
+<section class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center p-md overflow-y-auto" id="login-screen">
+<div class="max-w-md w-full space-y-md lg:space-y-xl py-8">
 <div class="text-center space-y-md">
 <div class="w-20 h-20 rounded-2xl bg-primary flex items-center justify-center text-on-primary shadow-lg mx-auto">
 <span class="material-symbols-outlined text-5xl">school</span>
@@ -164,7 +221,7 @@
 <p class="text-on-surface-variant font-body-md">Accede a tu plataforma de excelencia académica</p>
 </div>
 </div>
-<div class="bg-surface border border-outline-variant p-xl rounded-2xl shadow-sm space-y-lg">
+<div class="bg-surface border border-outline-variant p-lg md:p-xl rounded-2xl shadow-sm space-y-lg">
 <div class="flex p-1 bg-surface-variant rounded-xl border border-outline-variant">
 <button class="flex-1 py-sm rounded-lg font-label-md text-label-md transition-all bg-white text-primary shadow-sm font-bold" id="role-btn-student" onclick="setLoginRole('student')">ESTUDIANTE</button>
 <button class="flex-1 py-sm rounded-lg font-label-md text-label-md transition-all text-on-surface-variant" id="role-btn-management" onclick="setLoginRole('management')">JEFATURA</button>
@@ -186,7 +243,7 @@
 <label class="font-label-md text-label-md text-on-surface-variant ml-1">Contraseña</label>
 <input class="w-full px-md py-sm rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="••••••••" type="password" value="password"/>
 </div>
-<div class="flex items-center justify-between">
+<div class="flex items-center justify-between gap-sm">
 <label class="flex items-center gap-xs cursor-pointer">
 <input class="rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
 <span class="text-label-sm text-on-surface-variant">Recordarme</span>
@@ -208,15 +265,15 @@
 <!-- Side Navigation Bar -->
 <aside class="w-64 h-screen fixed left-0 top-0 flex flex-col p-md gap-sm bg-surface border-r border-outline-variant z-50">
 <div class="mb-lg flex items-center gap-md px-sm">
-<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0">
 <span class="material-symbols-outlined">school</span>
 </div>
-<div>
-<h1 class="font-headline-sm text-headline-sm font-bold text-primary">Becados UTEPSA</h1>
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Excelencia</p>
+<div class="min-w-0">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary truncate">Becados UTEPSA</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">Excelencia</p>
 </div>
 </div>
-<nav class="flex-1 space-y-xs" id="side-nav">
+<nav class="flex-1 space-y-xs overflow-y-auto" id="side-nav">
 <!-- Student Menu -->
 <div class="space-y-xs" id="student-menu">
 <button class="w-full flex items-center gap-md px-md py-sm text-primary font-bold bg-primary/10 rounded-lg transition-all duration-150 nav-item" id="btn-student-dashboard" onclick="switchTab('student-dashboard')">
@@ -248,7 +305,7 @@
 </button>
 </div>
 </nav>
-<div class="mt-auto p-md bg-surface-muted rounded-xl flex items-center gap-md border border-outline-variant">
+<div class="mt-auto p-md bg-surface-muted rounded-xl flex items-center gap-md border border-outline-variant shrink-0">
 <img alt="User Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant" id="user-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAysDn8RMm9V9RLmS2Qu5z2MjesiRf2i6yny4pp2nCj1AAWUKxKEodbwITKce_5okCDeI7Xw6uv5tPZBaRpKzegpfGrLAA8pCQtlh2_GwDWW244OOlBsBlkLrAPO0HHWRMrPBblRHnB_kI2qptqygMPnJDQGw6ip8hKEu57GToKQke8JwI820NcaIfb78cnc09rMAgyfSwt7wf48uIR_60Pn1272Gsh86ST7oOE2lcKZRa5DYvWXMtAEOCrUEiTeaBGp3_j0dCmbbI"/>
 <div class="flex-1 min-w-0">
 <p class="font-label-md text-label-md font-bold truncate" id="user-name">Carlos Mendez</p>
@@ -260,28 +317,28 @@
 </div>
 </aside>
 <!-- Top Navigation Bar -->
-<header class="fixed top-0 right-0 left-64 h-16 bg-surface shadow-sm z-40 flex justify-between items-center px-lg border-b border-outline-variant">
-<h2 class="font-headline-sm text-headline-sm font-bold text-primary" id="header-title">Panel del Becado</h2>
-<div class="flex items-center gap-lg">
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface shadow-sm z-40 flex justify-between items-center px-lg border-b border-outline-variant transition-all">
+<h2 class="font-headline-sm text-headline-sm font-bold text-primary truncate" id="header-title">Panel del Becado</h2>
+<div class="flex items-center gap-md md:gap-lg">
 <div class="flex gap-md">
 <button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative">
 <span class="material-symbols-outlined">notifications</span>
 <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
 </button>
 </div>
-<div class="h-8 w-px bg-outline-variant mx-sm"></div>
+<div class="h-8 w-px bg-outline-variant mx-sm hidden sm:block"></div>
 <button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors font-bold flex items-center gap-xs" onclick="logout()">
-<span class="material-symbols-outlined text-[18px]">logout</span> Cerrar Sesión
-            </button>
+<span class="material-symbols-outlined text-[18px]">logout</span> <span class="hidden sm:inline">Cerrar Sesión</span>
+</button>
 </div>
 </header>
 <!-- Main Content Canvas -->
-<main class="ml-64 mt-16 p-lg bg-background min-h-screen">
+<main class="ml-64 mt-16 p-lg bg-background min-h-screen transition-all">
 <!-- Tab: Student Dashboard -->
 <div class="tab-content max-w-[1400px] mx-auto space-y-xl" id="student-dashboard">
 <section class="grid grid-cols-1 xl:grid-cols-12 gap-lg">
 <div class="xl:col-span-8 space-y-lg">
-<div class="relative overflow-hidden bg-primary p-xl rounded-xl text-on-primary shadow-lg flex flex-col justify-between min-h-[300px]">
+<div class="relative overflow-hidden bg-primary p-xl rounded-xl text-on-primary shadow-lg flex flex-col justify-between min-h-[260px] md:min-h-[300px]">
 <div class="relative z-10">
 <p class="font-label-md text-label-md opacity-80 mb-xs uppercase tracking-widest">Panel del Becado</p>
 <h1 class="font-headline-lg text-headline-lg mb-md">Bienvenido, <span class="" id="welcome-user-name">Carlos Mendez</span></h1>
@@ -297,7 +354,7 @@
 </div>
 </div>
 </div>
-<!-- My Upcoming Activities Section (New) -->
+<!-- My Upcoming Activities Section -->
 <div class="bg-surface border border-outline-variant rounded-xl p-lg shadow-sm">
 <div class="flex justify-between items-center mb-md">
 <h3 class="font-bold text-primary flex items-center gap-2">
@@ -309,7 +366,7 @@
 <p class="text-on-surface-variant text-sm italic py-4 text-center">Aún no tienes pre-inscripciones pendientes.</p>
 </div>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md landscape-grid-fix">
 <div class="bg-surface p-lg rounded-xl border border-outline-variant flex flex-col items-center text-center shadow-sm">
 <span class="material-symbols-outlined text-primary mb-sm text-3xl">timer</span>
 <p class="font-headline-md text-headline-md text-on-surface" id="stat-total-hours">60</p>
@@ -364,22 +421,22 @@
 <h1 class="text-headline-lg font-headline-lg text-on-surface">Mi Portafolio de Actividades</h1>
 <p class="text-body-md text-on-surface-variant">Visualiza tus horas validadas y estados de registro.</p>
 </div>
-<button class="border border-outline text-primary font-label-md px-lg py-sm rounded-lg hover:bg-primary/5 transition-colors flex items-center gap-sm">
+<button class="border border-outline text-primary font-label-md px-lg py-sm rounded-lg hover:bg-primary/5 transition-colors flex items-center gap-sm self-start md:self-auto">
 <span class="material-symbols-outlined">download</span> Descargar Reporte
                 </button>
 </header>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl landscape-grid-fix">
 <div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-md">
-<div class="p-3 bg-primary/10 text-primary rounded-xl">
+<div class="p-3 bg-primary/10 text-primary rounded-xl shrink-0">
 <span class="material-symbols-outlined text-3xl">list_alt</span>
 </div>
 <div>
 <p class="text-headline-md font-bold" id="port-total-acts">2</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Total de Actividades</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Total Actividades</p>
 </div>
 </div>
 <div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-md">
-<div class="p-3 bg-status-approved/10 text-status-approved rounded-xl">
+<div class="p-3 bg-status-approved/10 text-status-approved rounded-xl shrink-0">
 <span class="material-symbols-outlined text-3xl">verified</span>
 </div>
 <div>
@@ -388,12 +445,12 @@
 </div>
 </div>
 <div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm flex items-center gap-md">
-<div class="p-3 bg-status-pending/10 text-status-pending rounded-xl">
+<div class="p-3 bg-status-pending/10 text-status-pending rounded-xl shrink-0">
 <span class="material-symbols-outlined text-3xl">hourglass_empty</span>
 </div>
 <div>
 <p class="text-headline-md font-bold" id="port-pending-val">1</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Pendientes de Validación</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Pendientes</p>
 </div>
 </div>
 </div>
@@ -405,7 +462,7 @@
 <div class="tab-content hidden max-w-[1280px] mx-auto space-y-lg" id="student-activities">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
 <div class="lg:col-span-4">
-<div class="bg-surface border border-outline-variant rounded-xl p-lg shadow-sm sticky top-24">
+<div class="bg-surface border border-outline-variant rounded-xl p-lg shadow-sm lg:sticky lg:top-24">
 <h3 class="font-headline-sm mb-md text-primary">Registrar Participación</h3>
 <form class="space-y-md" id="activity-form" onsubmit="event.preventDefault(); registerNewActivity();">
 <div class="space-y-md">
@@ -453,7 +510,7 @@
 </div>
 <div class="lg:col-span-8 space-y-md">
 <h3 class="font-headline-sm">Próximas Actividades Oficiales</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-md" id="official-catalog-container">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md landscape-grid-fix" id="official-catalog-container">
 <!-- Catalog items generated via JS -->
 </div>
 </div>
@@ -461,63 +518,61 @@
 </div>
 <!-- Tab: Management Dashboard -->
 <div class="tab-content hidden max-w-[1400px] mx-auto space-y-xl" id="management-dashboard">
-<header class="flex justify-between items-end">
+<header class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-md">
 <div>
 <p class="text-label-md text-primary font-bold uppercase tracking-wider">Dashboard Administrativo</p>
-<h1 class="text-headline-lg font-bold">Estado de la Gestión de Becas</h1>
+<h1 class="text-headline-lg font-bold">Estado de la Gestión</h1>
 </div>
-<div class="flex gap-md">
 <button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-bold flex items-center gap-2 shadow-lg hover:opacity-90 transition-all" onclick="openCreateActivityModal()">
-<span class="material-symbols-outlined">add_circle</span> Crear Nueva Actividad
-                    </button>
-</div>
+<span class="material-symbols-outlined">add_circle</span> <span class="hidden sm:inline">Nueva Actividad</span><span class="sm:hidden">Crear</span>
+</button>
 </header>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-md md:gap-lg">
+<div class="bg-surface border border-outline-variant p-md md:p-lg rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
-<div class="p-2 bg-primary/10 rounded-lg text-primary"><span class="material-symbols-outlined text-2xl">group</span></div>
+<div class="p-2 bg-primary/10 rounded-lg text-primary shrink-0"><span class="material-symbols-outlined text-2xl">group</span></div>
 <span class="text-[10px] font-bold text-status-approved bg-status-approved/10 px-2 py-0.5 rounded">+12%</span>
 </div>
 <p class="text-headline-md font-bold">1,248</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Becados Totales</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Becados</p>
 </div>
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
+<div class="bg-surface border border-outline-variant p-md md:p-lg rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
-<div class="p-2 bg-status-pending/10 rounded-lg text-status-pending"><span class="material-symbols-outlined text-2xl">history</span></div>
+<div class="p-2 bg-status-pending/10 rounded-lg text-status-pending shrink-0"><span class="material-symbols-outlined text-2xl">history</span></div>
 <span class="text-[10px] font-bold text-status-pending bg-status-pending/10 px-2 py-0.5 rounded">Prioridad</span>
 </div>
 <p class="text-headline-md font-bold">86</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Pendientes de Validar</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Pendientes</p>
 </div>
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
+<div class="bg-surface border border-outline-variant p-md md:p-lg rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
-<div class="p-2 bg-status-approved/10 rounded-lg text-status-approved"><span class="material-symbols-outlined text-2xl">check_circle</span></div>
-<span class="text-[10px] font-bold text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded">Meta: 90%</span>
+<div class="p-2 bg-status-approved/10 rounded-lg text-status-approved shrink-0"><span class="material-symbols-outlined text-2xl">check_circle</span></div>
+<span class="text-[10px] font-bold text-on-surface-variant bg-surface-variant px-2 py-0.5 rounded">90%</span>
 </div>
 <p class="text-headline-md font-bold">84.2%</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Tasa de Asistencia</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Asistencia</p>
 </div>
-<div class="bg-surface border border-outline-variant p-lg rounded-xl shadow-sm">
+<div class="bg-surface border border-outline-variant p-md md:p-lg rounded-xl shadow-sm">
 <div class="flex justify-between items-start mb-md">
-<div class="p-2 bg-primary/10 rounded-lg text-primary"><span class="material-symbols-outlined text-2xl">event_repeat</span></div>
+<div class="p-2 bg-primary/10 rounded-lg text-primary shrink-0"><span class="material-symbols-outlined text-2xl">event_repeat</span></div>
 </div>
 <p class="text-headline-md font-bold" id="total-preinscriptions">42</p>
-<p class="text-label-sm text-on-surface-variant uppercase">Pre-inscripciones Hoy</p>
+<p class="text-label-sm text-on-surface-variant uppercase">Registros Hoy</p>
 </div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
 <div class="lg:col-span-8 space-y-lg">
 <div class="bg-surface border border-outline-variant rounded-xl p-lg shadow-sm">
 <h3 class="font-bold mb-md flex items-center gap-2">
-<span class="material-symbols-outlined">monitoring</span> Monitoreo de Próximas Actividades
+<span class="material-symbols-outlined">monitoring</span> Monitoreo de Actividades
                         </h3>
 <div class="overflow-x-auto">
-<table class="w-full text-left">
+<table class="w-full text-left min-w-[500px]">
 <thead class="bg-surface-muted border-b border-outline-variant">
 <tr>
 <th class="px-lg py-md font-label-md text-on-surface-variant text-xs uppercase">Actividad</th>
 <th class="px-lg py-md font-label-md text-on-surface-variant text-xs uppercase">Fecha</th>
-<th class="px-lg py-md font-label-md text-on-surface-variant text-xs uppercase">Pre-inscritos</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant text-xs uppercase">Inscritos</th>
 <th class="px-lg py-md font-label-md text-on-surface-variant text-xs uppercase">Estado</th>
 </tr>
 </thead>
@@ -547,8 +602,8 @@
 <div class="tab-content hidden max-w-[1400px] mx-auto space-y-lg" id="management-validation">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-md">
 <div>
-<h3 class="font-headline-md text-headline-md">Panel de Control de Asistencia</h3>
-<p class="text-body-sm text-on-surface-variant">Escanea el código QR del estudiante o valida manualmente.</p>
+<h3 class="font-headline-md text-headline-md">Control de Asistencia</h3>
+<p class="text-body-sm text-on-surface-variant">Escanea el código QR del estudiante.</p>
 </div>
 <div class="w-full md:w-64">
 <label class="font-label-sm text-on-surface-variant mb-xs block">Seleccionar Estudiante</label>
@@ -571,7 +626,7 @@
 <button class="px-md py-1 rounded-md text-[12px] font-bold text-on-surface-variant hover:bg-surface-variant" id="btn-scan-out">SALIDA</button>
 </div>
 </div>
-<div class="relative aspect-square m-lg rounded-xl overflow-hidden bg-black group">
+<div class="relative aspect-square m-lg rounded-xl overflow-hidden bg-black group max-w-sm mx-auto w-full lg:max-w-none">
 <div class="absolute inset-0 bg-cover bg-center opacity-70" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCA6L98keEgGDlZtLZQ1qwUcXDoKUDEcwegj5Z3aNPduKOIZNELE1tIK-XNNvlOC4ZBeE7PjsFqLC9hJzxQhZDpu0PdbjabJc06oVsEjc0RkWs0v8fzy21ErL1zszJ3I4AJBZA3xigH0a32o0ynvTOKSl4866_aDyIGn-2Wlv2n4aexewE45EmhvNPJYm8cl2CU2K1nK4m2HAXS8o_6i-C5xchDwJqgLIh4BZMRL4wZwvu0jiBqF_NstVmQ8U5_qDTNOaPctr4S-LE')"></div>
 <div class="absolute inset-0 bg-scanner-overlay"></div>
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-primary/40 rounded-3xl flex items-center justify-center">
@@ -580,7 +635,7 @@
 <div class="absolute bottom-md left-1/2 -translate-x-1/2 flex gap-md">
 <button class="bg-primary text-on-primary px-md py-sm rounded-full hover:opacity-90 transition-all flex items-center gap-xs shadow-lg" onclick="alert('Evidencia fotográfica capturada')">
 <span class="material-symbols-outlined text-[18px]">add_a_photo</span>
-<span class="text-[11px] font-bold">Tomar Evidencia</span>
+<span class="text-[11px] font-bold">Tomar Foto</span>
 </button>
 </div>
 </div>
@@ -595,8 +650,8 @@
 <span class="material-symbols-outlined text-primary text-3xl" id="scan-icon">camera</span>
 </div>
 <div class="flex-1 min-w-0">
-<p class="font-bold text-on-surface" id="scan-title">Esperando QR...</p>
-<p class="text-[12px] text-on-surface-variant" id="scan-desc">Posicione el código frente a la cámara</p>
+<p class="font-bold text-on-surface truncate" id="scan-title">Esperando QR...</p>
+<p class="text-[12px] text-on-surface-variant truncate" id="scan-desc">Posicione el código</p>
 </div>
 </div>
 </div>
@@ -606,11 +661,11 @@
 <section class="lg:col-span-7">
 <div class="bg-surface border border-outline-variant rounded-xl shadow-sm h-full flex flex-col" id="validation-detail-card">
 <div class="p-lg border-b border-outline-variant flex justify-between items-center">
-<h4 class="font-headline-sm text-headline-sm">Pendientes de Validación</h4>
-<button class="text-primary font-bold text-sm" onclick="alert('Todos los registros marcados como validados')">Validar Todo</button>
+<h4 class="font-headline-sm text-headline-sm">Pendientes</h4>
+<button class="text-primary font-bold text-sm" onclick="alert('Todos validados')">Validar Todo</button>
 </div>
 <div class="overflow-x-auto">
-<table class="w-full text-left">
+<table class="w-full text-left min-w-[500px]">
 <thead class="bg-surface-muted border-b border-outline-variant">
 <tr>
 <th class="px-lg py-md font-label-md text-on-surface-variant">Estudiante</th>
@@ -622,21 +677,21 @@
 <tr class="hover:bg-surface-muted/30" id="row-juan">
 <td class="px-lg py-lg">
 <div class="flex items-center gap-md">
-<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">JP</div>
-<div><p class="font-label-md font-bold">Juan Pablo Salas</p><p class="text-[11px] text-on-surface-variant">ID: 2200981</p></div>
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs shrink-0">JP</div>
+<div class="min-w-0"><p class="font-label-md font-bold truncate">Juan Pablo Salas</p><p class="text-[11px] text-on-surface-variant">ID: 2200981</p></div>
 </div>
 </td>
 <td class="px-lg py-lg">
 <p class="font-body-sm font-medium">Tutoría Matemáticas I</p>
 <div class="flex items-center gap-2 mt-1">
 <p class="text-[11px] text-primary font-bold">2.5 Horas</p>
-<button class="text-[10px] bg-primary/5 text-primary px-1.5 py-0.5 rounded font-bold hover:bg-primary hover:text-white transition-colors">Ver Evidencia</button>
+<button class="text-[10px] bg-primary/5 text-primary px-1.5 py-0.5 rounded font-bold hover:bg-primary hover:text-white transition-colors">Evidencia</button>
 </div>
 </td>
 <td class="px-lg py-lg text-right">
 <div class="flex justify-end gap-sm">
-<button class="p-2 text-status-rejected hover:bg-status-rejected/10 rounded" onclick="handleValidationAction('juan', 'reject')"><span class="material-symbols-outlined">cancel</span></button>
-<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md text-[12px] hover:opacity-90" onclick="handleValidationAction('juan', 'approve')">Validar</button>
+<button class="p-2 text-status-rejected hover:bg-status-rejected/10 rounded shrink-0" onclick="handleValidationAction('juan', 'reject')"><span class="material-symbols-outlined">cancel</span></button>
+<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md text-[12px] hover:opacity-90 shrink-0" onclick="handleValidationAction('juan', 'approve')">Validar</button>
 </div>
 </td>
 </tr>
@@ -652,114 +707,92 @@
 <header class="flex flex-col md:flex-row md:items-end justify-between gap-md">
 <div>
 <p class="text-label-md text-primary font-bold uppercase tracking-wider">Módulo de Reportes</p>
-<h1 class="text-headline-lg font-bold">Reportes y Estadísticas de Gestión</h1>
+<h1 class="text-headline-lg font-bold">Estadísticas de Gestión</h1>
 </div>
 <div class="flex flex-wrap gap-md">
 <button class="bg-surface border border-primary text-primary px-lg py-sm rounded-xl font-bold flex items-center gap-2 hover:bg-primary/5 transition-all shadow-sm">
-<span class="material-symbols-outlined">table_view</span> Exportar Excel
-                    </button>
+<span class="material-symbols-outlined">table_view</span> <span class="hidden sm:inline">Excel</span>
+</button>
 <button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-bold flex items-center gap-2 shadow-lg hover:opacity-90 transition-all">
-<span class="material-symbols-outlined">picture_as_pdf</span> Generar PDF Consolidado
-                    </button>
+<span class="material-symbols-outlined">picture_as_pdf</span> <span class="hidden sm:inline">PDF Consolidado</span><span class="sm:hidden">PDF</span>
+</button>
 </div>
 </header>
 <!-- Resumen General -->
-<section class="grid grid-cols-1 md:grid-cols-4 gap-lg">
-<div class="bg-white border border-outline-variant rounded-2xl p-lg shadow-sm space-y-md relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5">
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-lg landscape-grid-fix">
+<div class="bg-white border border-outline-variant rounded-2xl p-md md:p-lg shadow-sm space-y-md relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 hidden sm:block">
 <span class="material-symbols-outlined text-6xl">schedule</span>
 </div>
-<p class="text-on-surface-variant font-label-sm uppercase tracking-widest">Total Horas Acumuladas</p>
-<h2 class="text-headline-lg font-bold text-primary">320 <span class="text-body-sm font-normal text-on-surface-variant">h</span></h2>
-<div class="flex items-center gap-2 text-status-approved text-xs font-bold">
-<span class="material-symbols-outlined text-sm">trending_up</span> +12% vs meta
+<p class="text-on-surface-variant font-label-sm uppercase tracking-widest text-[10px] md:text-xs">Horas Totales</p>
+<h2 class="text-headline-sm md:text-headline-lg font-bold text-primary">320 <span class="text-body-sm font-normal text-on-surface-variant">h</span></h2>
+<div class="flex items-center gap-2 text-status-approved text-[10px] font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12%
                     </div>
 </div>
-<div class="bg-white border border-outline-variant rounded-2xl p-lg shadow-sm space-y-md relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5">
+<div class="bg-white border border-outline-variant rounded-2xl p-md md:p-lg shadow-sm space-y-md relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 hidden sm:block">
 <span class="material-symbols-outlined text-6xl">person</span>
 </div>
-<p class="text-on-surface-variant font-label-sm uppercase tracking-widest">Promedio por Becario</p>
-<h2 class="text-headline-lg font-bold text-primary">64 <span class="text-body-sm font-normal text-on-surface-variant">h/est</span></h2>
-<div class="flex items-center gap-2 text-on-surface-variant text-xs font-bold">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-widest text-[10px] md:text-xs">Promedio/Bec.</p>
+<h2 class="text-headline-sm md:text-headline-lg font-bold text-primary">64 <span class="text-body-sm font-normal text-on-surface-variant">h</span></h2>
+<div class="flex items-center gap-2 text-on-surface-variant text-[10px] font-bold">
 <span class="material-symbols-outlined text-sm">remove</span> Meta: 80h
                     </div>
 </div>
-<div class="bg-white border border-outline-variant rounded-2xl p-lg shadow-sm space-y-md relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5">
+<div class="bg-white border border-outline-variant rounded-2xl p-md md:p-lg shadow-sm space-y-md relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 hidden sm:block">
 <span class="material-symbols-outlined text-6xl">verified_user</span>
 </div>
-<p class="text-on-surface-variant font-label-sm uppercase tracking-widest">Becarios Completos</p>
-<h2 class="text-headline-lg font-bold text-primary">3</h2>
-<div class="flex items-center gap-2 text-status-approved text-xs font-bold">
-<span class="material-symbols-outlined text-sm">check</span> Verificados
+<p class="text-on-surface-variant font-label-sm uppercase tracking-widest text-[10px] md:text-xs">Finalizados</p>
+<h2 class="text-headline-sm md:text-headline-lg font-bold text-primary">3</h2>
+<div class="flex items-center gap-2 text-status-approved text-[10px] font-bold">
+<span class="material-symbols-outlined text-sm">check</span> Listos
                     </div>
 </div>
-<div class="bg-white border border-outline-variant rounded-2xl p-lg shadow-sm space-y-md relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-5">
+<div class="bg-white border border-outline-variant rounded-2xl p-md md:p-lg shadow-sm space-y-md relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 hidden sm:block">
 <span class="material-symbols-outlined text-6xl">analytics</span>
 </div>
-<p class="text-on-surface-variant font-label-sm uppercase tracking-widest">Tasa Cumplimiento</p>
-<h2 class="text-headline-lg font-bold text-status-approved">60%</h2>
-<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
-<div class="bg-status-approved h-full w-[60%] rounded-full shadow-[0_0_8px_rgba(16,185,129,0.3)]"></div>
+<p class="text-on-surface-variant font-label-sm uppercase tracking-widest text-[10px] md:text-xs">% Cumplimiento</p>
+<h2 class="text-headline-sm md:text-headline-lg font-bold text-status-approved">60%</h2>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-status-approved h-full w-[60%]"></div>
 </div>
 </div>
 </section>
 <!-- Visual Charts -->
 <section class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
-<!-- Cumplimiento por Becario (Gráfico de Barras) -->
-<div class="lg:col-span-8 bg-white border border-outline-variant rounded-2xl p-lg shadow-sm flex flex-col">
+<div class="lg:col-span-8 bg-white border border-outline-variant rounded-2xl p-lg shadow-sm flex flex-col min-h-[350px]">
 <div class="flex justify-between items-center mb-md">
 <h3 class="font-bold text-primary flex items-center gap-2">
-<span class="material-symbols-outlined">bar_chart</span> Gráfico de Cumplimiento por Becario
+<span class="material-symbols-outlined">bar_chart</span> Cumplimiento por Becario
                         </h3>
-<select class="text-xs bg-surface-muted border-none rounded-lg focus:ring-0">
-<option>Todos los Becarios</option>
-<option>Top Cumplimiento</option>
+<select class="text-[10px] bg-surface-muted border-none rounded-lg focus:ring-0">
+<option>Todos</option>
+<option>Top 5</option>
 </select>
 </div>
-<div class="flex-1 min-h-[300px] relative">
+<div class="flex-1 relative w-full h-full min-h-[250px]">
 <canvas id="becarioComplianceChart"></canvas>
 </div>
 </div>
-<!-- Actividades por Categoría (Gráfico Circular) -->
-<div class="lg:col-span-4 bg-white border border-outline-variant rounded-2xl p-lg shadow-sm flex flex-col">
+<div class="lg:col-span-4 bg-white border border-outline-variant rounded-2xl p-lg shadow-sm flex flex-col min-h-[350px]">
 <h3 class="font-bold text-primary flex items-center gap-2 mb-md">
-<span class="material-symbols-outlined">pie_chart</span> Actividades por Categoría
+<span class="material-symbols-outlined">pie_chart</span> Categorías
                     </h3>
 <div class="flex-1 flex flex-col justify-center items-center gap-md">
-<div class="relative w-full aspect-square max-w-[220px]">
+<div class="relative w-full max-w-[180px] md:max-w-[220px] aspect-square">
 <canvas id="categoryDistributionChart"></canvas>
 </div>
-<div class="w-full space-y-2 mt-4">
-<div class="flex justify-between items-center text-xs">
-<div class="flex items-center gap-2">
-<div class="w-3 h-3 rounded-full bg-[#C41E3A]"></div>
-<span>Académico</span>
-</div>
+<div class="w-full space-y-1 mt-2">
+<div class="flex justify-between items-center text-[10px] md:text-xs">
+<div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-[#C41E3A]"></div><span>Académico</span></div>
 <span class="font-bold">42%</span>
 </div>
-<div class="flex justify-between items-center text-xs">
-<div class="flex items-center gap-2">
-<div class="w-3 h-3 rounded-full bg-[#930013]"></div>
-<span>Administrativo</span>
-</div>
+<div class="flex justify-between items-center text-[10px] md:text-xs">
+<div class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-[#930013]"></div><span>Administrativo</span></div>
 <span class="font-bold">28%</span>
-</div>
-<div class="flex justify-between items-center text-xs">
-<div class="flex items-center gap-2">
-<div class="w-3 h-3 rounded-full bg-[#EF4444]"></div>
-<span>Voluntariado</span>
-</div>
-<span class="font-bold">15%</span>
-</div>
-<div class="flex justify-between items-center text-xs">
-<div class="flex items-center gap-2">
-<div class="w-3 h-3 rounded-full bg-[#410004]"></div>
-<span>Otros</span>
-</div>
-<span class="font-bold">15%</span>
 </div>
 </div>
 </div>
@@ -767,51 +800,36 @@
 </section>
 <!-- Data Table Section -->
 <section class="bg-white border border-outline-variant rounded-2xl shadow-sm overflow-hidden">
-<div class="p-lg border-b border-outline-variant flex justify-between items-center">
-<h3 class="font-bold">Historial Consolidado de Horas</h3>
-<div class="flex gap-md">
-<input class="px-md py-1.5 rounded-lg border border-outline text-sm outline-none focus:ring-1 focus:ring-primary" placeholder="Filtrar por estudiante..." type="text"/>
-<button class="bg-surface-variant p-2 rounded-lg text-on-surface-variant hover:bg-outline-variant"><span class="material-symbols-outlined text-sm">filter_list</span></button>
+<div class="p-lg border-b border-outline-variant flex justify-between items-center flex-wrap gap-md">
+<h3 class="font-bold">Historial Consolidado</h3>
+<div class="flex gap-md w-full sm:w-auto">
+<input class="px-md py-1.5 rounded-lg border border-outline text-sm outline-none focus:ring-1 focus:ring-primary w-full sm:w-48" placeholder="Filtrar..." type="text"/>
 </div>
 </div>
 <div class="overflow-x-auto">
-<table class="w-full text-left">
+<table class="w-full text-left min-w-[700px]">
 <thead class="bg-surface-muted border-b border-outline-variant">
 <tr>
 <th class="px-lg py-md font-label-md text-xs uppercase text-on-surface-variant">Becario</th>
-<th class="px-lg py-md font-label-md text-xs uppercase text-on-surface-variant">ID Registro</th>
-<th class="px-lg py-md font-label-md text-xs uppercase text-on-surface-variant">Horas Aprobadas</th>
+<th class="px-lg py-md font-label-md text-xs uppercase text-on-surface-variant">ID</th>
+<th class="px-lg py-md font-label-md text-xs uppercase text-on-surface-variant">Horas</th>
 <th class="px-lg py-md font-label-md text-xs uppercase text-on-surface-variant">Última Actividad</th>
-<th class="px-lg py-md font-label-md text-xs uppercase text-on-surface-variant">Estado Semestral</th>
+<th class="px-lg py-md font-label-md text-xs uppercase text-on-surface-variant">Estado</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-outline-variant">
 <tr class="hover:bg-surface-variant/10">
 <td class="px-lg py-md">
 <div class="flex items-center gap-md">
-<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">AL</div>
-<div><p class="font-bold text-sm">Ana Maria Lopez</p><p class="text-[11px] text-on-surface-variant">Ingeniería Comercial</p></div>
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs shrink-0">AL</div>
+<div class="min-w-0"><p class="font-bold text-sm truncate">Ana Maria Lopez</p><p class="text-[11px] text-on-surface-variant">Ing. Comercial</p></div>
 </div>
 </td>
 <td class="px-lg py-md text-sm">221045</td>
 <td class="px-lg py-md text-sm font-bold text-primary">78.0 h</td>
-<td class="px-lg py-md text-sm">Organización EXPO 2024</td>
+<td class="px-lg py-md text-sm">EXPO 2024</td>
 <td class="px-lg py-md">
 <span class="text-[10px] font-bold text-status-approved bg-status-approved/10 px-2 py-1 rounded">FINALIZADO</span>
-</td>
-</tr>
-<tr class="hover:bg-surface-variant/10">
-<td class="px-lg py-md">
-<div class="flex items-center gap-md">
-<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">CM</div>
-<div><p class="font-bold text-sm">Carlos Mendez</p><p class="text-[11px] text-on-surface-variant">Ingeniería de Sistemas</p></div>
-</div>
-</td>
-<td class="px-lg py-md text-sm">2200543</td>
-<td class="px-lg py-md text-sm font-bold text-primary">60.0 h</td>
-<td class="px-lg py-md text-sm">Apoyo Biblioteca Central</td>
-<td class="px-lg py-md">
-<span class="text-[10px] font-bold text-status-pending bg-status-pending/10 px-2 py-1 rounded">EN PROGRESO</span>
 </td>
 </tr>
 </tbody>
@@ -823,7 +841,7 @@
 </div>
 <!-- Modal: Create Activity (Jefatura) -->
 <div class="fixed inset-0 z-[200] hidden flex items-center justify-center p-md modal-overlay" id="modal-create-activity">
-<div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+<div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col">
 <div class="p-lg bg-primary text-on-primary flex justify-between items-center shrink-0">
 <div class="flex items-center gap-md">
 <span class="material-symbols-outlined">add_task</span>
@@ -833,12 +851,12 @@
 <span class="material-symbols-outlined">close</span>
 </button>
 </div>
-<div class="flex-1 overflow-y-auto p-xl">
+<div class="flex-1 overflow-y-auto p-lg md:p-xl">
 <form class="space-y-lg" id="mgmt-create-activity-form">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md md:gap-lg">
 <div class="space-y-xs md:col-span-2">
-<label class="font-label-md text-on-surface-variant">Título de la Actividad</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-title" placeholder="Ej: Apoyo en EXPO UTEPSA 2024" required="" type="text"/>
+<label class="font-label-md text-on-surface-variant">Título</label>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-title" placeholder="Ej: Apoyo EXPO" required="" type="text"/>
 </div>
 <div class="space-y-xs">
 <label class="font-label-md text-on-surface-variant">Categoría</label>
@@ -846,33 +864,31 @@
 <option value="Voluntariado">Voluntariado</option>
 <option value="Tutorías">Tutorías</option>
 <option value="Cultura">Cultura</option>
-<option value="Deporte">Deporte</option>
-<option value="Investigación">Investigación</option>
 <option value="Administrativo">Administrativo</option>
 <option value="Académico">Académico</option>
 </select>
 </div>
 <div class="space-y-xs">
-<label class="font-label-md text-on-surface-variant">Fecha Programada</label>
+<label class="font-label-md text-on-surface-variant">Fecha</label>
 <input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-date" required="" type="date"/>
 </div>
 <div class="space-y-xs">
-<label class="font-label-md text-on-surface-variant">Máximo de Horas</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-hours" min="0.5" placeholder="Ej: 4.0" required="" step="0.5" type="number"/>
+<label class="font-label-md text-on-surface-variant">Horas</label>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-hours" min="0.5" placeholder="4.0" required="" step="0.5" type="number"/>
 </div>
 <div class="space-y-xs">
-<label class="font-label-md text-on-surface-variant">Cupos / Capacidad</label>
-<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-capacity" min="1" placeholder="Ej: 20" type="number"/>
+<label class="font-label-md text-on-surface-variant">Cupos</label>
+<input class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-capacity" min="1" placeholder="20" type="number"/>
 </div>
 <div class="space-y-xs md:col-span-2">
-<label class="font-label-md text-on-surface-variant">Descripción Detallada</label>
-<textarea class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-desc" placeholder="Especifique las tareas y requerimientos para los becados..." rows="3"></textarea>
+<label class="font-label-md text-on-surface-variant">Descripción</label>
+<textarea class="w-full px-md py-sm rounded-lg border border-outline focus:ring-1 focus:ring-primary outline-none" id="new-act-desc" placeholder="Detalles..." rows="2"></textarea>
 </div>
 </div>
 <div class="pt-lg flex gap-md">
 <button class="flex-1 py-md border border-outline text-on-surface-variant rounded-xl font-bold hover:bg-surface-muted transition-all" onclick="closeCreateActivityModal()" type="button">Cancelar</button>
 <button class="flex-[2] py-md bg-primary text-on-primary rounded-xl font-bold shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2" onclick="handleMgmtCreateActivity(event)" type="submit">
-<span class="material-symbols-outlined">save</span> Publicar Actividad
+<span class="material-symbols-outlined">save</span> Publicar
                     </button>
 </div>
 </form>
@@ -969,7 +985,7 @@
             'student-dashboard': 'Panel del Becado',
             'student-portfolio': 'Mi Portafolio',
             'student-activities': 'Registro de Actividades',
-            'management-dashboard': 'Panel de Gestión Jefatura',
+            'management-dashboard': 'Gestión Jefatura',
             'management-validation': 'Panel de Validación',
             'management-reports': 'Reportes de Gestión'
         };
@@ -1009,10 +1025,7 @@
         const hours = parseFloat(document.getElementById('new-act-hours').value);
         const date = document.getElementById('new-act-date').value;
         
-        if (!title || !hours || !date) {
-            alert('Por favor complete todos los campos obligatorios.');
-            return;
-        }
+        if (!title || !hours || !date) return;
 
         const newAct = {
             id: 'c' + (state.catalog.length + 1),
@@ -1025,7 +1038,6 @@
 
         state.catalog.unshift(newAct);
         renderMgmtPreinscriptions();
-        alert('Actividad "' + title + '" creada exitosamente.');
         closeCreateActivityModal();
     }
 
@@ -1053,7 +1065,6 @@
         if (!state.user.preinscriptions.find(a => a.id === id)) {
             state.user.preinscriptions.push(activity);
             activity.preinscritos++;
-            alert(`¡Te has pre-inscrito con éxito en: ${activity.name}!`);
             renderCatalog();
             renderMyUpcoming();
         }
@@ -1067,26 +1078,19 @@
             return `
                 <div class="bg-surface border border-outline-variant p-md rounded-xl hover:border-primary transition-colors group">
                     <div class="flex justify-between items-start mb-md">
-                        <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase">${act.category}</span>
+                        <span class="bg-primary/10 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase truncate max-w-[100px]">${act.category}</span>
                         <span class="text-label-sm text-on-surface-variant font-bold">${act.hours} h</span>
                     </div>
-                    <h4 class="font-bold text-lg mb-xs">${act.name}</h4>
+                    <h4 class="font-bold text-lg mb-xs truncate">${act.name}</h4>
                     <p class="text-sm text-on-surface-variant mb-md flex items-center gap-1">
                         <span class="material-symbols-outlined text-sm">calendar_month</span> ${act.date}
                     </p>
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="flex -space-x-2">
-                             <div class="w-6 h-6 rounded-full bg-gray-200 border-2 border-white"></div>
-                             <div class="w-6 h-6 rounded-full bg-gray-300 border-2 border-white"></div>
-                        </div>
-                        <span class="text-[11px] text-on-surface-variant">${act.preinscritos} interesados</span>
-                    </div>
                     <button 
                         class="w-full py-2 rounded-lg font-bold transition-all border ${isRegistered ? 'bg-status-approved text-white border-status-approved' : 'border-primary text-primary hover:bg-primary hover:text-white'}" 
                         onclick="${isRegistered ? '' : `handlePreinscription('${act.id}')`}"
                         ${isRegistered ? 'disabled' : ''}
                     >
-                        ${isRegistered ? '<span class="flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span> Inscrito</span>' : 'Pre-inscribirme'}
+                        ${isRegistered ? 'Inscrito' : 'Pre-inscribirme'}
                     </button>
                 </div>
             `;
@@ -1097,23 +1101,21 @@
         const container = document.getElementById('my-upcoming-list');
         if (!container) return;
         if (state.user.preinscriptions.length === 0) {
-            container.innerHTML = `<p class="text-on-surface-variant text-sm italic py-4 text-center">Aún no tienes pre-inscripciones pendientes.</p>`;
+            container.innerHTML = `<p class="text-on-surface-variant text-sm italic py-4 text-center">Aún no tienes pre-inscripciones.</p>`;
             return;
         }
         container.innerHTML = state.user.preinscriptions.map(act => `
-            <div class="flex items-center justify-between p-3 bg-surface-variant/30 rounded-lg border border-outline-variant">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-primary/10 text-primary rounded flex items-center justify-center">
+            <div class="flex items-center justify-between p-3 bg-surface-variant/30 rounded-lg border border-outline-variant gap-2">
+                <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 bg-primary/10 text-primary rounded flex items-center justify-center shrink-0">
                         <span class="material-symbols-outlined">${act.category === 'Académico' ? 'auto_stories' : 'receipt_long'}</span>
                     </div>
-                    <div>
-                        <p class="font-bold text-sm">${act.name}</p>
-                        <p class="text-[11px] text-on-surface-variant">${act.date} • ${act.hours} horas</p>
+                    <div class="min-w-0">
+                        <p class="font-bold text-sm truncate">${act.name}</p>
+                        <p class="text-[11px] text-on-surface-variant truncate">${act.date} • ${act.hours} h</p>
                     </div>
                 </div>
-                <span class="bg-status-approved text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[12px]">verified</span> CONFIRMADO
-                </span>
+                <span class="bg-status-approved text-white text-[10px] font-bold px-2 py-1 rounded-full shrink-0">CONFIRMADO</span>
             </div>
         `).join('');
     }
@@ -1123,27 +1125,17 @@
         if(!container) return;
         container.innerHTML = state.catalog.map(act => `
             <tr class="hover:bg-surface-muted/30">
-                <td class="px-lg py-md font-medium text-sm">${act.name}</td>
+                <td class="px-lg py-md font-medium text-sm truncate max-w-[200px]">${act.name}</td>
                 <td class="px-lg py-md text-sm text-on-surface-variant">${act.date}</td>
-                <td class="px-lg py-md">
-                    <div class="flex items-center gap-2">
-                        <span class="font-bold text-primary">${act.preinscritos}</span>
-                        <div class="flex -space-x-1">
-                             <div class="w-5 h-5 rounded-full bg-gray-200 border border-white"></div>
-                             <div class="w-5 h-5 rounded-full bg-gray-300 border border-white"></div>
-                        </div>
-                    </div>
-                </td>
+                <td class="px-lg py-md font-bold text-primary">${act.preinscritos}</td>
                 <td class="px-lg py-md">
                     <span class="text-[10px] font-bold ${act.preinscritos > 15 ? 'text-status-approved bg-status-approved/10' : 'text-status-pending bg-status-pending/10'} px-2 py-1 rounded">
-                        ${act.preinscritos > 15 ? 'ALTA DEMANDA' : 'DISPONIBLE'}
+                        ${act.preinscritos > 15 ? 'ALTA' : 'DISP.'}
                     </span>
                 </td>
             </tr>
         `).join('');
-        const totalP = state.catalog.reduce((acc, curr) => acc + curr.preinscritos, 0);
-        const el = document.getElementById('total-preinscriptions');
-        if(el) el.innerText = totalP;
+        document.getElementById('total-preinscriptions').innerText = state.catalog.reduce((acc, curr) => acc + curr.preinscritos, 0);
     }
 
     function registerNewActivity() {
@@ -1161,35 +1153,19 @@
         
         const date = document.getElementById('form-act-date').value || new Date().toISOString().split('T')[0];
 
-        if (!name || !hours) {
-            alert('Por favor complete los campos obligatorios.');
-            return;
-        }
+        if (!name || !hours) return;
 
-        const newActivity = {
-            id: Date.now(),
-            name,
-            category,
-            hours,
-            date,
-            status: 'Pendiente',
-            evidence: null
-        };
-
-        state.activities.unshift(newActivity);
+        state.activities.unshift({ id: Date.now(), name, category, hours, date, status: 'Pendiente', evidence: null });
         state.user.hours += hours;
         state.user.activities += 1;
         
         document.getElementById('hours-count').innerText = state.user.hours;
         document.getElementById('stat-total-hours').innerText = state.user.hours;
         document.getElementById('stat-activities-count').innerText = state.user.activities;
-        
-        const progress = Math.min((state.user.hours / 80) * 100, 100);
-        document.getElementById('progress-bar').style.width = `${progress}%`;
+        document.getElementById('progress-bar').style.width = `${Math.min((state.user.hours / 80) * 100, 100)}%`;
         
         document.getElementById('activity-form').reset();
         switchTab('student-portfolio');
-        alert('Actividad registrada correctamente. En espera de validación.');
     }
 
     function renderActivities() {
@@ -1197,24 +1173,21 @@
         if(!container) return;
         container.innerHTML = state.activities.map(act => `
             <div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row mb-4">
-                <div class="w-2 ${act.status === 'Validado' ? 'bg-status-approved' : 'bg-status-pending'}"></div>
-                <div class="p-lg flex-grow grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-lg items-center">
-                    <div class="col-span-1 lg:col-span-2">
-                        <h3 class="font-headline-sm text-on-surface">${act.name}</h3>
-                        <p class="text-body-sm text-on-surface-variant">${act.category}</p>
+                <div class="w-2 h-full md:w-2 ${act.status === 'Validado' ? 'bg-status-approved' : 'bg-status-pending'} shrink-0"></div>
+                <div class="p-lg flex-grow grid grid-cols-2 md:grid-cols-6 gap-md items-center">
+                    <div class="col-span-2 lg:col-span-2">
+                        <h3 class="font-bold text-on-surface truncate">${act.name}</h3>
+                        <p class="text-xs text-on-surface-variant">${act.category}</p>
                     </div>
-                    <div><p class="text-label-sm text-on-surface-variant mb-xs">Fecha</p><p class="font-bold">${act.date}</p></div>
-                    <div><p class="text-label-sm text-on-surface-variant mb-xs">Horas</p><p class="font-bold text-primary">${act.hours} h</p></div>
-                    <div class="flex justify-end lg:justify-center">
-                        <span class="${act.status === 'Validado' ? 'bg-status-approved/10 text-status-approved' : 'bg-status-pending/10 text-status-pending'} px-sm py-1 rounded-full text-label-sm font-bold flex items-center gap-xs">
-                            <span class="material-symbols-outlined text-[14px]">${act.status === 'Validado' ? 'check_circle' : 'hourglass_bottom'}</span> ${act.status}
+                    <div><p class="text-[10px] text-on-surface-variant uppercase">Fecha</p><p class="font-bold text-sm">${act.date}</p></div>
+                    <div><p class="text-[10px] text-on-surface-variant uppercase">Horas</p><p class="font-bold text-primary text-sm">${act.hours} h</p></div>
+                    <div>
+                        <span class="${act.status === 'Validado' ? 'bg-status-approved/10 text-status-approved' : 'bg-status-pending/10 text-status-pending'} px-2 py-1 rounded-full text-[10px] font-bold">
+                            ${act.status}
                         </span>
                     </div>
                     <div class="flex items-center justify-end">
-                        ${act.evidence 
-                            ? `<button class="p-2 bg-primary/5 text-primary rounded-lg hover:bg-primary/10 border border-primary/20 flex items-center gap-2 text-xs font-bold"><span class="material-symbols-outlined text-sm">visibility</span> Ver</button>`
-                            : `<button class="p-2 bg-white text-primary rounded-lg border border-primary hover:bg-primary hover:text-white flex items-center gap-2 text-xs font-bold"><span class="material-symbols-outlined text-sm">upload_file</span> Subir</button>`
-                        }
+                        <button class="p-2 bg-primary/5 text-primary rounded-lg border border-primary/20 text-xs font-bold">${act.evidence ? 'Ver' : 'Subir'}</button>
                     </div>
                 </div>
             </div>
@@ -1237,26 +1210,24 @@
             label.className = 'text-[10px] font-bold text-status-approved bg-status-approved/10 px-sm py-0.5 rounded';
             iconBg.className = 'w-12 h-12 rounded-full bg-status-approved/20 flex items-center justify-center shrink-0';
             icon.innerText = 'person_check';
-            icon.className = 'material-symbols-outlined text-status-approved text-3xl';
             title.innerText = val === 'carlos' ? 'Carlos Mendez' : 'Juan Pablo Salas';
-            desc.innerText = val === 'carlos' ? 'Ing. Sistemas - ID: 2200543' : 'Psicología - ID: 2200981';
+            desc.innerText = val === 'carlos' ? 'ID: 2200543' : 'ID: 2200981';
         } else {
             label.innerText = 'ESPERANDO';
             label.className = 'text-[10px] font-bold text-status-pending bg-status-pending/10 px-sm py-0.5 rounded';
             iconBg.className = 'w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0';
             icon.innerText = 'camera';
             title.innerText = 'Esperando QR...';
-            desc.innerText = 'Posicione el código frente a la cámara';
+            desc.innerText = 'Posicione el código';
         }
     }
 
     function handleValidationAction(id, action) {
         const row = document.getElementById(`row-${id}`);
-        if(row) row.classList.add('opacity-50', 'pointer-events-none');
-        setTimeout(() => {
-            if(row) row.remove();
-            alert(action === 'approve' ? 'Actividad validada con éxito.' : 'Actividad rechazada.');
-        }, 300);
+        if(row) {
+            row.classList.add('opacity-50', 'pointer-events-none');
+            setTimeout(() => row.remove(), 300);
+        }
     }
 
     let charts = {};
@@ -1265,82 +1236,60 @@
             const canvas = document.getElementById('mgmtCategoryChartDashboard');
             if(!canvas) return;
             if (charts.mgmtCategoryDashboard) charts.mgmtCategoryDashboard.destroy();
-            const ctx = canvas.getContext('2d');
-            charts.mgmtCategoryDashboard = new Chart(ctx, {
+            charts.mgmtCategoryDashboard = new Chart(canvas.getContext('2d'), {
                 type: 'doughnut',
                 data: {
                     labels: ['Académico', 'Administrativo', 'Social'],
-                    datasets: [{
-                        data: [40, 35, 25],
-                        backgroundColor: ['#C41E3A', '#e5e7eb', '#4b5563'],
-                        borderWidth: 0
-                    }]
+                    datasets: [{ data: [40, 35, 25], backgroundColor: ['#C41E3A', '#e5e7eb', '#4b5563'], borderWidth: 0 }]
                 },
                 options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
             });
         }
         
         if (tabId === 'management-reports') {
-            // Restore Category Pie Chart
             const catCanvas = document.getElementById('categoryDistributionChart');
             if(catCanvas) {
                 if (charts.categoryDistribution) charts.categoryDistribution.destroy();
                 charts.categoryDistribution = new Chart(catCanvas.getContext('2d'), {
                     type: 'pie',
                     data: {
-                        labels: ['Académico', 'Administrativo', 'Voluntariado', 'Otros'],
-                        datasets: [{
-                            data: [42, 28, 15, 15],
-                            backgroundColor: ['#C41E3A', '#930013', '#EF4444', '#410004'],
-                            borderWidth: 2,
-                            borderColor: '#ffffff'
-                        }]
+                        labels: ['Acad.', 'Admin.', 'Vol.', 'Otros'],
+                        datasets: [{ data: [42, 28, 15, 15], backgroundColor: ['#C41E3A', '#930013', '#EF4444', '#410004'], borderWidth: 2, borderColor: '#ffffff' }]
                     },
                     options: { maintainAspectRatio: false, plugins: { legend: { display: false } } }
                 });
             }
 
-            // Restore Compliance Bar Chart
             const compCanvas = document.getElementById('becarioComplianceChart');
             if(compCanvas) {
                 if (charts.becarioCompliance) charts.becarioCompliance.destroy();
                 charts.becarioCompliance = new Chart(compCanvas.getContext('2d'), {
                     type: 'bar',
                     data: {
-                        labels: ['Ana Maria L.', 'Carlos Mendez', 'Juan Pablo S.', 'Lucia V.', 'Jorge T.'],
-                        datasets: [{
-                            label: 'Horas Completadas',
-                            data: [78, 60, 45, 32, 15],
-                            backgroundColor: '#C41E3A',
-                            borderRadius: 4
-                        }]
+                        labels: ['Ana L.', 'Carlos M.', 'Juan S.', 'Lucia V.', 'Jorge T.'],
+                        datasets: [{ label: 'Horas', data: [78, 60, 45, 32, 15], backgroundColor: '#C41E3A', borderRadius: 4 }]
                     },
-                    options: {
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { beginAtZero: true, max: 80, grid: { display: false } },
-                            x: { grid: { display: false } }
-                        }
-                    }
+                    options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 80, grid: { display: false } }, x: { grid: { display: false } } } }
                 });
             }
         }
     }
 
     function updateQRCode() {
-        const rand = Math.floor(Math.random() * 1000);
-        const code = `UTEPSA-${rand}-XM`;
-        const codeText = document.getElementById('qr-code-text');
-        const qrCont = document.getElementById('qr-container');
-        if(codeText) codeText.innerText = code;
-        if(qrCont) qrCont.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${code}" class="w-full h-full p-2">`;
+        const code = `UTEPSA-${Math.floor(Math.random() * 1000)}-XM`;
+        document.getElementById('qr-code-text').innerText = code;
+        document.getElementById('qr-container').innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${code}" class="w-full h-full p-2">`;
     }
 
     window.addEventListener('load', () => {
         renderActivities();
         renderCatalog();
         renderMyUpcoming();
+    });
+
+    // Resize handler for charts
+    window.addEventListener('resize', () => {
+        Object.values(charts).forEach(chart => chart.resize());
     });
 </script>
 </body></html>
